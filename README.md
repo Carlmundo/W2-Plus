@@ -10,7 +10,7 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 - Applies the last patch (v1.05)
 - No CD required (CD version)
 - Borderless windowed mode (via [ReSolution](https://worms2d.info/ReSolution))
-- Fixed issues with the soundtrack (GOG version) and no longer requires the CD (CD version)
+- Fixed issues with the soundtrack (GOG version) and no longer requires the CD for music (CD version)
 - Re-enables online multiplayer (GOG version)
 - Play online without extra configuration (via [FkNetcode](https://worms2d.info/FkNetcode))
 - Added Demo and US servers
