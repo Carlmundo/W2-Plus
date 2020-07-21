@@ -23,3 +23,4 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 	- Fix Character / Logon Restrictions and Typing Click
 	- 2 additional flags for online - Nuke & Team 17
 	- Enable Ability to Kick Teams
+	- Remove Replay Screen Corners Annoyance
