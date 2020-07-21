@@ -72,7 +72,7 @@ begin
 end;
 
 function GetDefaultDir(def: string): string;
-var InstalledDir, Default_Path, GOG_Path : string;
+var InstalledDir : string;
 begin
   if RegQueryStringValue(HKLM32, '{#RegPathLM1}', 'PATH', InstalledDir) then
   begin
