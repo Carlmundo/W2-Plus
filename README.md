@@ -17,7 +17,6 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 	- Flexible Option Editor
 	- Terrain editor doesn't lose focus when you click "Generate"
 	- Fix Character / Logon Restrictions and Typing Click
-	- Update DirectPlay Interfaces
 	- 2 additional flags for online - Nuke & Team 17
 	- Enable Ability to Kick Teams
 - Re-enables online multiplayer (GOG version)
