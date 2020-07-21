@@ -1,0 +1,20 @@
+*/mission data - over-rides default mission.opt /*
+
+round_time=0
+turn_time=15
+mine_count=8
+Worm_select=0					*\1=user 0=no choice\*
+Artillery=0					*\0=off, 1 = on\*
+Force_Player_first=1				*\0=off, 1=human first\*
+Human_worms=3
+Cpu_worms=7
+Human_energy=100				*\energy per worm\*
+Cpu_energy=100
+secret_wep=1					*\1 or off\*
+boobytraps=1					*\% chance\*
+Crate_drops=50					*\% chance\*
+Energy_reduce=1					*\1 = on \*
+Water_rise=20					*\pixels\*
+Oildrums=0					*\0=mines, 1=drums\*
+
+
