@@ -106,3 +106,10 @@ WelcomeLabel1={#AppName} {#AppVersion}
 SelectDirLabel3=Setup will try to detect where {#Game} is installed.
 SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
 FinishedHeadingLabel=Patch Complete
+
+[InstallDelete]
+;Remove unneeded files relating to the GOG soundtrack. May implement later.
+;Type: files; Name: "{app}\libogg-0.dll"
+;Type: files; Name: "{app}\libvorbis-0.dll"
+;Type: files; Name: "{app}\libvorbisfile-3.dll"
+;Type: files; Name: "{app}\music\*.ogg"

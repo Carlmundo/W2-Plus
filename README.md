@@ -3,7 +3,11 @@ An easy-to-install patch that makes the game run on modern computers with extra 
 This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) versions of Worms 2.
 
 ## Install
-[Download the latest version](https://github.com/Carlmundo/W2-Plus/releases/latest)
+- [Download the latest version](https://github.com/Carlmundo/W2-Plus/releases/latest)
+- Run the file
+- For Online Play, set up [Port Forwarding](https://portforward.com/router.htm) on your Router
+	- 47624 (TCP)
+	- 2300-2400 (TCP and UDP)
 
 ## Features
 - Compatible with Windows 10
