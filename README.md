@@ -20,7 +20,7 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 - Improved FLAC soundtrack quality (vs GOG version)
 - Re-enables online multiplayer (GOG version)
 - Play online without extra configuration (via [FkNetcode](https://worms2d.info/FkNetcode))
-- Added Demo and US servers
+- Server list fixed
 - Automatically sets the graphics to their maximum level
 - Enhancements (via [Des patch](https://worms2d.info/Des_patch))
 	- Frontend

@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.02"
+#define AppVersion "1.02a"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -33,7 +33,7 @@ UsedUserAreasWarning=no
 
 [Files]
 ;Patch files
-Source: "..\Patch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: "..\Patch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 
 [Registry]
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "DXPATCHED"; ValueData: 1
