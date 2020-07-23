@@ -3,9 +3,11 @@ An easy-to-install patch that makes the game run on modern computers with extra 
 This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) versions of Worms 2.
 
 ## Install
-- [Download the latest version](https://github.com/Carlmundo/W2-Plus/releases/latest)
-- Run the file
-- For Online Play, set up [Port Forwarding](https://portforward.com/router.htm) on your Router
+[Download the latest version](https://github.com/Carlmundo/W2-Plus/releases/latest)
+
+## How to Play
+- Always launch the game by running frontend.exe from the game's folder. There is no need to set any compatibility settings.
+- For Online Play, set up [Port Forwarding](https://portforward.com/router.htm) on your Router with the following ports:
 	- 47624 (TCP)
 	- 2300-2400 (TCP and UDP)
 
@@ -14,7 +16,8 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 - Applies the last patch (v1.05)
 - No CD required (CD version)
 - Borderless windowed mode (via [ReSolution](https://worms2d.info/ReSolution))
-- Fixed issues with the soundtrack (GOG version) and no longer requires the CD for music (CD version)
+- Fixed issues with the soundtrack (GOG version) and no longer requires the CD for music in-game (CD version)
+- Improved FLAC soundtrack quality (vs GOG version)
 - Re-enables online multiplayer (GOG version)
 - Play online without extra configuration (via [FkNetcode](https://worms2d.info/FkNetcode))
 - Added Demo and US servers
@@ -34,3 +37,6 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 		- Flexible Option Editor
 	- In-Game	
 		- Remove Replay screen corners (to be compatible with borderless windowed mode)
+
+## Troubleshooting
+ - Do **not** set any compatibility settings on any of the game's files
