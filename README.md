@@ -40,3 +40,4 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 
 ## Troubleshooting
  - Do **not** set any compatibility settings on any of the game's files
+ - Make sure only one copy of the game is installed to avoid it launching the wrong application
