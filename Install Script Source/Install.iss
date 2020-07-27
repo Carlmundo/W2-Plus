@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.02c"
+#define AppVersion "1.03"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -120,10 +120,3 @@ WelcomeLabel1={#AppName} {#AppVersion}
 SelectDirLabel3=Setup will try to detect where {#Game} is installed.
 SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
 FinishedHeadingLabel=Patch Complete
-
-[InstallDelete]
-;Remove unneeded files relating to the GOG soundtrack. May implement later.
-;Type: files; Name: "{app}\libogg-0.dll"
-;Type: files; Name: "{app}\libvorbis-0.dll"
-;Type: files; Name: "{app}\libvorbisfile-3.dll"
-;Type: files; Name: "{app}\music\*.ogg"
