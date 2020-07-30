@@ -4,6 +4,7 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 
 ## Install
 [Download the latest version](https://github.com/Carlmundo/W2-Plus/releases/latest)
+**CD version users:** Before installing the patch, copy your "DATA" folder from the CD into the game folder.
 
 ## How to Play
 - Always launch the game by running frontend.exe from the game's folder. There is no need to set any compatibility settings.

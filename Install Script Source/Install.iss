@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.04"
+#define AppVersion "1.04a"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -21,7 +21,7 @@ AppendDefaultDirName=no
 DisableReadyPage=no
 AlwaysShowDirOnReadyPage=yes
 CloseApplications=yes
-OutputBaseFilename={#AppName} {#AppVersion}
+OutputBaseFilename=Worms2_Plus_{#AppVersion}
 SetupIconFile=image-icon.ico
 WizardImageFile=image-large.bmp
 WizardImageStretch=no
@@ -102,10 +102,15 @@ end;
 function NextButtonClick(PageId: Integer): Boolean;
 begin
     Result := True;
-    if (PageId = wpSelectDir) and (
-    not FileExists(ExpandConstant('{app}\{#AppProcess2}'))) then begin
+    if (PageId = wpSelectDir) then begin
+      if (not FileExists(ExpandConstant('{app}\{#AppProcess2}'))) then begin
         MsgBox('{#Game} could not be found in that folder. If it is the correct folder, please try reinstalling the game.', mbError, MB_OK);
         Result := False;
+      end
+      else if (not FileExists(ExpandConstant('{app}\data\LEVEL\TIME\LEVEL.DIR')) or not FileExists(ExpandConstant('{app}\data\MISSION\45\MISSION.WEP')) ) then begin
+        MsgBox('Before installing this patch, you need to copy the "DATA" folder from the CD into the game folder. Please copy the folder first then try again.', mbError, MB_OK);
+        Result := False;
+      end;
     end;
 end;
 
