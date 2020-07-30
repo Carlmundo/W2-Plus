@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.03"
+#define AppVersion "1.04"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -44,6 +44,11 @@ Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "W2ALLOWVID"; 
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "CD"; ValueData:  "."
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData:  "."
 Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "VideoSetting"; ValueData: 5
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: none; ValueName: "CommandLine"
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "CurrentDirectory"; ValueData: "{app}"
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "File"; ValueData: "worms2.exe"
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Guid"; ValueData: "{{DF394860-E19E-11D0-805F-444553540000}}"
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Path"; ValueData: "{app}"
 
 [Code]
 function IsAppRunning(const FileName: string): Boolean;
@@ -77,22 +82,19 @@ end;
 function InitializeSetup: boolean;
 begin
   Result := not IsAppRunning('{#AppProcess1}');
+  if Result then begin
+    Result := not IsAppRunning('{#AppProcess2}');
+  end;
   if not Result then
-  MsgBox('{#MsgRunning}', mbError, MB_OK);
-
-  Result := not IsAppRunning('{#AppProcess2}');
-  if not Result then
-  MsgBox('{#MsgRunning}', mbError, MB_OK);
+    MsgBox('{#MsgRunning}', mbError, MB_OK);
 end;
 
 function GetDefaultDir(def: string): string;
 var InstalledDir : string;
 begin
-  if RegQueryStringValue(HKLM32, '{#RegPathLM1}', 'PATH', InstalledDir) then
-  begin
+  if RegQueryStringValue(HKLM32, '{#RegPathLM1}', 'PATH', InstalledDir) then begin
   end 
-  else if RegQueryStringValue(HKLM32, '{#RegPathLM2}', 'Path', InstalledDir) then
-  begin
+  else if RegQueryStringValue(HKLM32, '{#RegPathLM2}', 'Path', InstalledDir) then begin
   end;     
   Result := InstalledDir;    
 end;
@@ -101,13 +103,10 @@ function NextButtonClick(PageId: Integer): Boolean;
 begin
     Result := True;
     if (PageId = wpSelectDir) and (
-    not FileExists(ExpandConstant('{app}\{#AppProcess2}'))
-    ) then
-    begin
+    not FileExists(ExpandConstant('{app}\{#AppProcess2}'))) then begin
         MsgBox('{#Game} could not be found in that folder. If it is the correct folder, please try reinstalling the game.', mbError, MB_OK);
         Result := False;
-        exit;
-    end
+    end;
 end;
 
 [Languages]
