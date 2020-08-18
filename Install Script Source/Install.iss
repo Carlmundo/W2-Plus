@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.04a"
+#define AppVersion "1.04b"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -29,13 +29,14 @@ WizardSmallImageFile=image-small.bmp
 Compression=none
 Uninstallable=no
 PrivilegesRequired=admin
-UsedUserAreasWarning=no
 
 [Files]
 ;Patch files
 Source: "..\Patch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch - Windows\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
 Source: "..\Patch - Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
+;Place LEVEL and MISSION folders here:
+Source: "..\Data\*"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly onlyifdoesntexist;
 
 [Registry]
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "DXPATCHED"; ValueData: 1
@@ -107,10 +108,6 @@ begin
         MsgBox('{#Game} could not be found in that folder. If it is the correct folder, please try reinstalling the game.', mbError, MB_OK);
         Result := False;
       end
-      else if (not FileExists(ExpandConstant('{app}\data\LEVEL\TIME\LEVEL.DIR')) or not FileExists(ExpandConstant('{app}\data\MISSION\45\MISSION.WEP')) ) then begin
-        MsgBox('Before installing this patch, you need to copy the "DATA" folder from the CD into the game folder. Please copy the folder first then try again.', mbError, MB_OK);
-        Result := False;
-      end;
     end;
 end;
 
