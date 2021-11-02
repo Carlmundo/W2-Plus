@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.04c"
+#define AppVersion "1.04d"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -7,6 +7,7 @@
 #define RegPathCU2 "Software\Team17SoftwareLTD\frontend\Worms2"
 #define RegPathLM1 "Software\GOG.com\GOGWORMS2"
 #define RegPathLM2 "Software\Microsoft\DirectPlay\Applications\worms2"
+#define RegPathWine "SOFTWARE\Wine"
 #define MsgRunning 'Worms 2 is running. Please close the game before installing the patch.'
 
 [Setup]
@@ -35,6 +36,8 @@ PrivilegesRequired=admin
 Source: "..\Patch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch - Windows\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
 Source: "..\Patch - Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
+;DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
+Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 ;Place LEVEL and MISSION folders here:
 Source: "..\Data\*"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly onlyifdoesntexist;
 
@@ -51,6 +54,28 @@ Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "File"; Val
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Guid"; ValueData: "{{DF394860-E19E-11D0-805F-444553540000}}"
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Path"; ValueData: "{app}"
 Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "HIGHDPIAWARE ";
+
+;Wine
+;DLL Overrides - DirectPlay
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "*dplaysvr.exe"; ValueData: "native"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "*dplayx"; ValueData: "native"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "*dpmodemx"; ValueData: "native"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "*dpnet"; ValueData: "native"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "*dpnhpast"; ValueData: "native"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "*dpnhupnp"; ValueData: "native"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "*dpnsvr.exe"; ValueData: "native"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "*dpwsockx"; ValueData: "native"; Check: IsWine();
+;DLL Overrides - Worms2
+Root: HKCU; Subkey: "{#RegPathWine}\Explorer\Desktops"; ValueType: string; ValueName: "frontend.exe"; ValueData: {code:GetResolution}; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\Explorer\Desktops"; ValueType: string; ValueName: "worms2.exe"; ValueData: {code:GetResolution}; Check: not IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\frontend.exe\DllOverrides"; ValueType: string; ValueName: "wsock32"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\frontend.exe\Explorer"; ValueType: string; ValueName: "Desktop"; ValueData: "frontend.exe"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueType: string; ValueName: "dplayx"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueType: string; ValueName: "dpnet"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueType: string; ValueName: "dpnhpast"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueType: string; ValueName: "dpwsockx"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueType: string; ValueName: "dsound"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\Explorer"; ValueType: string; ValueName: "Desktop"; ValueData: "worms2.exe"; Check: IsWine();
 
 [Code]
 function IsAppRunning(const FileName: string): Boolean;
@@ -69,6 +94,7 @@ begin
   FSWbemLocator := Unassigned;
 end;
 
+//Detect Wine
 function LoadLibraryA(lpLibFileName: PAnsiChar): THandle;
 external 'LoadLibraryA@kernel32.dll stdcall';
 function GetProcAddress(Module: THandle; ProcName: PAnsiChar): Longword;
@@ -80,6 +106,16 @@ begin
   LibHandle := LoadLibraryA('ntdll.dll');
   Result:= GetProcAddress(LibHandle, 'wine_get_version')<> 0;
 end;
+
+//Use SystemMetrics to get resolution
+function GetSystemMetrics (nIndex: Integer): Integer;
+external 'GetSystemMetrics@User32.dll stdcall setuponly';
+
+function GetResolution(Value: string): string;
+begin
+    Result := IntToStr(GetSystemMetrics(0)) + 'x' + IntToStr(GetSystemMetrics(1));
+end;
+
 
 function InitializeSetup: boolean;
 begin
