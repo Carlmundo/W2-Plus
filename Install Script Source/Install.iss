@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.04d"
+#define AppVersion "1.05"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -40,6 +40,12 @@ Source: "..\Patch - Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubd
 Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 ;Place LEVEL and MISSION folders here:
 Source: "..\Data\*"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly onlyifdoesntexist;
+
+[Tasks]
+Name: "shortcut"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
+
+[Icons]
+Name: "{userdesktop}\{#AppName}"; Filename: "{app}\frontend.exe"; Tasks: shortcut
 
 [Registry]
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "DXPATCHED"; ValueData: 1
