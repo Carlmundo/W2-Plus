@@ -42,7 +42,7 @@ Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion re
 Source: "..\Data\*"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly onlyifdoesntexist;
 
 [Tasks]
-Name: "shortcut"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
+Name: "shortcut"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Check: not IsWine()
 
 [Icons]
 Name: "{userdesktop}\{#AppName}"; Filename: "{app}\frontend.exe"; Tasks: shortcut
@@ -73,7 +73,7 @@ Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName:
 Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "*dpwsockx"; ValueData: "native"; Check: IsWine();
 ;DLL Overrides - Worms2
 Root: HKCU; Subkey: "{#RegPathWine}\Explorer\Desktops"; ValueType: string; ValueName: "frontend.exe"; ValueData: {code:GetResolution}; Check: IsWine();
-Root: HKCU; Subkey: "{#RegPathWine}\Explorer\Desktops"; ValueType: string; ValueName: "worms2.exe"; ValueData: {code:GetResolution}; Check: not IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\Explorer\Desktops"; ValueType: string; ValueName: "worms2.exe"; ValueData: {code:GetResolution}; Check: IsWine();
 Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\frontend.exe\DllOverrides"; ValueType: string; ValueName: "wsock32"; ValueData: "native,builtin"; Check: IsWine();
 Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\frontend.exe\Explorer"; ValueType: string; ValueName: "Desktop"; ValueData: "frontend.exe"; Check: IsWine();
 Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueType: string; ValueName: "dplayx"; ValueData: "native,builtin"; Check: IsWine();
