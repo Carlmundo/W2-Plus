@@ -1,4 +1,3 @@
-/Output/*
-Patch/Data/LEVEL/*
-Patch/Data/MISSION/*
+*/Output/*
+/Data
 /System files for Wine
