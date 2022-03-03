@@ -7,19 +7,25 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 
 ## How to Play
 - Always launch the game by running frontend.exe from the game's folder. There is no need to set any compatibility settings.
-- For Online Play, set up [Port Forwarding](https://portforward.com/router.htm) on your Router with the following ports:
+- Online Play - all players need to set up [Port Forwarding](https://portforward.com/router.htm) on your Router with the following ports:
 	- 47624 (TCP)
 	- 2300-2400 (TCP and UDP)
+- LAN play works without any port forwarding and can also be used with virtual private networks such as Hamachi and Radmin.
+	- Select IPX underneath the LAN button.
+	- When the game starts, a prompt appears. The host must be the first one to click OK on this prompt.
+
 
 ## Features
-- Compatible with Windows 10 and Wine
-- Applies the last patch (v1.05)
+- Compatible with modern versions of Windows and Wine
+- Applies the last official patch (v1.05)
 - No CD required (CD version)
 - Borderless windowed mode (via [ReSolution](https://worms2d.info/ReSolution))
 - Fixed issues with the soundtrack (GOG version) and no longer requires the CD for music (CD version)
 - Improved FLAC soundtrack quality in-game and higher quality OGG music for frontend (vs GOG version)
 - Re-enables online multiplayer (GOG version)
 - Play online without extra configuration (via [FkNetcode](https://worms2d.info/FkNetcode))
+- LAN play restored
+	- Also works with virtual private networks
 - Server list fixed
 - Automatically sets the graphics to their maximum level
 - Enhancements (via [Des patch](https://worms2d.info/Des_patch))
@@ -30,13 +36,15 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 		- Demo won't autoplay when idle
 		- Stop moving the window to the center of the screen
 		- Mute the click sound when typing your online name
-		- 2 additional flags for online - Nuke & Team 17
+		- Additional flags for online - Pirate, Team 17 and blank
 		- Unlock classic Worms terrain options without using the "OSSETT" cheat
 		- Enable ability to kick teams
 		- Flexible weapon editor
 		- Flexible option editor
 	- In-Game	
 		- Remove Replay screen corners (to be compatible with borderless windowed mode)
+		- Ninja Rope Glitch Fixes 1-4
+- Basic Discord Rich Presence to show whether you're in the menus or in-game
 
 ## Troubleshooting
  - Do **not** set any compatibility settings on any of the game's files
