@@ -23,8 +23,8 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 - Fixed issues with the soundtrack (GOG version) and no longer requires the CD for music (CD version)
 - Improved FLAC soundtrack quality in-game and higher quality OGG music for frontend (vs GOG version)
 - Re-enables online multiplayer (GOG version)
-- Play online without extra configuration (via [FkNetcode](https://worms2d.info/FkNetcode))
-- LAN play restored
+- Play online with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) fork of [FkNetcode](https://worms2d.info/FkNetcode))
+- LAN play restored (via [modified](https://github.com/Carlmundo/ipxwrapper-w2) fork of IPXWrapper)
 	- Also works with virtual private networks
 - Server list fixed
 - Automatically sets the graphics to their maximum level
