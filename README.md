@@ -14,11 +14,11 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 	- Select IPX underneath the LAN button.
 	- When the game starts, a prompt appears. The host must be the first one to click OK on this prompt.
 
-
 ## Features
 - Compatible with modern versions of Windows and Wine
 - Applies the last official patch (v1.05)
 - No CD required (CD version)
+- Multi-language support
 - Borderless windowed mode (via [ReSolution](https://worms2d.info/ReSolution))
 - Fixed issues with the soundtrack (GOG version) and no longer requires the CD for music (CD version)
 - Improved FLAC soundtrack quality in-game and higher quality OGG music for frontend (vs GOG version)
@@ -30,12 +30,12 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 - Automatically sets the graphics to their maximum level
 - Enhancements (via [Des patch](https://worms2d.info/Des_patch))
 	- Frontend
-		- Minimize or exit from anywhere
-		- See your game password as you type it
+		- Minimize or exit from anywhere*
+		- See your game password as you type it*
 		- Terrain editor doesn't lose focus when you click "Generate"
 		- Demo won't autoplay when idle
-		- Stop moving the window to the center of the screen
-		- Mute the click sound when typing your online name
+		- Stop repositioning the window when going back to the main menu*
+		- Mute the click sound when typing your online name*
 		- Additional flags for online - Pirate, Team 17 and blank
 		- Unlock classic Worms terrain options without using the "OSSETT" cheat
 		- Enable ability to kick teams
@@ -43,8 +43,29 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 		- Flexible option editor
 	- In-Game	
 		- Remove Replay screen corners (to be compatible with borderless windowed mode)
-		- Ninja Rope Glitch Fixes 1-4
+- Added soundbanks from other classic Worms releases:
+	- Worms: The Directors Cut, named as "Classic - Director's Cut"
+	- Worms Armageddon: Brummie, Cad, Cyberworms, Drill Sergeant, Finnish, Formula One, Geezer, Irish, Jock, Kidz, Rasta, Redneck, Rushki, Russian, Stooges, Team 17 Test, The Raj, Thespian, US Sports, Whoopsie
+	- Worms World Party: Danish-2, French-2, Italian-2, Spanish-2, Swedish-2
+- Updated the Soundbank Editor with a working version
 - Basic Discord Rich Presence to show whether you're in the menus or in-game
+
+*This option does not work when the "Spanish (Latin America)" language is installed.
+
+## Language Support
+| **Language**            | **Frontend** | **In-Game** |
+|-------------------------|:------------:|:-----------:|
+| Dutch                   |              |      ✅      |
+| English                 |       ✅      |      ✅      |
+| French                  |              |      ✅      |
+| German                  |       ✅      |      ✅      |
+| Italian                 |              |      ✅      |
+| Portugese (Brazil)      |       ✅      |      ✅      |
+| Spanish                 |              |      ✅      |
+| Spanish (Latin America) |       ✅      |      ✅      |
+| Swedish                 |              |      ✅      |
+
+Any languages not supported in the Frontend will be displayed in English.
 
 ## Troubleshooting
  - Do **not** set any compatibility settings on any of the game's files
