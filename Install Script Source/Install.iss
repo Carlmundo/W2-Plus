@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.5.1"
+#define AppVersion "1.5.2"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -32,6 +32,7 @@ WizardSmallImageFile=image-small.bmp
 Compression=none
 Uninstallable=no
 PrivilegesRequired=admin
+ShowLanguageDialog=yes
 
 [Files]
 ;Patch files
@@ -41,6 +42,29 @@ Source: "..\Patch - Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubd
 ;DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
 Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 ;Place LEVEL and MISSION folders in the Patch folder
+;Languages
+ Source: "..\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
+ Source: "..\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
+ Source: "..\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
+ Source: "..\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
+ Source: "..\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
+ Source: "..\Languages\Portugese (Brazil)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt_br
+ Source: "..\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
+ Source: "..\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_la
+ Source: "..\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
+ ;Most European versions use the English frontend
+ Source: "..\Languages\English\frontend.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl fr it es sv
+
+[Languages]
+Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
+Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
+Name: "de"; MessagesFile: "compiler:Languages\German.isl"
+Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "pt_br"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
+Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "es_la"; MessagesFile: "Languages\SpanishLA.isl"
+Name: "sv"; MessagesFile: "Languages\Swedish.isl"
 
 [Tasks]
 Name: "shortcut"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Check: not IsWine()
@@ -167,13 +191,12 @@ begin
     end;
 end;
 
-[Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
-
 [Messages]
+SelectLanguageTitle=Select Language
+SelectLanguageLabel=Select the language for {#AppName}
 SetupAppTitle={#AppName} {#AppVersion}
 SetupWindowTitle={#AppName} {#AppVersion} 
 WelcomeLabel1={#AppName} {#AppVersion} 
-SelectDirLabel3=Setup will try to detect where {#Game} is installed.
-SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
-FinishedHeadingLabel=Patch Complete
+en.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
+en.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
+en.FinishedHeadingLabel=Patch Complete
