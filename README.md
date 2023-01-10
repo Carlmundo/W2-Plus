@@ -10,7 +10,7 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 - Online Play - all players need to set up [Port Forwarding](https://portforward.com/router.htm) on your Router with the following ports:
 	- 47624 (TCP)
 	- 2300-2400 (TCP and UDP)
-- LAN play works without any port forwarding and can also be used with virtual private networks such as Hamachi and Radmin.
+- LAN play works without any port forwarding (requires Windows 7 or newer) and can also be used with virtual private networks such as Hamachi and Radmin.
 	- Select IPX underneath the LAN button.
 	- When the game starts, a prompt appears. The host must be the first one to click OK on this prompt.
 
@@ -46,26 +46,27 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 - Added soundbanks from other classic Worms releases:
 	- Worms: The Directors Cut, named as "Classic - Director's Cut"
 	- Worms Armageddon: Brummie, Cad, Cyberworms, Drill Sergeant, Finnish, Formula One, Geezer, Irish, Jock, Kidz, Rasta, Redneck, Rushki, Russian, Stooges, Team 17 Test, The Raj, Thespian, US Sports, Whoopsie
-	- Worms World Party: Danish-2, French-2, Italian-2, Spanish-2, Swedish-2
+	- Worms World Party: Danish-2, Dutch-2, French-2, Italian-2, Spanish-2, Swedish-2
 - Updated the Soundbank Editor with a working version
 - Basic Discord Rich Presence to show whether you're in the menus or in-game
 
 *This option does not work when the "Spanish (Latin America)" language is installed.
 
 ## Language Support
-| **Language**            | **Frontend** | **In-Game** |
-|-------------------------|:------------:|:-----------:|
-| Dutch                   |              |      ✅      |
-| English                 |       ✅      |      ✅      |
-| French                  |              |      ✅      |
-| German                  |       ✅      |      ✅      |
-| Italian                 |              |      ✅      |
-| Portugese (Brazil)      |       ✅      |      ✅      |
-| Spanish                 |              |      ✅      |
-| Spanish (Latin America) |       ✅      |      ✅      |
-| Swedish                 |              |      ✅      |
+| Language                | Frontend | In-Game |
+|-------------------------|----------|---------|
+| Dutch                   | ✅*      | ✅     |
+| English                 | ✅       | ✅     |
+| French                  | ✅*      | ✅     |
+| German                  | ✅       | ✅     |
+| Italian                 | ✅*      | ✅     |
+| Portugese               | ✅       | ✅     |
+| Spanish                 | ✅*      | ✅     |
+| Spanish (Latin America) | ✅       | ✅     |
+| Swedish                 | ✅*      | ✅     |
 
-Any languages not supported in the Frontend will be displayed in English.
+*If your system's language is not set to the same value, it will use one of the following if you have it set as your default: English, French, Italian, Portugese, Spanish, Swedish. If none of them apply, it will use English.
+
 
 ## Troubleshooting
  - Do **not** set any compatibility settings on any of the game's files
