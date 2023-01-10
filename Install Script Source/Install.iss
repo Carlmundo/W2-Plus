@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.5.2"
+#define AppVersion "1.5.3"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -33,27 +33,39 @@ Compression=none
 Uninstallable=no
 PrivilegesRequired=admin
 ShowLanguageDialog=yes
+RestartIfNeededByRun=no
 
 [Files]
+;Redistributables
+Source: "..\Redist\vc_redist.x86.exe"; DestDir: "{tmp}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly deleteafterinstall;
+
 ;Patch files
+;Place LEVEL and MISSION folders in the Patch folder
 Source: "..\Patch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch - Windows\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
 Source: "..\Patch - Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
+;Require Windows 7 or newer for these files
+Source: "..\Patch - Windows 7 and above\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1
+;Use regular FrontendKitWS for pre-Windows 7
+Source: "..\Patch - FrontendKitWS\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1
+
 ;DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
 Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
-;Place LEVEL and MISSION folders in the Patch folder
+
 ;Languages
- Source: "..\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
- Source: "..\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
- Source: "..\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
- Source: "..\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
- Source: "..\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
- Source: "..\Languages\Portugese (Brazil)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt_br
- Source: "..\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
- Source: "..\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_la
- Source: "..\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
- ;Most European versions use the English frontend
- Source: "..\Languages\English\frontend.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl fr it es sv
+; Most European versions use the same frontend
+Source: "..\Languages\Europe\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl fr it es sv
+Source: "..\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
+; English uses the North America frontend instead of Europe in order to force the language
+Source: "..\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
+Source: "..\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
+Source: "..\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
+Source: "..\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
+; Portugese uses the Brazil frontend instead of Europe in order to force the language
+Source: "..\Languages\Portugese\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt
+Source: "..\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
+Source: "..\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_la
+Source: "..\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
@@ -61,7 +73,7 @@ Name: "en"; MessagesFile: "compiler:Default.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
-Name: "pt_br"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
+Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "es_la"; MessagesFile: "Languages\SpanishLA.isl"
 Name: "sv"; MessagesFile: "Languages\Swedish.isl"
@@ -200,3 +212,7 @@ WelcomeLabel1={#AppName} {#AppVersion}
 en.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
 en.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
 en.FinishedHeadingLabel=Patch Complete
+
+[Run]
+;Install C++ 2015 Redist
+Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart";
