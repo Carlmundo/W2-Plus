@@ -46,7 +46,7 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 - Added soundbanks from other classic Worms releases:
 	- Worms: The Directors Cut, named as "Classic - Director's Cut"
 	- Worms Armageddon: Brummie, Cad, Cyberworms, Drill Sergeant, Finnish, Formula One, Geezer, Irish, Jock, Kidz, Rasta, Redneck, Rushki, Russian, Stooges, Team 17 Test, The Raj, Thespian, US Sports, Whoopsie
-	- Worms World Party: Danish-2, Dutch-2, French-2, Italian-2, Spanish-2, Swedish-2, Polish-2 (Polish CD exclusive)
+	- Worms World Party: Danish-2, Dutch-2, French-2, Italian-2, Spanish-2, Swedish-2, Polish-2 (Poland CD exclusive)
 - Updated the Soundbank Editor with a working version
 - Basic Discord Rich Presence to show whether you're in the menus or in-game
 
