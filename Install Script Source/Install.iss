@@ -88,7 +88,8 @@ Name: "sv"; MessagesFile: "Languages\Swedish.isl"
 Name: "shortcut"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Check: not IsWine()
 
 [Icons]
-Name: "{userdesktop}\{#AppName}"; Filename: "{app}\frontend.exe"; Tasks: shortcut
+Name: "{userdesktop}\{#AppName} Frontend"; Filename: "{app}\frontend.exe"; Tasks: shortcut
+Name: "{userdesktop}\{#AppName}"; Filename: "{app}\start.exe"; Tasks: shortcut
 
 [Registry]
 ;Functionality
