@@ -85,14 +85,17 @@ Name: "shortcut"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:
 Name: "{userdesktop}\{#AppName}"; Filename: "{app}\frontend.exe"; Tasks: shortcut
 
 [Registry]
+;Functionality
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "DXPATCHED"; ValueData: 1
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "VNDX"; ValueData: 1
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "W2ALLOWVID"; ValueData: 1
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "CD"; ValueData:  "."
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData:  "."
+;Set graphics to maximum settings
 Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "VideoSetting"; ValueData: 5
 ;Set default connection to TCP so that the server isn't greyed out
 Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "Connection"; ValueData: 1
+;Functionality
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: none; ValueName: "CommandLine"
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "CurrentDirectory"; ValueData: "{app}"
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "File"; ValueData: "worms2.exe"
