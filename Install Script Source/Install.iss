@@ -37,7 +37,10 @@ RestartIfNeededByRun=no
 
 [Files]
 ;Redistributables
-Source: "..\Redist\vc_redist.x86.exe"; DestDir: "{tmp}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly deleteafterinstall;
+;C++ 2015 used by some modules
+Source: "..\Redist\vc_redist.x86.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall;
+;.NET Framework 3.0 for Windows XP only (already included in Vista and later) - used by start.exe launcher 
+Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled
 
 ;Patch files
 ;Place LEVEL and MISSION folders in the Patch\Data folder
@@ -58,6 +61,8 @@ Source: "..\Languages\Europe\*"; DestDir: "{app}\"; Flags: ignoreversion recurse
 Source: "..\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
 ; English uses the North America frontend instead of Europe in order to force the language
 Source: "..\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
+Source: "..\Languages\English\frontend.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
+Source: "..\Languages\English (Speedrun)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
 Source: "..\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
 Source: "..\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
 Source: "..\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
@@ -70,6 +75,7 @@ Source: "..\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recurs
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
 Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "en_speedrun"; MessagesFile: "Languages\EnglishSpeedrun.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
@@ -177,6 +183,13 @@ begin
     Result := IntToStr(GetSystemMetrics(0)) + 'x' + IntToStr(GetSystemMetrics(1));
 end;
 
+function NETFramework3NotInstalled: Boolean;
+begin
+  Result :=
+    not RegKeyExists(
+      HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\.NETFramework\v3.0');
+end;
+
 
 function InitializeSetup: boolean;
 begin
@@ -219,6 +232,8 @@ en.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
 en.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
 en.FinishedHeadingLabel=Patch Complete
 
-[Run]
+[Run] 
 ;Install C++ 2015 Redist
-Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart";
+Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "Installing C++ 2015 Redist..."
+;Install .NET Framework 3.0 (Windows XP only)
+Filename: {tmp}\dotnetfx3.exe; Parameters: "/quiet /norestart"; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled; StatusMsg: "Installing .NET Framework 3.0... (this may take some time)"
