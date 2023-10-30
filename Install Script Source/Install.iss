@@ -99,7 +99,7 @@ Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "DXPATCHED"; V
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "VNDX"; ValueData: 1
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "W2ALLOWVID"; ValueData: 1
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "CD"; ValueData:  "."
-Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData: "."
+Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData: {code:setPath}
 ;Set graphics to maximum settings
 Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "VideoSetting"; ValueData: 5
 ;Set default connection to TCP so that the server isn't greyed out
@@ -148,6 +148,7 @@ Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueT
 Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\Explorer"; ValueType: string; ValueName: "Desktop"; ValueData: "worms2.exe"; Check: IsWine();
 
 [Code]
+var InstalledDir : string;
 function IsAppRunning(const FileName: string): Boolean;
 var
   FWMIService: Variant;
@@ -204,13 +205,26 @@ begin
 end;
 
 function GetDefaultDir(def: string): string;
-var InstalledDir : string;
 begin
   if RegQueryStringValue(HKLM32, '{#RegPathLM1}', 'PATH', InstalledDir) then begin
   end 
   else if RegQueryStringValue(HKLM32, '{#RegPathLM2}', 'Path', InstalledDir) then begin
   end;    
   Result := InstalledDir;    
+end;
+
+function setPath(def: string): string;
+var path8dot3: string;
+var pathReg: string;
+begin 
+    path8dot3 := GetShortName(InstalledDir);
+    if Pos(' ', path8dot3) = 0 then begin
+      pathReg := path8dot3;
+    end
+    else begin
+      pathReg := '.';
+    end;
+    Result := pathReg;  
 end;
 
 function NextButtonClick(PageId: Integer): Boolean;
