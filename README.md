@@ -48,7 +48,7 @@ There is no need to set any Windows compatibility settings.
 	- Worms: The Directors Cut, named as "Classic - Director's Cut" (conversion by Squirminator2k, voiced by Andy Davidson)
 	- Online Worms: Japanese, Korean
 	- Worms Armageddon: Brummie, Cad, Cyberworms, Drill Sergeant, Finnish, Formula One, Geezer, Irish, Jock, Kidz, Rasta, Redneck, Rushki, Russian, Stooges, Team 17 Test, The Raj, Thespian, US Sports, Whoopsie
-	- Worms World Party: Danish-2, Dutch-2, French-2, Italian-2, Spanish-2, Swedish-2, Polish-2 (Poland CD exclusive)
+	- Worms World Party: Danish-2, Dutch-2, French-2, Italian-2, Spanish-2, Swedish-2, Polish-2 (Poland CD exclusive for WWP & Worms 2)
 - Updated the Soundbank Editor with a working version
 - Discord Rich Presence to show whether you're in the menus or in-game
 - Automatically sets the graphics to their maximum level

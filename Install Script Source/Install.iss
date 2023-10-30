@@ -1,5 +1,5 @@
 #define AppName "Worms 2 Plus"
-#define AppVersion "1.5.6"
+#define AppVersion "1.5.7"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -57,7 +57,7 @@ Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion re
 
 ;Languages
 ; Most European versions use the same frontend
-Source: "..\Languages\Europe\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl fr it es sv
+Source: "..\Languages\Europe\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl fr it es sv pl
 Source: "..\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
 ; English uses the North America frontend instead of Europe in order to force the language
 Source: "..\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
@@ -66,6 +66,7 @@ Source: "..\Languages\English (Speedrun)\*"; DestDir: "{app}\"; Flags: ignorever
 Source: "..\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
 Source: "..\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
 Source: "..\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
+Source: "..\Languages\Polish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pl
 ; Portugese uses the Brazil frontend instead of Europe in order to force the language
 Source: "..\Languages\Portugese\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt
 Source: "..\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
@@ -79,6 +80,7 @@ Name: "en_speedrun"; MessagesFile: "Languages\EnglishSpeedrun.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "pl"; MessagesFile: "compiler:Languages\Polish.isl"
 Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "es_la"; MessagesFile: "Languages\SpanishLA.isl"
@@ -97,7 +99,7 @@ Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "DXPATCHED"; V
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "VNDX"; ValueData: 1
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "W2ALLOWVID"; ValueData: 1
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "CD"; ValueData:  "."
-Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData:  "."
+Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData: "."
 ;Set graphics to maximum settings
 Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "VideoSetting"; ValueData: 5
 ;Set default connection to TCP so that the server isn't greyed out
@@ -169,7 +171,7 @@ function GetProcAddress(Module: THandle; ProcName: PAnsiChar): Longword;
 external 'GetProcAddress@kernel32.dll stdcall';
 
 function IsWine: boolean;
-var  LibHandle  : THandle;
+var  LibHandle : THandle;
 begin
   LibHandle := LoadLibraryA('ntdll.dll');
   Result:= GetProcAddress(LibHandle, 'wine_get_version')<> 0;
@@ -191,7 +193,6 @@ begin
       HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\.NETFramework\v3.0');
 end;
 
-
 function InitializeSetup: boolean;
 begin
   Result := not IsAppRunning('{#AppProcess1}');
@@ -208,7 +209,7 @@ begin
   if RegQueryStringValue(HKLM32, '{#RegPathLM1}', 'PATH', InstalledDir) then begin
   end 
   else if RegQueryStringValue(HKLM32, '{#RegPathLM2}', 'Path', InstalledDir) then begin
-  end;     
+  end;    
   Result := InstalledDir;    
 end;
 
