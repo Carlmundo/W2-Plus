@@ -73,7 +73,7 @@ Source: "..\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recurs
 Source: "..\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_la
 Source: "..\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
 ;Some languages require the typing mute fix applied manually by overwriting them with blank sounds
-Source: "..\Patch - Typing Mute Fix\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_la pl
+Source: "..\Patch - Typing Mute Fix\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_la
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
