@@ -53,7 +53,7 @@ There is no need to set any Windows compatibility settings.
 - Discord Rich Presence to show whether you're in the menus or in-game
 - Automatically sets the graphics to their maximum level
 
-*Some features were applied manually for English, German, Portuguese and Spanish (Latin America) due to them not working via Des Patch.
+*Some features were applied manually for English, German, Portuguese and Spanish (Latin America) due to them not working via Des Patch. All features were manually applied for Polish.
 
 ## Language Support
 | Language                | Frontend | In-Game |
@@ -63,12 +63,13 @@ There is no need to set any Windows compatibility settings.
 | French                  | ✅*      | ✅     |
 | German                  | ✅       | ✅     |
 | Italian                 | ✅*      | ✅     |
+| Polish                  | ❌*      | ✅     |
 | Portuguese              | ✅       | ✅     |
 | Spanish                 | ✅*      | ✅     |
 | Spanish (Latin America) | ✅       | ✅     |
 | Swedish                 | ✅*      | ✅     |
 
-*If your system's language is not set to the same value, it will use one of the following if you have it set as your default: English, French, Italian, Portuguese, Spanish, Swedish. If none of them apply, it will use English.
+*Using the European frontend, the language will be determined by checking your system language to see if it matches one of the following: English, French, Italian, Portuguese, Spanish, Swedish. If none of them apply, English will be used.
 
 ## Troubleshooting
  - Do **not** set any compatibility settings on any of the game's files
