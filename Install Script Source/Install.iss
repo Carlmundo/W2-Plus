@@ -1,5 +1,5 @@
-#define AppName "Worms 2 Plus"
-#define AppVersion "1.5.7"
+﻿#define AppName "Worms 2 Plus"
+#define AppVersion "1.5.7.1"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -194,6 +194,57 @@ begin
       HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\.NETFramework\v3.0');
 end;
 
+function nonUnicode(const langInput: string): boolean;
+var langValue: String;
+begin
+  if RegQueryStringValue(HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\Nls\Language',
+     'Default', langValue) then
+  begin
+    if langInput <> langValue then
+    begin
+      Result := True;
+    end;
+  end;
+end;
+function nonUnicodePolish(const legacy:integer): boolean;
+var msgNonUnicode : string;
+begin
+  if nonUnicode('0415') then
+  begin
+    {msgNonUnicode := 'In order for text to display correctly in the game menu, you need to change a system setting. \
+    "Language for non-Unicode programs" must be set to "Polski (Polska)". \
+    This setting will apply to all non-Unicode programs.';}
+    msgNonUnicode := 'Uwaga: Menu gry wymaga, aby "Język dla programów nieobsługujących kodu Unicode" był ustawiony na "Polski (Polska)". \
+    W przeciwnym wypadku tekst może być wyświetlany nieprawidłowo. \
+    To ustawienie będzie miało zastosowanie do wszystkich programów nieobsługujących Unicode.';
+    if legacy = 0 then
+    begin
+      if MsgBox(msgNonUnicode + ' Czy instalator ma nanieść zmiany automatycznie?', \
+        mbConfirmation, MB_YESNO) = IDYES then
+      begin
+        Result := True;
+      end;
+    end
+    else if legacy = 1 then
+    begin
+      MsgBox(msgNonUnicode, mbConfirmation, MB_OK);
+      {MsgBox('When the settings window appears: \
+      click the "Administrative" tab, \
+      find the "Language for non-Unicode programs" section \
+      and change the setting to "Polski (Polska)". \
+      A restart of your computer will be required.', \
+      mbConfirmation, MB_OK);}
+      MsgBox('Gdy pojawi się okno ustawień: \
+      Kliknij zakładkę "Administracyjne", \
+      następnie znajdź sekcję "Język dla programów nieobsługujących kodu Unicode". \
+      Zmień ustawienie na "Polski (Polska)". \
+      Uruchom ponownie komputer, aby zastosować zmiany.', \
+      mbConfirmation, MB_OK);
+      Result := True;
+    end;
+  end;
+end;
+
 function InitializeSetup: boolean;
 begin
   Result := not IsAppRunning('{#AppProcess1}');
@@ -253,3 +304,6 @@ en.FinishedHeadingLabel=Patch Complete
 Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "Installing C++ 2015 Redist..."
 ;Install .NET Framework 3.0 (Windows XP only)
 Filename: {tmp}\dotnetfx3.exe; Parameters: "/quiet /norestart"; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled; StatusMsg: "Installing .NET Framework 3.0... (this may take some time)"
+;Set non-Unicode Language to Polish
+Filename: powershell; Parameters: "-command Set-WinSystemLocale pl-PL"; MinVersion: 6.2; Languages: pl; Check: nonUnicodePolish(0); StatusMsg: "Setting language for non-Unicode applications..."
+Filename: control; Parameters: "intl.cpl"; OnlyBelowVersion: 6.2; Languages: pl; Check: nonUnicodePolish(1); StatusMsg: "Setting language for non-Unicode applications..."
