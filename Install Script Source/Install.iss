@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.5.7.1"
+#define AppVersion "1.5.7.3"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -99,7 +99,7 @@ Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "DXPATCHED"; V
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "VNDX"; ValueData: 1
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: dword; ValueName: "W2ALLOWVID"; ValueData: 1
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "CD"; ValueData:  "."
-Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData: {code:setPath}
+Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData: "."
 ;Set graphics to maximum settings
 Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "VideoSetting"; ValueData: 5
 ;Set default connection to TCP so that the server isn't greyed out
@@ -262,20 +262,6 @@ begin
   else if RegQueryStringValue(HKLM32, '{#RegPathLM2}', 'Path', InstalledDir) then begin
   end;    
   Result := InstalledDir;    
-end;
-
-function setPath(def: string): string;
-var path8dot3: string;
-var pathReg: string;
-begin 
-    path8dot3 := GetShortName(InstalledDir);
-    if Pos(' ', path8dot3) = 0 then begin
-      pathReg := path8dot3;
-    end
-    else begin
-      pathReg := '.';
-    end;
-    Result := pathReg;  
 end;
 
 function NextButtonClick(PageId: Integer): Boolean;
