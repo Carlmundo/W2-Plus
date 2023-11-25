@@ -70,8 +70,10 @@ There is no need to set any Windows compatibility settings.
 | Swedish                 | ✅*      | ✅     |
 
 *Using the European frontend, the language will be determined by checking your system language to see if it matches one of the following: English, French, Italian, Portuguese, Spanish, Swedish. If none of them apply, English will be used.
+
 **May require changing your Windows setting "Language for non-Unicode programs" / "Język dla programów nieobsługujących kodu Unicode" to Polish. If needed, you will be prompted about this during installation.
 
 ## Troubleshooting
  - Do **not** set any compatibility settings on any of the game's files
  - Make sure only one copy of the game is installed to avoid it launching the wrong application
+ - Check the Misc\Readme.txt file for any additional known fixes
