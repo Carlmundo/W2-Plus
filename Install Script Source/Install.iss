@@ -44,8 +44,9 @@ Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overw
 
 ;Patch files for All Installs - Place LEVEL and MISSION folders in the Patch\Data folder
 Source: "..\Patch\All Installs\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
-Source: "..\Patch\Windows\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
-Source: "..\Patch\Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
+;ReSolution configs
+Source: "..\Patch\ReSolution Configs\Windows\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
+Source: "..\Patch\ReSolution Configs\Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 ;Windows XP only: original FrontendKitWS
 Source: "..\Patch\FrontendKitWS\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.0
 ;Require Windows Vista or newer: modified IPXWrapper/FrontendKitWS
