@@ -71,7 +71,7 @@ Source: "..\Patch\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion r
 Source: "..\Patch\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
 Source: "..\Patch\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
 Source: "..\Patch\Languages\Polish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pl
-; Portugese uses the Brazil frontend instead of Europe in order to force the language
+; Portuguese uses the Brazil frontend instead of Europe in order to force the language
 Source: "..\Patch\Languages\Portugese\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt
 Source: "..\Patch\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
 Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_la
