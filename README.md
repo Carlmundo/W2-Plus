@@ -65,6 +65,7 @@ There is no need to set any Windows compatibility settings.
 | Italian                 | ✅*      | ✅     |
 | Polish                  | ✅**     | ✅     |
 | Portuguese              | ✅       | ✅     |
+| Russian                 | ✅       | English |
 | Spanish                 | ✅*      | ✅     |
 | Spanish (Latin America) | ✅       | ✅     |
 | Swedish                 | ✅*      | ✅     |
@@ -72,6 +73,9 @@ There is no need to set any Windows compatibility settings.
 *Using the European frontend, the language will be determined by checking your system language to see if it matches one of the following: English, French, Italian, Portuguese, Spanish, Swedish. If none of them apply, English will be used.
 
 **May require changing your Windows setting "Language for non-Unicode programs" / "Język dla programów nieobsługujących kodu Unicode" to Polish. If needed, you will be prompted about this during installation.
+
+## Join the Community
+Join the [Worms 2 Discord](https://discord.gg/Tvs83972UD) to find players.
 
 ## Troubleshooting
  - Do **not** set any compatibility settings on any of the game's files
