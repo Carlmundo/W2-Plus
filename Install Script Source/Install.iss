@@ -110,12 +110,12 @@ Name: "es_la"; MessagesFile: "Languages\SpanishLA.isl"
 Name: "sv"; MessagesFile: "Languages\Swedish.isl"
 
 [Tasks]
-Name: "shortcut"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Check: not IsWine()
+Name: "shortcut_start"; Description: "{cm:CreateDesktopIcon}: Worms 2 Plus Launcher (+Videos)"; GroupDescription: "{cm:AdditionalIcons}"; Check: not IsWine()
+Name: "shortcut_frontend"; Description: "{cm:CreateDesktopIcon}: Worms 2 Plus Frontend (-Videos)"; GroupDescription: "{cm:AdditionalIcons}"; Check: not IsWine()
 
 [Icons]
-Name: "{userdesktop}\{#AppName} Frontend"; Filename: "{app}\frontend.exe"; Tasks: shortcut
-Name: "{userdesktop}\{#AppName}"; Filename: "{app}\start.exe"; Tasks: shortcut
-
+Name: "{userdesktop}\{#AppName}"; Filename: "{app}\start.exe"; Tasks: shortcut_start
+Name: "{userdesktop}\{#AppName} Frontend"; Filename: "{app}\frontend.exe"; Tasks: shortcut_frontend
 
 [Registry]
 ;Functionality
