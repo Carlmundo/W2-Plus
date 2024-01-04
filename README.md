@@ -64,7 +64,7 @@ There is no need to set any Windows compatibility settings.
 | German                  | ✅       | ✅     |
 | Italian                 | ✅*      | ✅     |
 | Polish                  | ✅**     | ✅     |
-| Portuguese              | ✅       | ✅     |
+| Portuguese (Brazil)     | ✅       | ✅     |
 | Russian                 | ✅       | English |
 | Spanish                 | ✅*      | ✅     |
 | Spanish (Latin America) | ✅       | ✅     |

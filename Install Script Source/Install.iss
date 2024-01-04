@@ -78,7 +78,7 @@ Source: "..\Patch\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion r
 Source: "..\Patch\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
 Source: "..\Patch\Languages\Polish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pl
 ; Portuguese uses the Brazil frontend instead of Europe in order to force the language
-Source: "..\Patch\Languages\Portugese\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt
+Source: "..\Patch\Languages\Portugese\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt-br
 Source: "..\Patch\Languages\Russian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
 ; Russian uses the English version of worms2.exe until someone can translate it
 Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
@@ -105,7 +105,7 @@ Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "pl"; MessagesFile: "compiler:Languages\Polish.isl"
-Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "pt-br"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
 Name: "ru"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "es_la"; MessagesFile: "Languages\SpanishLA.isl"
