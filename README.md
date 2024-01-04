@@ -13,7 +13,7 @@ There is no need to set any Windows compatibility settings.
 - Online Play - all players need to set up [Port Forwarding](https://portforward.com/router.htm) on your Router with the following ports:
 	- 47624 (TCP)
 	- 2300-2400 (TCP and UDP)
-- LAN play works without any port forwarding (requires Windows 7 or newer) and can also be used with virtual private networks such as Hamachi and Radmin.
+- LAN play works without any port forwarding (requires Windows Vista or newer) and can also be used with virtual private networks such as Hamachi and Radmin.
 	- Select IPX underneath the LAN button.
 	- When the game starts, a prompt appears. The host must be the first one to click OK on this prompt.
 
