@@ -85,6 +85,8 @@ Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignor
 Source: "..\Patch\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
 Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_la
 Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
+;Install the default GFX.dir file for non-Polish (in case it is missing or if Polish was previously installed)
+Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl
 
 ;Optional tweaks
 Source: "..\Patch\ReSolution Configs\Windows via cnc-ddraw\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Components: optional_windowed_alt;
