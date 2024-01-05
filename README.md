@@ -21,7 +21,7 @@ There is no need to set any Windows compatibility settings.
 - Compatible with modern versions of Windows and Wine
 - Applies the last official patch (v1.05)
 - No CD required
-- Multi-language support: English, Dutch, French, German, Italian, Polish, Portuguese, Spanish, Spanish (Latin America), Swedish
+- Multi-language support: English, Dutch, French, German, Italian, Polish, Portuguese (Brazil), Russian, Spanish, Spanish (Latin America), Swedish
 - New launcher to play the intro videos before starting the game
 - Re-enabled online multiplayer, play with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) fork of [FkNetcode](https://worms2d.info/FkNetcode))
 - LAN play restored with support for virtual private networks (via [modified](https://github.com/Carlmundo/ipxwrapper-w2) fork of IPXWrapper)
@@ -53,7 +53,7 @@ There is no need to set any Windows compatibility settings.
 - Discord Rich Presence to show whether you're in the menus or in-game
 - Automatically sets the graphics to their maximum level
 
-*Some features were applied manually for English, German and Portuguese due to them not working via Des Patch. All features were manually applied for Polish.
+*Some features were applied manually for English, German and Portuguese (Brazil) due to them not working via Des Patch. All features were manually applied for Polish and Russian.
 
 ## Language Support
 | Language                | Frontend | In-Game |
@@ -70,7 +70,7 @@ There is no need to set any Windows compatibility settings.
 | Spanish (Latin America) | ✅       | ✅     |
 | Swedish                 | ✅*      | ✅     |
 
-*Using the European frontend, the language will be determined by checking your system language to see if it matches one of the following: English, French, Italian, Portuguese, Spanish, Swedish. If none of them apply, English will be used.
+*Using the European frontend, the language will be determined by checking your system language to see if it matches one of the following: English, French, Italian, Portuguese (Brazil), Spanish, Swedish. If none of them apply, English will be used.
 
 **May require changing your Windows setting "Language for non-Unicode programs" / "Język dla programów nieobsługujących kodu Unicode" to Polish. If needed, you will be prompted about this during installation.
 
