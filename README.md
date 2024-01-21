@@ -9,11 +9,11 @@ This has been tested on both the CD and [GOG](https://www.gog.com/game/worms_2) 
 There is no need to set any Windows compatibility settings.
 - Launch the game by running either:
 	- start.exe or frontend.exe (to skip intro videos) from the game's installed folder
-	- The "Worms 2 Plus" or "Worms 2 Plus Frontend" shortcuts on your Desktop (Windows only)
-- Online Play - all players need to set up [Port Forwarding](https://portforward.com/router.htm) on your Router with the following ports:
+	- Desktop shortcuts if checked on install (Windows only)
+- Online Play - all players need to set up [Port Forwarding](https://portforward.com/router.htm) on their router with the following ports:
 	- 47624 (TCP)
 	- 2300-2400 (TCP and UDP)
-- LAN play works without any port forwarding (requires Windows Vista or newer) and can also be used with virtual private networks such as Hamachi and Radmin.
+- LAN play works without any port forwarding (requires Windows Vista or newer) and can also be used with virtual private networks such as Hamachi, Radmin and others.
 	- Select IPX underneath the LAN button.
 	- When the game starts, a prompt appears. The host must be the first one to click OK on this prompt.
 
@@ -26,10 +26,10 @@ There is no need to set any Windows compatibility settings.
 - Re-enabled online multiplayer, play with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) fork of [FkNetcode](https://worms2d.info/FkNetcode))
 - LAN play restored with support for virtual private networks (via [modified](https://github.com/Carlmundo/ipxwrapper-w2) fork of IPXWrapper)
 - Borderless windowed mode (via [ReSolution](https://worms2d.info/ReSolution))
-- Higher quality intro videos (vs GOG version)
-- Improved soundtrack quality (vs GOG version) with FLAC audio in-game and fixes
-- In-game music can now have its volume set (edit volumeBGM.txt with a value between 0 and 100)
-- Enhancements (mostly via [Des patch](https://worms2d.info/Des_patch)*)
+- Higher quality (vs GOG version) and upscaled intro videos
+- Improved soundtrack quality (vs GOG version) with FLAC audio in-game
+- In-game music volume can be set via the restored audio mixer button in Audio options
+- Ported over enhancements from [Des patch](https://worms2d.info/Des_patch)
 	- Frontend
 		- Minimize or exit from anywhere
 		- See your game password as you type it
@@ -42,6 +42,7 @@ There is no need to set any Windows compatibility settings.
 		- Flexible weapon editor
 		- Flexible option editor
 	- In-Game	
+		- Ninja Rope Glitch Fixes 1, 3 & 4
 		- Remove Replay screen corners (to be compatible with borderless windowed mode)
 - Mutes the clicking sound when you type
 - Added soundbanks from other classic Worms releases:
@@ -52,8 +53,7 @@ There is no need to set any Windows compatibility settings.
 - Updated the Soundbank Editor with a working version
 - Discord Rich Presence to show whether you're in the menus or in-game
 - Automatically sets the graphics to their maximum level
-
-*Some features were applied manually for English, German and Portuguese (Brazil) due to them not working via Des Patch. All features were manually applied for Polish and Russian.
+- Checks for updates on game startup
 
 ## Language Support
 | Language                | Frontend | In-Game |
@@ -72,7 +72,7 @@ There is no need to set any Windows compatibility settings.
 
 *Using the European frontend, the language will be determined by checking your system language to see if it matches one of the following: English, French, Italian, Portuguese (Brazil), Spanish, Swedish. If none of them apply, English will be used.
 
-**May require changing your Windows setting "Language for non-Unicode programs" / "Język dla programów nieobsługujących kodu Unicode" to Polish. If needed, you will be prompted about this during installation.
+**May require changing your Windows setting "Language for non-Unicode programs" / "Język dla programów nieobsługujących kodu Unicode" to Polish. If needed, you will be prompted about this during installation. The * note above also applies but English is replaced with Polish.
 
 ## Join the Community
 Join the [Worms 2 Discord](https://discord.gg/Tvs83972UD) to find players.
