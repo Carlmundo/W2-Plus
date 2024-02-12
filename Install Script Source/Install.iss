@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.5.8beta6  "
+#define AppVersion "1.5.8beta6"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -36,7 +36,7 @@ ShowLanguageDialog=yes
 RestartIfNeededByRun=no
 
 [Components]
-Name: "optional_windowed_alt"; Description: "Optional: Windowed mode for high resolutions"; Check: not IsWine() and CheckResolutionHD;
+Name: "optional_windowed_alt"; Description: "Optional: Windowed mode for high resolutions"; Check: not IsWine();
 Name: "optional_launcher_vlc"; Description: "Optional: Video launcher powered by VLC"; MinVersion: 6.1.7601;
     
 [Files]
@@ -213,14 +213,6 @@ external 'GetSystemMetrics@User32.dll stdcall setuponly';
 function GetResolution(Value: string): string;
 begin
     Result := IntToStr(GetSystemMetrics(0)) + 'x' + IntToStr(GetSystemMetrics(1));
-end;
-
-function CheckResolutionHD: Boolean;
-begin
-  if (GetSystemMetrics(1) > 1080) then
-  begin
-    Result := true;
-  end;
 end;
                           
 function NETFramework3NotInstalled: Boolean;
