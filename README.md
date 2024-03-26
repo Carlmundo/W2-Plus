@@ -70,7 +70,7 @@ There is no need to set any Windows compatibility settings.
 | Spanish (Latin America) | ✅       | ✅     |
 | Swedish                 | ✅*      | ✅     |
 
-*Using the European frontend, the language will be determined by checking your system language to see if it matches one of the following: English, French, Italian, Portuguese (Brazil), Spanish, Swedish. If none of them apply, English will be used.
+*Using the European frontend, the language will be determined by checking your system language to see if it matches one of the following: English, Dutch, French, Italian, Portuguese (Brazil), Spanish, Swedish. If none of them apply, English will be used.
 
 **May require changing your Windows setting "Language for non-Unicode programs" / "Język dla programów nieobsługujących kodu Unicode" to Polish. If needed, you will be prompted about this during installation. The * note above also applies but English is replaced with Polish.
 
