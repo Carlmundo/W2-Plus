@@ -95,9 +95,12 @@ Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\ReSolution Configs\Windows via cnc-ddraw\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Components: optional_windowed_alt;
 
 [InstallDelete]
+;Delete files (if present) not used by Alt. Windowed mode
 Type: files; Name: "{app}\wkWndMode.dll"; Components: optional_windowed_alt
 Type: files; Name: "{app}\wndmode.dll"; Components: optional_windowed_alt
 Type: files; Name: "{app}\wndmode.ini"; Components: optional_windowed_alt
+;Delete files that may be leftover from older versions
+Type: files; Name: "{app}\volumeBGM.txt";
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
