@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.5.8.2"
+#define AppVersion "1.6 WIP"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -37,7 +37,6 @@ RestartIfNeededByRun=no
 
 [Components]
 Name: "optional_windowed_alt"; Description: "Optional: Windowed mode for high resolutions"; Check: not IsWine();
-Name: "optional_launcher_vlc"; Description: "Optional: Video launcher powered by VLC"; MinVersion: 6.1.7601;
     
 [Files]
 ;Redistributables
@@ -46,7 +45,7 @@ Source: "..\Redist\vc_redist.x86.exe"; DestDir: "{tmp}\"; Flags: ignoreversion o
 ;.NET Framework 3.0 for Windows XP only (already included in Vista and later) - used by start.exe launcher 
 Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled
 ;.NET Framework 4.6.2 for VLC Launcher
-Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 10.0.14393; Components: optional_launcher_vlc; Check: NETFramework46NotInstalled
+Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 10.0.14393; Check: NETFramework46NotInstalled
 
 ;Patch files for All Installs - Place LEVEL and MISSION folders in the \Patch\All Installs\Data folder
 Source: "..\Patch\All Installs\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
@@ -59,9 +58,10 @@ Source: "..\Patch\FrontendKitWS\*"; DestDir: "{app}\"; Flags: ignoreversion recu
 Source: "..\Patch\IPXWrapper-W2\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows 7 or newer: fkDRP, Videos (Upscaled)
 Source: "..\Patch\fkDRP\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1
-Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1
-;For lower than Windows 7, use the improved original videos
-Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1
+;Upscaled videos and VLC launcher
+Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1.7601
+;or for lower than Windows 7, use the (improved) original videos
+Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1.7601
 ;DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
 Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 
@@ -93,7 +93,6 @@ Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion 
 
 ;Optional tweaks
 Source: "..\Patch\ReSolution Configs\Windows via cnc-ddraw\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Components: optional_windowed_alt;
-Source: "..\Patch\Launcher (VLC)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Components: optional_launcher_vlc;
 
 [InstallDelete]
 Type: files; Name: "{app}\wkWndMode.dll"; Components: optional_windowed_alt
@@ -340,7 +339,7 @@ Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "
 ;Install .NET Framework 3.0 (Windows XP only)
 Filename: {tmp}\dotnetfx3.exe; Parameters: "/quiet /norestart"; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled; StatusMsg: "Installing .NET Framework 3.0... (this may take some time)"
 ;Install .NET Framework 4.6.2 (if VLC launcher is installed)
-Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; OnlyBelowVersion: 10.0.14393; StatusMsg: "Installing .NET Framework 4.6.2... (this may take some time)"; Components: optional_launcher_vlc; Check: NETFramework46NotInstalled;
+Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; OnlyBelowVersion: 10.0.14393; StatusMsg: "Installing .NET Framework 4.6.2... (this may take some time)"; Check: NETFramework46NotInstalled;
 
 ;Set non-Unicode Language to Polish
 Filename: powershell; Parameters: "-command Set-WinSystemLocale pl-PL"; MinVersion: 6.2; Languages: pl; Check: nonUnicodePolish(0); StatusMsg: "Setting language for non-Unicode applications..."
