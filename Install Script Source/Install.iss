@@ -48,7 +48,7 @@ Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overw
 ;.NET Framework 4.6.2 for VLC Launcher
 Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 10.0.14393; Components: optional_launcher_vlc; Check: NETFramework46NotInstalled
 
-;Patch files for All Installs - Place LEVEL and MISSION folders in the Patch\Data folder
+;Patch files for All Installs - Place LEVEL and MISSION folders in the \Patch\All Installs\Data folder
 Source: "..\Patch\All Installs\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 ;ReSolution configs
 Source: "..\Patch\ReSolution Configs\Windows\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); Components: not optional_windowed_alt
@@ -72,18 +72,21 @@ Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion re
 ; English uses the North America frontend instead of Europe in order to force the language
 Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
 Source: "..\Patch\Languages\English\frontend.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
+; English (Speedrun) uses it's own worms2.exe with rope fixes 1-4
 Source: "..\Patch\Languages\English (Speedrun)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
 Source: "..\Patch\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
 Source: "..\Patch\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
 Source: "..\Patch\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
 Source: "..\Patch\Languages\Polish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pl
-; Portuguese uses the Brazil frontend instead of Europe in order to force the language
+; Portuguese (Brazil) uses the Brazil frontend instead of Europe in order to force the language
 Source: "..\Patch\Languages\Portuguese (Brazil)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt_br
 Source: "..\Patch\Languages\Russian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
 ; Russian uses the English version of worms2.exe until someone can translate it
 Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
+; Sound Bank translations (names.wdb) used for English (Speedrun) and Russian
+Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun ru
 Source: "..\Patch\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
-Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_la
+Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_419
 Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
 ;Install the default GFX.dir file for non-Polish (in case it is missing or if Polish was previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl
@@ -108,7 +111,7 @@ Name: "pl"; MessagesFile: "compiler:Languages\Polish.isl"
 Name: "pt_br"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
 Name: "ru"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
-Name: "es_la"; MessagesFile: "Languages\SpanishLA.isl"
+Name: "es_419"; MessagesFile: "Languages\SpanishLA.isl"
 Name: "sv"; MessagesFile: "Languages\Swedish.isl"
 
 [Tasks]
