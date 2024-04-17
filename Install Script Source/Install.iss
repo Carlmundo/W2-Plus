@@ -10,7 +10,6 @@
 #define RegPathIPX1 "SOFTWARE\Microsoft\DirectPlay\Service Providers\IPX Connection For DirectPlay"
 #define RegPathIPX2 "SOFTWARE\Microsoft\DirectPlay\Services\{{5146ab8cb6b1ce11920c00aa006c4972}"
 #define RegPathWine "SOFTWARE\Wine"
-#define MsgRunning 'Worms 2 is running. Please close the game before installing the patch.'
 
 [Setup]
 AppId={{B90927CD-E317-466C-8B6B-BC9042E2F1D2}
@@ -99,8 +98,6 @@ Source: "..\Patch\ReSolution Configs\Windows via cnc-ddraw\*"; DestDir: "{app}\"
 Type: files; Name: "{app}\wkWndMode.dll"; Components: optional_windowed_alt
 Type: files; Name: "{app}\wndmode.dll"; Components: optional_windowed_alt
 Type: files; Name: "{app}\wndmode.ini"; Components: optional_windowed_alt
-;Delete files that may be leftover from older versions
-Type: files; Name: "{app}\volumeBGM.txt";
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
@@ -303,7 +300,7 @@ begin
     Result := not IsAppRunning('{#AppProcess2}');
   end;
   if not Result then
-    MsgBox('{#MsgRunning}', mbError, MB_OK);
+    MsgBox(SetupMessage(msgSetupAppRunningError), mbError, MB_OK);
 end;
 
 function GetDefaultDir(def: string): string;
@@ -320,22 +317,53 @@ begin
     Result := True;
     if (PageId = wpSelectDir) then begin
       if (not FileExists(ExpandConstant('{app}\{#AppProcess2}'))) then begin
-        MsgBox('{#Game} could not be found in that folder. If it is the correct folder, please try reinstalling the game.', mbError, MB_OK);
+        MsgBox(ExpandConstant('{cm:AddonHostProgramNotFound}'), mbError, MB_OK);
         Result := False;
       end
     end;
 end;
 
 [Messages]
-SelectLanguageTitle=Select Language
-SelectLanguageLabel=Select the language for {#AppName}
 SetupAppTitle={#AppName} {#AppVersion}
 SetupWindowTitle={#AppName} {#AppVersion} 
 WelcomeLabel1={#AppName} {#AppVersion} 
+en.SelectLanguageTitle=Select Language
+en.SelectLanguageLabel=Select the language for {#AppName}
 en.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
 en.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
 en.FinishedHeadingLabel=Patch Complete
+en_speedrun.SelectLanguageTitle=Select Language
+en_speedrun.SelectLanguageLabel=Select the language for {#AppName}
+en_speedrun.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
+en_speedrun.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
+en_speedrun.FinishedHeadingLabel=Patch Complete
+nl.SetupAppRunningError=Setup heeft vastgesteld dat {#Game} op dit moment actief is. Sluit alle vensters hiervan.
+en.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
+en_speedrun.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
+fr.SetupAppRunningError=L'assistant d'installation a détecté que {#Game} est actuellement en cours d'exécution. Veuillez fermer toutes les instances de cette application.
+de.SetupAppRunningError=Das Setup hat entdeckt, dass {#Game} zur Zeit ausgeführt wird. Bitte schließen Sie jetzt alle laufenden Instanzen.
+it.SetupAppRunningError={#Game} è attualmente in esecuzione. Chiudi adesso tutte le istanze del programma.
+pl.SetupAppRunningError=Instalator wykrył, że aplikacja {#Game} jest aktualnie uruchomiona. Zamknij wszystkie procesy aplikacji.
+pt_br.SetupAppRunningError=O Instalador detectou que o {#Game} está atualmente em execução. Por favor feche todas as instâncias dele agora.
+ru.SetupAppRunningError=Обнаружен запущенный экземпляр {#Game}. Пожалуйста, закройте все экземпляры приложения. 
+es.SetupAppRunningError=El programa de instalación ha detectado que {#Game} está ejecutándose. Por favor, ciérrelo ahora.
+es_419.SetupAppRunningError=El programa de instalación ha detectado que {#Game} está ejecutándose. Por favor, ciérrelo ahora. 
+sv.SetupAppRunningError=Installationsprogrammet har upptäckt att {#Game} är igång. Avsluta det angivna programmet nu.
 
+[CustomMessages]
+nl.AddonHostProgramNotFound={#Game} kon niet worden gevonden in de geselecteerde map.
+en.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
+en_speedrun.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
+fr.AddonHostProgramNotFound={#Game} n'a pas été trouvé dans le dossier que vous avez choisi.
+de.AddonHostProgramNotFound={#Game} konnte im ausgewählten Ordner nicht gefunden werden.
+it.AddonHostProgramNotFound=Impossibile individuare {#Game} nella cartella selezionata.
+pl.AddonHostProgramNotFound=Aplikacja {#Game} nie została znaleziona we wskazanym przez Ciebie folderze. Jeżeli jest to właściwy folder, spróbuj ponownie zainstalować grę.
+pt_br.AddonHostProgramNotFound={#Game} não pôde ser localizado na pasta que você selecionou.
+ru.AddonHostProgramNotFound={#Game} не найден в указанной вами папке.
+es.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta seleccionada.
+es_419.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta seleccionada.
+sv.AddonHostProgramNotFound={#Game} kunde inte hittas i katalogen du valde.
+ 
 [Run] 
 ;Install C++ 2015 Redist
 Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "Installing C++ 2015 Redist..."
