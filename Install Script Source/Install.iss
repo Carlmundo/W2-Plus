@@ -70,7 +70,11 @@ Source: "..\Patch\Languages\Europe\*"; DestDir: "{app}\"; Flags: ignoreversion r
 Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
 ; English uses the North America frontend instead of Europe in order to force the language
 Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
+; English (Speedrun) uses most files from English
 Source: "..\Patch\Languages\English\frontend.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
+Source: "..\Patch\Languages\English\language.txt"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
+; Sound Bank translations (names.wdb) used for English (Speedrun) and Russian
+Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun ru
 ; English (Speedrun) uses it's own worms2.exe with rope fixes 1-4
 Source: "..\Patch\Languages\English (Speedrun)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
 Source: "..\Patch\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
@@ -82,8 +86,6 @@ Source: "..\Patch\Languages\Portuguese (Brazil)\*"; DestDir: "{app}\"; Flags: ig
 Source: "..\Patch\Languages\Russian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
 ; Russian uses the English version of worms2.exe until someone can translate it
 Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
-; Sound Bank translations (names.wdb) used for English (Speedrun) and Russian
-Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun ru
 Source: "..\Patch\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
 Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_419
 Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
