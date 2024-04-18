@@ -34,9 +34,6 @@ PrivilegesRequired=admin
 ShowLanguageDialog=yes
 RestartIfNeededByRun=no
 
-[Components]
-Name: "optional_windowed_alt"; Description: "Optional: Windowed mode for high resolutions"; Check: not IsWine();
-    
 [Files]
 ;Redistributables
 ;C++ 2015 used by some modules
@@ -44,24 +41,24 @@ Source: "..\Redist\vc_redist.x86.exe"; DestDir: "{tmp}\"; Flags: ignoreversion o
 ;.NET Framework 3.0 for Windows XP only (already included in Vista and later) - used by start.exe launcher 
 Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled
 ;.NET Framework 4.6.2 for VLC Launcher
-Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 10.0.14393; Check: NETFramework46NotInstalled
+Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; MinVersion: 6.1.7601; OnlyBelowVersion: 10.0.14393; Check: NETFramework46NotInstalled
 
 ;Patch files for All Installs - Place LEVEL and MISSION folders in the \Patch\All Installs\Data folder
 Source: "..\Patch\All Installs\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 ;ReSolution configs
-Source: "..\Patch\ReSolution Configs\Windows\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); Components: not optional_windowed_alt
+Source: "..\Patch\ReSolution Configs\Windows\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
 Source: "..\Patch\ReSolution Configs\Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
-;Windows XP only: original FrontendKitWS
+;For Windows - Settings app
+Source: "..\Patch\Settings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
+;Require Windows XP only: original FrontendKitWS
 Source: "..\Patch\FrontendKitWS\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.0
 ;Require Windows Vista or newer: modified IPXWrapper/FrontendKitWS
 Source: "..\Patch\IPXWrapper-W2\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
-;Require Windows 7 or newer: fkDRP, Videos (Upscaled)
-Source: "..\Patch\fkDRP\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1
-;Upscaled videos and VLC launcher
+;Require Windows 7 SP1 or newer: Upscaled videos and VLC launcher
 Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1.7601
-;or for lower than Windows 7, use the (improved) original videos
+;or for lower than Windows 7 SP1, use the (improved) original videos
 Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1.7601
-;DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
+;For Wine - DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
 Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 
 ;Languages
@@ -92,14 +89,7 @@ Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion 
 ;Install the default GFX.dir file for non-Polish (in case it is missing or if Polish was previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl
 
-;Optional tweaks
-Source: "..\Patch\ReSolution Configs\Windows via cnc-ddraw\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Components: optional_windowed_alt;
-
 [InstallDelete]
-;Delete files (if present) not used by Alt. Windowed mode
-Type: files; Name: "{app}\wkWndMode.dll"; Components: optional_windowed_alt
-Type: files; Name: "{app}\wndmode.dll"; Components: optional_windowed_alt
-Type: files; Name: "{app}\wndmode.ini"; Components: optional_windowed_alt
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
@@ -142,7 +132,7 @@ Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Guid"; Val
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Path"; ValueData: "{app}"
 ;Force Frontend DPI Scaling to be performed by System
 Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "DPIUNAWARE ";
-;Force Game DPI Scaling to be performed by Application, not Windows
+;Force Game and Form Apps DPI Scaling to be performed by Application, not Windows
 Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "HIGHDPIAWARE ";
 
 ;LAN
@@ -372,7 +362,7 @@ Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "
 ;Install .NET Framework 3.0 (Windows XP only)
 Filename: {tmp}\dotnetfx3.exe; Parameters: "/quiet /norestart"; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled; StatusMsg: "Installing .NET Framework 3.0... (this may take some time)"
 ;Install .NET Framework 4.6.2 (if VLC launcher is installed)
-Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; OnlyBelowVersion: 10.0.14393; StatusMsg: "Installing .NET Framework 4.6.2... (this may take some time)"; Check: NETFramework46NotInstalled;
+Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; MinVersion: 6.1.7601; OnlyBelowVersion: 10.0.14393; StatusMsg: "Installing .NET Framework 4.6.2... (this may take some time)"; Check: NETFramework46NotInstalled;
 
 ;Set non-Unicode Language to Polish
 Filename: powershell; Parameters: "-command Set-WinSystemLocale pl-PL"; MinVersion: 6.2; Languages: pl; Check: nonUnicodePolish(0); StatusMsg: "Setting language for non-Unicode applications..."
