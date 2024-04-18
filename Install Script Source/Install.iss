@@ -92,8 +92,12 @@ Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags
 Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
 ;Install the default GFX.dir file for non-Polish (in case it is missing or if Polish was previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl
+;wkBackflip, not enabled for Speedrun
+Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not en_speedrun
 
 [InstallDelete]
+;Delete files (if present) not used by speedrun
+Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
