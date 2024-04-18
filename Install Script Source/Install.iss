@@ -33,6 +33,8 @@ Uninstallable=no
 PrivilegesRequired=admin
 ShowLanguageDialog=yes
 RestartIfNeededByRun=no
+;Requires Windows XP SP3 or later, also need to block Windows 7 without SP1
+MinVersion=0,5.1sp3
 
 [Files]
 ;Redistributables
@@ -58,6 +60,8 @@ Source: "..\Patch\IPXWrapper-W2\*"; DestDir: "{app}\"; Flags: ignoreversion recu
 Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1.7601
 ;or for lower than Windows 7 SP1, use the (improved) original videos
 Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1.7601
+;Require Windows 10 or newer: fkDRP
+Source: "..\Patch\fkDRP\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 10.0.10240
 ;For Wine - DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
 Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 
