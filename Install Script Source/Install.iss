@@ -371,7 +371,7 @@ sv.AddonHostProgramNotFound={#Game} kunde inte hittas i katalogen du valde.
 Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "Installing C++ 2015 Redist..."
 ;Install .NET Framework 3.0 (Windows XP only)
 Filename: {tmp}\dotnetfx3.exe; Parameters: "/quiet /norestart"; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled; StatusMsg: "Installing .NET Framework 3.0... (this may take some time)"
-;Install .NET Framework 4.6.2 (if VLC launcher is installed)
+;Install .NET Framework 4.6.2 (Windows 7 SP1 to 10 Build < 14393)
 Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; MinVersion: 6.1.7601; OnlyBelowVersion: 10.0.14393; StatusMsg: "Installing .NET Framework 4.6.2... (this may take some time)"; Check: NETFramework46NotInstalled;
 
 ;Set non-Unicode Language to Polish
