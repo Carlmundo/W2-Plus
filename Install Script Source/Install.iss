@@ -392,14 +392,27 @@ ru.AddonHostProgramNotFound={#Game} не найден в указанной ва
 es.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta seleccionada.
 es_419.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta seleccionada.
 sv.AddonHostProgramNotFound={#Game} kunde inte hittas i katalogen du valde.
+
+nl.Installing=Installeren van %1
+en.Installing=Installing %1
+en_speedrun.Installing=Installing %1
+fr.Installing=Installe %1
+de.Installing=Installation von %1
+it.Installing=Installazione di %1
+pl.Installing=Instalacja aplikacji %1
+pt_br.Installing=Instalando o %1
+ru.Installing=Установка %1
+es.Installing=Instalando %1
+es_419.Installing=Instalando %1
+sv.Installing=Installerar %1
  
 [Run] 
 ;Install C++ 2015 Redist
-Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "Installing C++ 2015 Redist..."
+Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "{cm:Installing,C++ 2015 Redist}..."
 ;Install .NET Framework 3.0 (Windows XP only)
-Filename: {tmp}\dotnetfx3.exe; Parameters: "/quiet /norestart"; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled; StatusMsg: "Installing .NET Framework 3.0... (this may take some time)"
+Filename: {tmp}\dotnetfx3.exe; Parameters: "/quiet /norestart"; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled; StatusMsg: "{cm:Installing,.NET Framework 3}..."
 ;Install .NET Framework 4.6.2 (Windows 7 to before Windows 10 Anniversary update)
-Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; MinVersion: 6.1; OnlyBelowVersion: 10.0.14393; StatusMsg: "Installing .NET Framework 4.6.2... (this may take some time)"; Check: NETFramework46NotInstalled;
+Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; MinVersion: 6.1; OnlyBelowVersion: 10.0.14393; StatusMsg: "{cm:Installing,.NET Framework 4.6.2}..."; Check: NETFramework46NotInstalled;
 
 ;Set non-Unicode Language to Polish
 Filename: powershell; Parameters: "-command Set-WinSystemLocale pl-PL"; MinVersion: 6.2; Languages: pl; Check: nonUnicodePolish(0); StatusMsg: "Setting language for non-Unicode applications..."
