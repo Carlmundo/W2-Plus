@@ -81,3 +81,4 @@ Join the [Worms 2 Discord](https://discord.gg/Tvs83972UD) to find players.
  - Do **not** set any compatibility settings on any of the game's files
  - Make sure only one copy of the game is installed to avoid it launching the wrong application
  - Check the Misc\Readme.txt file for any additional known fixes
+ - If using an old version of Windows, make sure to install updates before the patch.
