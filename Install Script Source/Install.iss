@@ -33,7 +33,7 @@ Uninstallable=no
 PrivilegesRequired=admin
 ShowLanguageDialog=yes
 RestartIfNeededByRun=no
-;Requires Windows XP SP3 or later, also need to block Windows 7 without SP1
+;Requires Windows XP SP3 or later. Vista and 7 without Service Packs are also blocked later in the code.
 MinVersion=0,5.1sp3
 
 [Files]
@@ -42,8 +42,8 @@ MinVersion=0,5.1sp3
 Source: "..\Redist\vc_redist.x86.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall;
 ;.NET Framework 3.0 for Windows XP only (already included in Vista and later) - used by start.exe launcher 
 Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled
-;.NET Framework 4.6.2 for VLC Launcher
-Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; MinVersion: 6.1.7601; OnlyBelowVersion: 10.0.14393; Check: NETFramework46NotInstalled
+;.NET Framework 4.6.2 for VLC Launcher (Windows 7 to before Windows 10 Anniversary update)
+Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; MinVersion: 6.1; OnlyBelowVersion: 10.0.14393; Check: NETFramework46NotInstalled
 
 ;Patch files for All Installs - Place LEVEL and MISSION folders in the \Patch\All Installs\Data folder
 Source: "..\Patch\All Installs\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
@@ -56,12 +56,14 @@ Source: "..\Patch\Settings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesu
 Source: "..\Patch\FrontendKitWS\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.0
 ;Require Windows Vista or newer: modified IPXWrapper/FrontendKitWS
 Source: "..\Patch\IPXWrapper-W2\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
-;Require Windows 7 SP1 or newer: Upscaled videos and VLC launcher
-Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1.7601
-;or for lower than Windows 7 SP1, use the (improved) original videos
-Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1.7601
+;Require Windows 7 or newer: fkSettings
+Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1
+;Require Windows 7 or newer: Upscaled videos and VLC launcher
+Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1
+;or for lower than Windows 7, use the (improved) original videos
+Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1
 ;Require Windows 10 or newer: fkDRP
-Source: "..\Patch\fkDRP\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 10.0.10240
+Source: "..\Patch\fkDRP\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 10.0
 ;For Wine - DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
 Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 
@@ -296,13 +298,40 @@ begin
 end;
 
 function InitializeSetup: boolean;
+var Version: TWindowsVersion;
+var msgRequiredSP: string;
 begin
   Result := not IsAppRunning('{#AppProcess1}');
   if Result then begin
     Result := not IsAppRunning('{#AppProcess2}');
   end;
   if not Result then
+  begin
     MsgBox(SetupMessage(msgSetupAppRunningError), mbError, MB_OK);
+  end
+  else
+  begin
+    //Check other Windows version that don't work without Service Packs
+    GetWindowsVersionEx(Version);
+    if Version.Major = 6 then begin
+      if (Version.Minor = 0) and (Version.Build < 6002) then begin
+        //Vista requires Service Pack 2
+        msgRequiredSP := SetupMessage(msgWindowsServicePackRequired);
+        StringChangeEx(msgRequiredSP, '%1', 'Windows Vista', true);
+        StringChangeEx(msgRequiredSP, '%2', '2', true);
+        MsgBox(msgRequiredSP, mbError, MB_OK);
+        Result := false;
+      end
+      else if (Version.Minor = 1) and (Version.Build < 7601) then begin
+        //7 requires Service Pack 1
+        msgRequiredSP := SetupMessage(msgWindowsServicePackRequired);
+        StringChangeEx(msgRequiredSP, '%1', 'Windows 7', true);
+        StringChangeEx(msgRequiredSP, '%2', '1', true);
+        MsgBox(msgRequiredSP, mbError, MB_OK);
+        Result := false;
+      end;
+    end;
+  end;
 end;
 
 function GetDefaultDir(def: string): string;
@@ -371,8 +400,8 @@ sv.AddonHostProgramNotFound={#Game} kunde inte hittas i katalogen du valde.
 Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "Installing C++ 2015 Redist..."
 ;Install .NET Framework 3.0 (Windows XP only)
 Filename: {tmp}\dotnetfx3.exe; Parameters: "/quiet /norestart"; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled; StatusMsg: "Installing .NET Framework 3.0... (this may take some time)"
-;Install .NET Framework 4.6.2 (Windows 7 SP1 to 10 Build < 14393)
-Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; MinVersion: 6.1.7601; OnlyBelowVersion: 10.0.14393; StatusMsg: "Installing .NET Framework 4.6.2... (this may take some time)"; Check: NETFramework46NotInstalled;
+;Install .NET Framework 4.6.2 (Windows 7 to before Windows 10 Anniversary update)
+Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; MinVersion: 6.1; OnlyBelowVersion: 10.0.14393; StatusMsg: "Installing .NET Framework 4.6.2... (this may take some time)"; Check: NETFramework46NotInstalled;
 
 ;Set non-Unicode Language to Polish
 Filename: powershell; Parameters: "-command Set-WinSystemLocale pl-PL"; MinVersion: 6.2; Languages: pl; Check: nonUnicodePolish(0); StatusMsg: "Setting language for non-Unicode applications..."
