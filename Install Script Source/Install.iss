@@ -252,11 +252,9 @@ end;
 function CheckSha1Match(const filePath, hash: string): Boolean;
 var sha: String;
 begin
-  msgBox('start'+filePath, mbConfirmation, MB_OK);
   if (FileExists(ExpandConstant(filePath))) then begin 
     sha := GetSHA1OfFile(ExpandConstant(filePath));
     if sha = hash then begin
-      MsgBox('match', mbConfirmation, MB_OK);
       Result := True;
     end
     else begin
