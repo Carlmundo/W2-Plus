@@ -56,6 +56,8 @@ There is no need to set any Windows compatibility settings.
 - Checks for updates on game startup
 
 ## Language Support
+You can use the language of your choice, regardless of what version of the game you have. 
+
 | Language                | Frontend | In-Game |
 |-------------------------|----------|---------|
 | Dutch                   | ✅*      | ✅     |
