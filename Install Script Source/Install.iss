@@ -100,6 +100,11 @@ Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreve
 [InstallDelete]
 ;Delete files (if present) not used by speedrun
 Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
+;Delete blank music tracks from GOG/previous Plus installs
+Type: files; Name: "{app}\music\Track02.flac";
+Type: files; Name: "{app}\music\Track02.ogg";
+Type: files; Name: "{app}\music\Track10.flac"; Check: CheckSha1Match('{app}\Music\Track10.flac', '7d13d39e45e363976f8f677cf6fd2dd239793858');
+Type: files; Name: "{app}\music\Track10.ogg";
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
@@ -242,6 +247,22 @@ begin
   begin
     Result := True;
   end
+end;
+
+function CheckSha1Match(const filePath, hash: string): Boolean;
+var sha: String;
+begin
+  msgBox('start'+filePath, mbConfirmation, MB_OK);
+  if (FileExists(ExpandConstant(filePath))) then begin 
+    sha := GetSHA1OfFile(ExpandConstant(filePath));
+    if sha = hash then begin
+      MsgBox('match', mbConfirmation, MB_OK);
+      Result := True;
+    end
+    else begin
+      Result := false;
+    end;
+   end;
 end;
 
 function nonUnicode(const langInput: string): boolean;
