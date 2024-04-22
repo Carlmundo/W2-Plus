@@ -1,3 +1,7 @@
 /Install Script Source/Output/*
+# Copy LEVEL and MISSION folders from the game CD
 Patch/All Installs/Data/LEVEL/*
 Patch/All Installs/Data/MISSION/*
+Patch/Languages/*/frontend.exe
+!Patch/Languages/English/frontend.exe
+FrontendGen/Logs/*

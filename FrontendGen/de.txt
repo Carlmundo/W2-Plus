@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=    ..\Patch\Languages\English\frontend.exe
+SaveAs= ..\Patch\Languages\German\frontend.exe
+Log=    Logs\de.log	
+[COMMANDS]
+-delete  STRINGTABLE,,2048
+-add     de.res, STRINGTABLE

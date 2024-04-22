@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=    ..\Patch\Languages\English\frontend.exe
+SaveAs= ..\Patch\Languages\Russian\frontend.exe
+Log=    Logs\ru.log	
+[COMMANDS]
+-delete  STRINGTABLE,,2048
+-add     ru.res, STRINGTABLE
