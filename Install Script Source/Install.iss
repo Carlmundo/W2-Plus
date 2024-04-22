@@ -51,7 +51,9 @@ Source: "..\Patch\All Installs\*"; DestDir: "{app}\"; Flags: ignoreversion recur
 Source: "..\Patch\ReSolution Configs\Windows\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
 Source: "..\Patch\ReSolution Configs\Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 ;For Windows - Settings app
-Source: "..\Patch\Settings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
+Source: "..\Patch\Settings\INIFileParser.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
+Source: "..\Patch\Settings\settings_xp.exe"; DestDir: "{app}\"; DestName: "settings.exe"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); OnlyBelowVersion: 6.0;
+Source: "..\Patch\Settings\settings.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.0;
 ;Require Windows XP only: original FrontendKitWS
 Source: "..\Patch\FrontendKitWS\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.0
 ;Require Windows Vista or newer: modified IPXWrapper/FrontendKitWS
