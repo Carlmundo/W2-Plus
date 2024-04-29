@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.6"
+#define AppVersion "1.6.0.1"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -60,10 +60,13 @@ Source: "..\Patch\FrontendKitWS\*"; DestDir: "{app}\"; Flags: ignoreversion recu
 Source: "..\Patch\IPXWrapper-W2\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows 7 or newer: fkSettings
 Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.1
-;Require Windows 7 or newer: Upscaled videos and VLC launcher
+;Require Windows 7 or newer: Upscaled videos and VLC launcher. Also overwrite the GOGLauncher if it exists.
 Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1
+Source: "..\Patch\Videos\Upscaled\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1;
 ;or for lower than Windows 7, use the (improved) original videos
 Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1
+Source: "..\Patch\Videos\Original\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1
+
 ;Require Windows 10 or newer: fkDRP
 Source: "..\Patch\fkDRP\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 10.0
 ;For Wine - DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
