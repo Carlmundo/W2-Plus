@@ -52,8 +52,11 @@ Source: "..\Patch\ReSolution Configs\Windows\*"; DestDir: "{app}\"; Flags: ignor
 Source: "..\Patch\ReSolution Configs\Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 ;For Windows - Settings app
 Source: "..\Patch\Settings\INIFileParser.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
-Source: "..\Patch\Settings\settings_xp.exe"; DestDir: "{app}\"; DestName: "settings.exe"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); OnlyBelowVersion: 6.0;
-Source: "..\Patch\Settings\settings.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.0;
+;.NETF 4.6.2 for Windows 7+
+Source: "..\Patch\Settings\settings.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.1;
+;.NETF 3.0 for XP & Vista
+Source: "..\Patch\Settings\settings_netf3.exe"; DestDir: "{app}\"; DestName: "settings.exe"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); OnlyBelowVersion: 6.1;
+
 ;Require Windows Vista or newer: IPXWrapper
 Source: "..\Patch\LAN\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkSettings
