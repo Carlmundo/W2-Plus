@@ -56,7 +56,7 @@ There is no need to set any Windows compatibility settings.
 - Improved Frontend clarity and DPI scaling
 - Updated the Soundbank Editor with a working version
 - Automatically sets the graphics to their maximum level
-- Includes the last official patch (v1.05)
+- Includes changes from the last official patch (v1.05)
 - Checks for updates when the game starts
 
 ## Join the Community
