@@ -54,10 +54,8 @@ Source: "..\Patch\ReSolution Configs\Wine\*"; DestDir: "{app}\"; Flags: ignoreve
 Source: "..\Patch\Settings\INIFileParser.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
 Source: "..\Patch\Settings\settings_xp.exe"; DestDir: "{app}\"; DestName: "settings.exe"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); OnlyBelowVersion: 6.0;
 Source: "..\Patch\Settings\settings.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.0;
-;Require Windows XP only: original FrontendKitWS
-Source: "..\Patch\FrontendKitWS\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.0
-;Require Windows Vista or newer: modified IPXWrapper/FrontendKitWS
-Source: "..\Patch\IPXWrapper-W2\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
+;Require Windows Vista or newer: IPXWrapper
+Source: "..\Patch\LAN\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkSettings
 Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.0
 ;Require Windows 7 or newer: Upscaled videos and VLC launcher. Also overwrite the GOGLauncher if it exists.
@@ -109,6 +107,8 @@ Type: files; Name: "{app}\music\Track02.flac";
 Type: files; Name: "{app}\music\Track02.ogg";
 Type: files; Name: "{app}\music\Track10.flac"; Check: CheckSha1Match('{app}\Music\Track10.flac', '7d13d39e45e363976f8f677cf6fd2dd239793858');
 Type: files; Name: "{app}\music\Track10.ogg";
+;Windows XP - Delete old FrontendKit Loader from previous installs
+Type: files; Name: "{app}\wsock32.dll"; OnlyBelowVersion: 6.0; Check: CheckSha1Match('{app}\wsock32.dll', 'fd60ae836941e0f706b2245c32ce11a1d87a3aea');  
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
