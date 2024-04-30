@@ -52,9 +52,9 @@ Source: "..\Patch\ReSolution Configs\Windows\*"; DestDir: "{app}\"; Flags: ignor
 Source: "..\Patch\ReSolution Configs\Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 ;For Windows - Settings app
 Source: "..\Patch\Settings\INIFileParser.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
-;.NETF 4.6.2 for Windows 7+
+; - .NETF 4.6.2 for Windows 7+
 Source: "..\Patch\Settings\settings.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.1;
-;.NETF 3.0 for XP & Vista
+; - .NETF 3.0 for XP & Vista
 Source: "..\Patch\Settings\settings_netf3.exe"; DestDir: "{app}\"; DestName: "settings.exe"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); OnlyBelowVersion: 6.1;
 
 ;Require Windows Vista or newer: LAN files - IPXWrapper & wkDNet
@@ -74,7 +74,7 @@ Source: "..\Patch\fkDRP\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdi
 Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 
 ;Languages
-;Generate all frontends using FrontendGen\Generate.bat
+;Generate all frontends using FrontendGen\Generate.bat and Resource Hacker
 Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
 ; English uses the North America frontend instead of Europe in order to force the language
 Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
@@ -110,7 +110,7 @@ Type: files; Name: "{app}\music\Track02.flac";
 Type: files; Name: "{app}\music\Track02.ogg";
 Type: files; Name: "{app}\music\Track10.flac"; Check: CheckSha1Match('{app}\Music\Track10.flac', '7d13d39e45e363976f8f677cf6fd2dd239793858');
 Type: files; Name: "{app}\music\Track10.ogg";
-;Windows XP - Delete old FrontendKit Loader from previous installs
+;Windows XP - Delete old FrontendKit Loader from previous installs to avoid conflict
 Type: files; Name: "{app}\wsock32.dll"; OnlyBelowVersion: 6.0; Check: CheckSha1Match('{app}\wsock32.dll', 'fd60ae836941e0f706b2245c32ce11a1d87a3aea');  
 
 [Languages]
