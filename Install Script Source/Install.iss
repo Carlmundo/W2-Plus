@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.6.0.1A"
+#define AppVersion "1.6.0.1B"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -103,6 +103,9 @@ Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not en_speedrun
 
 [InstallDelete]
+;Delete unneeded/conflicting files that may be present from previous installs
+;Delete wndmode (if present) so that it is no longer the default/active renderer
+Type: files; Name: "{app}\wkWndMode.dll"; Check: not IsWine();
 ;Delete files (if present) not used by speedrun
 Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
 ;Delete blank music tracks from GOG/previous Plus installs
