@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.6.0.1B"
+#define AppVersion "1.6.0.1C"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -170,6 +170,8 @@ Root: HKLM32; Subkey: "{#RegPathIPX2}"; ValueType: string; ValueName: "Descripti
 Root: HKLM32; Subkey: "{#RegPathIPX2}"; ValueType: expandsz; ValueName: "Path"; ValueData: "dpwsockx.dll";
 Root: HKLM32; Subkey: "{#RegPathIPX2}\Players";
 Root: HKLM32; Subkey: "{#RegPathIPX2}\Sessions";
+;Disable IPXWrapper Logging
+Root: HKCU; Subkey: "Software\IPXWrapper"; ValueType: dword; ValueName: "log_level"; ValueData: 7
 
 ;Wine
 ;DLL Overrides - DirectPlay
