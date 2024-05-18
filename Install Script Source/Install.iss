@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.6.0.1C"
+#define AppVersion "1.6.1"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
