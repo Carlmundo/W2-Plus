@@ -10,21 +10,20 @@ There is no need to set any Windows compatibility settings.
 - Launch the game by running either:
 	- start.exe or frontend.exe (to skip intro videos) from the game's installed folder
 	- Desktop shortcuts if checked on install
-- Online Play - all players need to set up [Port Forwarding](https://portforward.com/router.htm) on their router with the following ports:
-	- 47624 (TCP)
-	- 2300-2400 (TCP and UDP)
-- LAN play works without any port forwarding and can also be used with virtual private networks such as Hamachi, Radmin and others.
-	- Select IPX underneath the LAN button.
-	- When the game starts, a prompt appears. The host must be the first one to click OK on this prompt.
+- Online Play:
+	- TCP - all players need to set up [Port Forwarding](https://portforward.com/router.htm) on their router with the following ports:
+		- 47624 (TCP)
+		- 2300-2400 (TCP and UDP)
+	- IPX - works without port forwarding by playing over LAN or Virtual Private Networks such as Hamachi, Radmin and others. You can also join an IPX server if you have server details.
 
 ## Features
 - Compatible with modern versions of Windows and Wine
 - No CD required
 - Multi-language support: English, Dutch, French, German, Italian, Polish, Portuguese (Brazil), Spanish, Spanish (Latin America), Swedish & Russian (English in-game)
-- Re-enabled online multiplayer, play with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) fork of [FkNetcode](https://worms2d.info/FkNetcode))
-- LAN play restored with support for virtual private networks (via [modified](https://github.com/Carlmundo/ipxwrapper-w2) fork of IPXWrapper)
+- Re-enabled online multiplayer, play with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) [FkNetcode](https://worms2d.info/FkNetcode))
+- LAN play restored with support for virtual private networks (via [IPXWrapper](https://github.com/Carlmundo/ipxwrapper-w2) & [wkDNet](https://github.com/Dawid8plc/wkDNet))
 - Backflip is now permanently enabled in-game and works online (double tap the Backspace key)
-- Windowed mode and Borderless options (via [ReSolution](https://worms2d.info/ReSolution) with WndMode or [cnc-ddraw](https://github.com/FunkyFr3sh/cnc-ddraw))
+- Windowed mode and Borderless options (via [modified ReSolution](https://github.com/Carlmundo/wkReSolution) with [cnc-ddraw](https://github.com/FunkyFr3sh/cnc-ddraw)) or wndmode 
 - Settings app for configuring advanced video options (found in game options)
 	- You can press Ctrl+G in-game to unlock the cursor from the window
 - New launcher to play the intro videos, upscaled and in higher quality
