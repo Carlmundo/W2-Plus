@@ -114,7 +114,10 @@ Type: files; Name: "{app}\music\Track02.ogg";
 Type: files; Name: "{app}\music\Track10.flac"; Check: CheckSha1Match('{app}\Music\Track10.flac', '7d13d39e45e363976f8f677cf6fd2dd239793858');
 Type: files; Name: "{app}\music\Track10.ogg";
 ;Windows XP - Delete old FrontendKit Loader from previous installs to avoid conflict
-Type: files; Name: "{app}\wsock32.dll"; OnlyBelowVersion: 6.0; Check: CheckSha1Match('{app}\wsock32.dll', 'fd60ae836941e0f706b2245c32ce11a1d87a3aea');  
+Type: files; Name: "{app}\wsock32.dll"; OnlyBelowVersion: 6.0; Check: CheckSha1Match('{app}\wsock32.dll', 'fd60ae836941e0f706b2245c32ce11a1d87a3aea');
+;Delete Misc reg files from the root of the game folder 
+Type: files; Name: "{app}\Enable IPX Logging.reg";
+Type: files; Name: "{app}\Reset IPX Config.reg";
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
