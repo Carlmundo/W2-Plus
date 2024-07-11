@@ -42,7 +42,7 @@ MinVersion=0,5.1sp3
 Source: "..\Redist\vc_redist.x86.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall;
 ;.NET Framework 3.0 for Windows XP only (already included in Vista and later) - used by start.exe launcher 
 Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled
-;.NET Framework 4.6.2 for VLC Launcher (Windows 8 to before Windows 10 Anniversary update) & Settings app
+;.NET Framework 4.6.2 for VLC Launcher & Settings app (Windows 8 to before Windows 10 Anniversary update)
 Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; MinVersion: 6.2; OnlyBelowVersion: 10.0.14393; Check: NETFramework46NotInstalled
 
 ;Patch files for All Installs - Place LEVEL and MISSION folders in the \Patch\All Installs\Data folder
@@ -64,8 +64,9 @@ Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recurse
 ;Require Windows 7 or newer: Upscaled videos and VLC launcher. Also overwrite the GOGLauncher if it exists.
 Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1
 Source: "..\Patch\Videos\Upscaled\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1;
-;or for lower than Windows 7, use the (improved) original videos
+;or for lower than Windows 7, use the original videos (with improved quality)
 Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1
+;Overwrite the broken GOG Launcher if it exists
 Source: "..\Patch\Videos\Original\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1
 
 ;Require Windows 10 or newer: fkDRP
@@ -76,7 +77,7 @@ Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion re
 ;Languages
 ;Generate all frontends using FrontendGen\Generate.bat and Resource Hacker
 Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
-; English uses the North America frontend instead of Europe in order to force the language
+; English is the frontend which all other languages have their frontend based on
 Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
 ; English (Speedrun) uses most files from English
 Source: "..\Patch\Languages\English\frontend.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
@@ -89,7 +90,6 @@ Source: "..\Patch\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion r
 Source: "..\Patch\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
 Source: "..\Patch\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
 Source: "..\Patch\Languages\Polish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pl
-; Portuguese (Brazil) uses the Brazil frontend instead of Europe in order to force the language
 Source: "..\Patch\Languages\Portuguese (Brazil)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt_br
 Source: "..\Patch\Languages\Russian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
 ; Russian uses the English version of worms2.exe until someone can translate it

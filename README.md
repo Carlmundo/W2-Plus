@@ -23,7 +23,7 @@ There is no need to set any Windows compatibility settings.
 - Re-enabled online multiplayer, play with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) [FkNetcode](https://worms2d.info/FkNetcode))
 - LAN play restored with support for virtual private networks (via [IPXWrapper](https://github.com/Carlmundo/ipxwrapper-w2) & [wkDNet](https://github.com/Dawid8plc/wkDNet))
 - Backflip is now permanently enabled in-game and works online (double tap the Backspace key)
-- Windowed mode and Borderless options (via [modified ReSolution](https://github.com/Carlmundo/wkReSolution) with [cnc-ddraw](https://github.com/FunkyFr3sh/cnc-ddraw)) or wndmode 
+- Windowed mode and Borderless options (via [modified ReSolution](https://github.com/Carlmundo/wkReSolution) with [cnc-ddraw](https://github.com/FunkyFr3sh/cnc-ddraw) or wndmode) 
 - Settings app for configuring advanced video options (found in game options)
 	- You can press Ctrl+G in-game to unlock the cursor from the window
 - New launcher to play the intro videos, upscaled and in higher quality
