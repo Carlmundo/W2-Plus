@@ -61,6 +61,8 @@ Source: "..\Patch\Settings\settings_netf3.exe"; DestDir: "{app}\"; DestName: "se
 Source: "..\Patch\LAN\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkSettings
 Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.0
+;Require Windows Vista or newer: fkWaterFix
+Source: "..\Patch\fkWaterFix\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows 7 or newer: Upscaled videos and VLC launcher. Also overwrite the GOGLauncher if it exists.
 Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1
 Source: "..\Patch\Videos\Upscaled\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1;
@@ -118,6 +120,9 @@ Type: files; Name: "{app}\wsock32.dll"; OnlyBelowVersion: 6.0; Check: CheckSha1M
 ;Delete Misc reg files from the root of the game folder 
 Type: files; Name: "{app}\Enable IPX Logging.reg";
 Type: files; Name: "{app}\Reset IPX Config.reg";
+;Remove old Frontend Water Palette fixes (superseeded by fkWaterFix.dll)
+Type: files; Name: "{app}\Misc\Hotfix - FWP.exe";
+Type: files; Name: "{app}\Misc\Remove Hotfix - FWP.reg";
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
