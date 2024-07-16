@@ -59,6 +59,8 @@ Source: "..\Patch\Settings\settings_netf3.exe"; DestDir: "{app}\"; DestName: "se
 
 ;Require Windows Vista or newer: LAN files - IPXWrapper & wkDNet
 Source: "..\Patch\LAN\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
+;Require Windows Vista or newer: fkMissions
+Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkSettings
 Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.0
 ;Require Windows Vista or newer: fkWaterFix
