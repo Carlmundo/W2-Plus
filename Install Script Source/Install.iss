@@ -100,7 +100,7 @@ Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignor
 ; Sound Bank translations (names.wdb) used for English (Speedrun) and custom languages
 Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun ru
 ;Install the default GFX.dir file for languages that are not Polish or Russian (in case they were previously installed)
-Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl ru
+Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl and not ru
 ;wkBackflip, not enabled for Speedrun
 Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not en_speedrun
 
