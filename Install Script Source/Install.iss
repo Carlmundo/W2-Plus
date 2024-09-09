@@ -52,13 +52,11 @@ Source: "..\Patch\ReSolution Configs\Windows\*"; DestDir: "{app}\"; Flags: ignor
 Source: "..\Patch\ReSolution Configs\Wine\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 ;For Windows - Settings app
 Source: "..\Patch\Settings\INIFileParser.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine();
-; - .NETF 4.6.2 for Windows 8+
+;.NETF 4.6.2 for Windows 8+
 Source: "..\Patch\Settings\settings.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.2;
-; - .NETF 3.0 for XP, Vista & 7
+;.NETF 3.0 for XP, Vista & 7
 Source: "..\Patch\Settings\settings_netf3.exe"; DestDir: "{app}\"; DestName: "settings.exe"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); OnlyBelowVersion: 6.2;
 
-;Require Windows Vista or newer: LAN files - IPXWrapper & wkDNet
-Source: "..\Patch\LAN\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkMissions
 Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkSettings
@@ -122,9 +120,13 @@ Type: files; Name: "{app}\wsock32.dll"; OnlyBelowVersion: 6.0; Check: CheckSha1M
 ;Delete Misc reg files from the root of the game folder 
 Type: files; Name: "{app}\Enable IPX Logging.reg";
 Type: files; Name: "{app}\Reset IPX Config.reg";
-;Remove old Frontend Water Palette fixes (superseeded by fkWaterFix.dll)
+;Remove old Misc files
+Type: files; Name: "{app}\Misc\Enable IPX Logging.reg";                                                     
 Type: files; Name: "{app}\Misc\Hotfix - FWP.exe";
+Type: files; Name: "{app}\Misc\Readme.txt";
 Type: files; Name: "{app}\Misc\Remove Hotfix - FWP.reg";
+Type: files; Name: "{app}\Misc\Reset IPX Config.reg";
+Type: dirifempty; Name: "{app}\Misc";
 
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
@@ -157,8 +159,8 @@ Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "CD"; ValueDa
 Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData: "."
 ;Set graphics to maximum settings
 Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "VideoSetting"; ValueData: 5
-;Set default connection to TCP so that the server isn't greyed out
-Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "Connection"; ValueData: 1
+;Set default connection to IPX
+Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "Connection"; ValueData: 0
 ;Functionality
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: none; ValueName: "CommandLine"
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "CurrentDirectory"; ValueData: "{app}"
@@ -169,7 +171,7 @@ Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Path"; Val
 Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0
 Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0
 
-;LAN
+;IPX
 Root: HKLM32; Subkey: "{#RegPathIPX1}"; ValueType: dword; ValueName: "dwReserved1"; ValueData: 32;
 Root: HKLM32; Subkey: "{#RegPathIPX1}"; ValueType: dword; ValueName: "dwReserved2"; ValueData: 0;
 Root: HKLM32; Subkey: "{#RegPathIPX1}"; ValueType: string; ValueName: "Guid"; ValueData: "{{685BC400-9D2C-11cf-A9CD-00AA006886E3}";
@@ -180,8 +182,6 @@ Root: HKLM32; Subkey: "{#RegPathIPX2}"; ValueType: string; ValueName: "Descripti
 Root: HKLM32; Subkey: "{#RegPathIPX2}"; ValueType: expandsz; ValueName: "Path"; ValueData: "dpwsockx.dll";
 Root: HKLM32; Subkey: "{#RegPathIPX2}\Players";
 Root: HKLM32; Subkey: "{#RegPathIPX2}\Sessions";
-;Disable IPXWrapper Logging
-Root: HKCU; Subkey: "Software\IPXWrapper"; ValueType: dword; ValueName: "log_level"; ValueData: 7
 
 ;Wine
 ;DLL Overrides - DirectPlay
