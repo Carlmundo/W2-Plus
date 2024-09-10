@@ -56,8 +56,8 @@ Source: "..\Patch\Settings\settings.exe"; DestDir: "{app}\"; Flags: ignoreversio
 ;.NETF 3.0 for XP, Vista & 7
 Source: "..\Patch\Settings\settings_netf3.exe"; DestDir: "{app}\"; DestName: "settings.exe"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); OnlyBelowVersion: 6.2;
 
-;Require Windows Vista or newer: fkMissions
-Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
+;Require Windows Vista or newer: fkMissions, not enabled for Speedrun
+Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0; Languages: not en_speedrun
 ;Require Windows Vista or newer: fkSettings
 Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: not IsWine(); MinVersion: 6.0
 ;Require Windows Vista or newer: fkWaterFix
@@ -79,12 +79,7 @@ Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion re
 ;Generate all frontends using FrontendGen\Generate.bat and Resource Hacker
 Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
 ; English is the frontend which all other languages have their frontend based on
-Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en
-; English (Speedrun) uses most files from English
-Source: "..\Patch\Languages\English\frontend.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
-Source: "..\Patch\Languages\English\language.txt"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
-; English (Speedrun) uses it's own worms2.exe with rope fixes 1-4
-Source: "..\Patch\Languages\English (Speedrun)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun
+Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en en_speedrun
 Source: "..\Patch\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
 Source: "..\Patch\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
 Source: "..\Patch\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
@@ -97,8 +92,8 @@ Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion 
 ; Languages powered by wkDLang uses the English version of worms2.exe
 Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
 Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
-; Sound Bank translations (names.wdb) used for English (Speedrun) and custom languages
-Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en_speedrun ru
+; Use the English Sound Bank translations (names.wdb) for custom languages
+Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
 ;Install the default GFX.dir file for languages that are not Polish or Russian (in case they were previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl and not ru
 ;wkBackflip, not enabled for Speedrun
@@ -109,7 +104,11 @@ Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreve
 ;Delete wndmode (if present) so that it is no longer the default/active renderer
 Type: files; Name: "{app}\wkWndMode.dll"; Check: not IsWine();
 ;Delete files (if present) not used by speedrun
+Type: files; Name: "{app}\fkMissions.dll"; Languages: en_speedrun
 Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
+;Delete wkDLang for languages that do not require it
+Type: files; Name: "{app}\wkDLang.dll"; Languages: not ru
+Type: files; Name: "{app}\wkDLang.ini"; Languages: not ru
 ;Delete blank music tracks from GOG/previous Plus installs
 Type: files; Name: "{app}\music\Track02.flac";
 Type: files; Name: "{app}\music\Track02.ogg";
