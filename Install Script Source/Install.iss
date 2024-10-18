@@ -84,16 +84,18 @@ Source: "..\Patch\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion r
 Source: "..\Patch\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
 Source: "..\Patch\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
 Source: "..\Patch\Languages\Polish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pl
+Source: "..\Patch\Languages\Portuguese\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt
 Source: "..\Patch\Languages\Portuguese (Brazil)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt_br
 Source: "..\Patch\Languages\Russian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
 Source: "..\Patch\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
 Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_419
 Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
 ; Languages powered by wkDLang uses the English version of worms2.exe
-Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
-Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
-; Use the English Sound Bank translations (names.wdb) for custom languages
-Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru
+Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru
+Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru
+; Use the English "About" and Sound Bank translations (names.wdb) for custom languages
+Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru
+Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru
 ;Install the default GFX.dir file for languages that are not Polish or Russian (in case they were previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl and not ru
 ;wkBackflip, not enabled for Speedrun
@@ -107,8 +109,8 @@ Type: files; Name: "{app}\wkWndMode.dll"; Check: not IsWine();
 Type: files; Name: "{app}\fkMissions.dll"; Languages: en_speedrun
 Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
 ;Delete wkDLang for languages that do not require it
-Type: files; Name: "{app}\wkDLang.dll"; Languages: not ru
-Type: files; Name: "{app}\wkDLang.ini"; Languages: not ru
+Type: files; Name: "{app}\wkDLang.dll"; Languages: not pt and not ru
+Type: files; Name: "{app}\wkDLang.ini"; Languages: not pt and not ru
 ;Delete blank music tracks from GOG/previous Plus installs
 Type: files; Name: "{app}\music\Track02.flac";
 Type: files; Name: "{app}\music\Track02.ogg";
@@ -186,7 +188,8 @@ Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "pl"; MessagesFile: "compiler:Languages\Polish.isl"
-Name: "pt_br"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
+Name: "pt"; MessagesFile: "Languages\Portuguese.isl"
+Name: "pt_br"; MessagesFile: "Languages\BrazilianPortuguese.isl"
 Name: "ru"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "es_419"; MessagesFile: "Languages\SpanishLA.isl"
@@ -463,6 +466,7 @@ fr.SetupAppRunningError=L'assistant d'installation a détecté que {#Game} est a
 de.SetupAppRunningError=Das Setup hat entdeckt, dass {#Game} zur Zeit ausgeführt wird. Bitte schließen Sie jetzt alle laufenden Instanzen.
 it.SetupAppRunningError={#Game} è attualmente in esecuzione. Chiudi adesso tutte le istanze del programma.
 pl.SetupAppRunningError=Instalator wykrył, że aplikacja {#Game} jest aktualnie uruchomiona. Zamknij wszystkie procesy aplikacji.
+pt.SetupAppRunningError=O instalador detectou que {#Game} já está em execução. Fecha o jogo antes de instalar este patch.
 pt_br.SetupAppRunningError=O Instalador detectou que o {#Game} está atualmente em execução. Por favor feche todas as instâncias dele agora.
 ru.SetupAppRunningError=Обнаружен запущенный экземпляр {#Game}. Пожалуйста, закройте все экземпляры приложения. 
 es.SetupAppRunningError=El programa de instalación ha detectado que {#Game} está ejecutándose. Por favor, ciérrelo ahora.
@@ -477,7 +481,8 @@ fr.AddonHostProgramNotFound={#Game} n'a pas été trouvé dans le dossier que vo
 de.AddonHostProgramNotFound={#Game} konnte im ausgewählten Ordner nicht gefunden werden.
 it.AddonHostProgramNotFound=Impossibile individuare {#Game} nella cartella selezionata.
 pl.AddonHostProgramNotFound=Aplikacja {#Game} nie została znaleziona we wskazanym przez Ciebie folderze. Jeżeli jest to właściwy folder, spróbuj ponownie zainstalować grę.
-pt_br.AddonHostProgramNotFound={#Game} não pôde ser localizado na pasta que você selecionou.
+pt.AddonHostProgramNotFound={#Game} não foi encontrado na pasta que selecionaste. Se é a pasta correta, experimenta reinstalar o jogo.
+pt_br.AddonHostProgramNotFound={#Game} não foi encontrado na pasta que você selecionou. Se é a pasta correta, experimente reinstalar o jogo.
 ru.AddonHostProgramNotFound={#Game} не найден в указанной вами папке.
 es.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta seleccionada.
 es_419.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta seleccionada.
@@ -490,7 +495,8 @@ fr.Installing=Installe %1
 de.Installing=Installation von %1
 it.Installing=Installazione di %1
 pl.Installing=Instalacja aplikacji %1
-pt_br.Installing=Instalando o %1
+pt.Installing=A instalar %1
+pt_br.Installing=Instalando %1
 ru.Installing=Установка %1
 es.Installing=Instalando %1
 es_419.Installing=Instalando %1
