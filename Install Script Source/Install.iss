@@ -98,6 +98,18 @@ Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Fla
 Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru
 ;Install the default GFX.dir file for languages that are not Polish or Russian (in case they were previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl and not ru
+;Install "Default" soundbank that is native to the language
+Source: "..\Patch\All Installs\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en en_speedrun
+Source: "..\Patch\All Installs\Data\Wav\Speech\French\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: fr
+Source: "..\Patch\All Installs\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: de
+Source: "..\Patch\All Installs\Data\Wav\Speech\Italian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: it
+Source: "..\Patch\All Installs\Data\Wav\Speech\Polish-2\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pl
+Source: "..\Patch\All Installs\Data\Wav\Speech\Portuguese\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt
+Source: "..\Patch\All Installs\Data\Wav\Speech\BrazilPortugal\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt_br
+Source: "..\Patch\All Installs\Data\Wav\Speech\Russian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: ru
+Source: "..\Patch\All Installs\Data\Wav\Speech\Spanish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: es
+Source: "..\Patch\All Installs\Data\Wav\Speech\Hispanic\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: es_419
+Source: "..\Patch\All Installs\Data\Wav\Speech\Swedish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: sv
 ;wkBackflip, not enabled for Speedrun
 Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not en_speedrun
 
