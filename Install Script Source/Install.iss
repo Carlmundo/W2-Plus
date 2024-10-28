@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.6.2"
+#define AppVersion "1.6.2.1"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -79,7 +79,7 @@ Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion re
 ;Generate all frontends using FrontendGen\Generate.bat and Resource Hacker
 Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
 ; English is the frontend which all other languages have their frontend based on
-Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en en_speedrun
+Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en en_us en_speedrun
 Source: "..\Patch\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
 Source: "..\Patch\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
 Source: "..\Patch\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
@@ -100,6 +100,7 @@ Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wa
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl and not ru
 ;Install "Default" soundbank that is native to the language
 Source: "..\Patch\All Installs\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en en_speedrun
+Source: "..\Patch\All Installs\Data\Wav\Speech\American\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en_us
 Source: "..\Patch\All Installs\Data\Wav\Speech\French\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: fr
 Source: "..\Patch\All Installs\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: de
 Source: "..\Patch\All Installs\Data\Wav\Speech\Italian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: it
@@ -195,6 +196,7 @@ Type: files; Name: "{app}\Data\Wav\Speech\US Sports\uhoh.wav";
 [Languages]
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
 Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "en_us"; MessagesFile: "Languages\EnglishUS.isl"
 Name: "en_speedrun"; MessagesFile: "Languages\EnglishSpeedrun.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
@@ -470,6 +472,11 @@ en.SelectLanguageLabel=Select the language for {#AppName}
 en.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
 en.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
 en.FinishedHeadingLabel=Patch Complete
+en_us.SelectLanguageTitle=Select Language
+en_us.SelectLanguageLabel=Select the language for {#AppName}
+en_us.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
+en_us.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
+en_us.FinishedHeadingLabel=Patch Complete
 en_speedrun.SelectLanguageTitle=Select Language
 en_speedrun.SelectLanguageLabel=Select the language for {#AppName}
 en_speedrun.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
@@ -477,6 +484,7 @@ en_speedrun.SelectDirBrowseLabel=If it has not been detected, click Browse to sp
 en_speedrun.FinishedHeadingLabel=Patch Complete
 nl.SetupAppRunningError=Setup heeft vastgesteld dat {#Game} op dit moment actief is. Sluit alle vensters hiervan.
 en.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
+en_us.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
 en_speedrun.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
 fr.SetupAppRunningError=L'assistant d'installation a détecté que {#Game} est actuellement en cours d'exécution. Veuillez fermer toutes les instances de cette application.
 de.SetupAppRunningError=Das Setup hat entdeckt, dass {#Game} zur Zeit ausgeführt wird. Bitte schließen Sie jetzt alle laufenden Instanzen.
@@ -492,6 +500,7 @@ sv.SetupAppRunningError=Installationsprogrammet har upptäckt att {#Game} är ig
 [CustomMessages]
 nl.AddonHostProgramNotFound={#Game} kon niet worden gevonden in de geselecteerde map.
 en.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
+en_us.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
 en_speedrun.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
 fr.AddonHostProgramNotFound={#Game} n'a pas été trouvé dans le dossier que vous avez choisi.
 de.AddonHostProgramNotFound={#Game} konnte im ausgewählten Ordner nicht gefunden werden.
@@ -506,6 +515,7 @@ sv.AddonHostProgramNotFound={#Game} kunde inte hittas i katalogen du valde.
 
 nl.Installing=Installeren van %1
 en.Installing=Installing %1
+en_us.Installing=Installing %1
 en_speedrun.Installing=Installing %1
 fr.Installing=Installe %1
 de.Installing=Installation von %1
