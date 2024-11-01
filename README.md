@@ -17,7 +17,7 @@ There is no need to set any Windows compatibility settings.
 		- 2300-2400 (TCP and UDP)
 
 ## Features
-- Compatible with modern versions of Windows and Wine
+- Compatible with modern versions of Windows and Wine ([WineHQ](https://gitlab.winehq.org/wine/wine/-/wikis/Download#wine-binary-packages) binary packages are recommended)
 - No CD required
 - Multi-language support: English, Dutch, French, German, Italian, Polish, Portuguese, Portuguese (Brazil), Russian, Spanish, Spanish (Latin America), Swedish.
 - Re-enabled online multiplayer, play with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) [FkNetcode](https://worms2d.info/FkNetcode))
@@ -70,9 +70,10 @@ Join the [Worms 2 Discord](https://discord.gg/Tvs83972UD) to find players.
  - Do **not** set any compatibility settings on any of the game's files
  - Make sure only one copy of the game is installed to avoid it launching the wrong application
  - If using an old version of Windows, make sure to install updates before the patch.
+ - Wine users: make sure win-mono is installed. WineHQ binaries should prompt you for this when needed.
 
 ## Project Contributors
-Development was actively worked on with the following people:
+Carlmundo is the project lead but development was also actively worked on with the following people:
  - Dawid8 - Author of modules: fkMissions, fkSettings, fkWaterFix, wkBackflip, wkDLang, wkDNet. Implemented mod loader improvements, old weapon cheat code and real-time volume changing. Author of DW2SMT (allows custom languages).
  - FunkyFr3sh - Updates and implementation for cnc-ddraw that improved game rendering and online stability
  - 333networks / Darkelarious, Dark1, Dr.Flay - Server hosting
