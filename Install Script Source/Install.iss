@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.6.2.1a"
+#define AppVersion "1.6.2.2"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -123,11 +123,6 @@ Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
 ;Delete wkDLang for languages that do not require it
 Type: files; Name: "{app}\wkDLang.dll"; Languages: not pt and not ru
 Type: files; Name: "{app}\wkDLang.ini"; Languages: not pt and not ru
-;Delete blank music tracks from GOG/previous Plus installs
-Type: files; Name: "{app}\music\Track02.flac";
-Type: files; Name: "{app}\music\Track02.ogg";
-Type: files; Name: "{app}\music\Track10.flac"; Check: CheckSha1Match('{app}\Music\Track10.flac', '7d13d39e45e363976f8f677cf6fd2dd239793858');
-Type: files; Name: "{app}\music\Track10.ogg";
 ;Windows XP - Delete old FrontendKit Loader from previous installs to avoid conflict
 Type: files; Name: "{app}\wsock32.dll"; OnlyBelowVersion: 6.0; Check: CheckSha1Match('{app}\wsock32.dll', 'fd60ae836941e0f706b2245c32ce11a1d87a3aea');
 ;Delete Misc reg files from the root of the game folder 
