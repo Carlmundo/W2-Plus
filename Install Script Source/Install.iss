@@ -112,6 +112,9 @@ Source: "..\Patch\All Installs\Data\Wav\Speech\Hispanic\*"; DestDir: "{app}\Data
 Source: "..\Patch\All Installs\Data\Wav\Speech\Swedish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: sv
 ;wkBackflip, not enabled for Speedrun
 Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not en_speedrun
+;Schemes
+Source: "..\Patch\Schemes\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+
 
 [InstallDelete]
 ;Delete unneeded/conflicting files that may be present from previous installs
