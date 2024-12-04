@@ -74,7 +74,7 @@ Source: "..\Patch\Launcher-Simple\start.exe"; DestDir: "{app}\"; DestName: "GOGL
 ;Require Windows 10 or newer: fkDRP
 Source: "..\Patch\fkDRP\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 10.0
 ;For Wine - DirectPlay EXE/DLL files obtained from http://www.thehandofagony.com/alex/dll/dplaydlls-win98se.tar.bz2
-Source: "..\System Files for Wine\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
+Source: "..\Patch\WineSystem\*"; DestDir: "{sys}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
 
 ;Languages
 ;Generate all frontends using FrontendGen\Generate.bat and Resource Hacker
