@@ -1,4 +1,4 @@
-/Install Script Source/Output/*
+/Inno/Output/*
 # Copy LEVEL and MISSION folders from the game CD
 Patch/Base/Data/LEVEL/*
 Patch/Base/Data/MISSION/*
