@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.6.2.2"
+#define AppVersion "1.6.3"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -47,6 +47,8 @@ Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; F
 
 ;Patch files for All Installs - Place LEVEL and MISSION folders in the \Patch\All Installs\Data folder
 Source: "..\Patch\All Installs\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+;Extra Content
+Source: "..\Patch\ExtraContent\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 ;For Windows - Settings app
 ;.NETF 4.6.2 for Windows 8+
 Source: "..\Patch\Settings\settings.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.2;
@@ -104,7 +106,7 @@ Source: "..\Patch\All Installs\Data\Wav\Speech\French\*"; DestDir: "{app}\Data\W
 Source: "..\Patch\All Installs\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: de
 Source: "..\Patch\All Installs\Data\Wav\Speech\Italian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: it
 Source: "..\Patch\All Installs\Data\Wav\Speech\Polish-2\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pl
-Source: "..\Patch\All Installs\Data\Wav\Speech\Portuguese\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt
+Source: "..\Patch\ExtraContent\Data\Wav\Speech\Portuguese\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt
 Source: "..\Patch\All Installs\Data\Wav\Speech\BrazilPortugal\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt_br
 Source: "..\Patch\All Installs\Data\Wav\Speech\Russian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: ru
 Source: "..\Patch\All Installs\Data\Wav\Speech\Spanish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: es
