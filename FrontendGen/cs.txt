@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=    ..\Patch\Languages\English\frontend.exe
+SaveAs= ..\Patch\Languages\Czech\frontend.exe
+Log=    Logs\cs.log	
+[COMMANDS]
+-delete  STRINGTABLE,,2048
+-add     cs.res, STRINGTABLE
