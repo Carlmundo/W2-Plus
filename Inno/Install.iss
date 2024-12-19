@@ -539,5 +539,5 @@ Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; MinVersion: 6.2; OnlyBel
 Filename: "https://discord.gg/Tvs83972UD"; Description: "Worms 2 Discord"; MinVersion: 10.0; Flags: shellexec runasoriginaluser postinstall nowait unchecked
 
 ;Set non-Unicode Language to Polish
-Filename: powershell; Parameters: "-command Set-WinSystemLocale pl-PL"; MinVersion: 6.2; Languages: pl; Check: nonUnicodePolish(0); StatusMsg: "Setting language for non-Unicode applications..."
+Filename: powershell; Parameters: "-command Set-WinSystemLocale -SystemLocale pl-PL"; MinVersion: 6.2; Languages: pl; Check: nonUnicodePolish(0); StatusMsg: "Setting language for non-Unicode applications..."
 Filename: control; Parameters: "intl.cpl"; OnlyBelowVersion: 6.2; Languages: pl; Check: nonUnicodePolish(1); StatusMsg: "Setting language for non-Unicode applications..."
