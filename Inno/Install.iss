@@ -45,7 +45,7 @@ Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overw
 ;.NET Framework 4.6.2 for VLC Launcher & Settings app (Windows 8 to before Windows 10 Anniversary update)
 Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; MinVersion: 6.2; OnlyBelowVersion: 10.0.14393; Check: NETFramework46NotInstalled
 
-;Patch files for All Installs - Place LEVEL and MISSION folders in the \Patch\All Installs\Data folder
+;Patch files for All Installs - Place LEVEL and MISSION folders in the \Patch\Base\Data folder
 Source: "..\Patch\Base\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 ;Extra Content
 Source: "..\Patch\ExtraContent\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
@@ -78,6 +78,7 @@ Source: "..\Patch\WineSystem\*"; DestDir: "{sys}\"; Flags: ignoreversion recurse
 
 ;Languages
 ;Generate all frontends using FrontendGen\Generate.bat and Resource Hacker
+Source: "..\Patch\Languages\Czech\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs
 Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
 ; English is the frontend which all other languages have their frontend based on
 Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en en_us en_speedrun
@@ -92,31 +93,30 @@ Source: "..\Patch\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_419
 Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
 ; Languages powered by wkDLang uses the English version of worms2.exe
-Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru
-Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru
+Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
+Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
 ; Use the English "About" and Sound Bank translations (names.wdb) for custom languages
-Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru
-Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru
-;Install the default GFX.dir file for languages that are not Polish or Russian (in case they were previously installed)
-Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not pl and not ru
+Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
+Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
+;Install the default GFX.dir file for languages that are not Czech, Polish or Russian (in case they were previously installed)
+Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not cs and not pl and not ru
 ;Install "Default" soundbank that is native to the language
-Source: "..\Patch\All Installs\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en en_speedrun
-Source: "..\Patch\All Installs\Data\Wav\Speech\American\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en_us
-Source: "..\Patch\All Installs\Data\Wav\Speech\French\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: fr
-Source: "..\Patch\All Installs\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: de
-Source: "..\Patch\All Installs\Data\Wav\Speech\Italian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: it
-Source: "..\Patch\All Installs\Data\Wav\Speech\Polish-2\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pl
+Source: "..\Patch\ExtraContent\Data\Wav\Speech\Czech\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: cs
+Source: "..\Patch\Base\Data\Wav\Speech\Dutch\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: nl
+Source: "..\Patch\Base\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en en_speedrun
+Source: "..\Patch\Base\Data\Wav\Speech\American\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en_us
+Source: "..\Patch\Base\Data\Wav\Speech\French\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: fr
+Source: "..\Patch\Base\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: de
+Source: "..\Patch\Base\Data\Wav\Speech\Italian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: it
+Source: "..\Patch\Base\Data\Wav\Speech\Polish-2\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pl
 Source: "..\Patch\ExtraContent\Data\Wav\Speech\Portuguese\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt
-Source: "..\Patch\All Installs\Data\Wav\Speech\BrazilPortugal\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt_br
-Source: "..\Patch\All Installs\Data\Wav\Speech\Russian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: ru
-Source: "..\Patch\All Installs\Data\Wav\Speech\Spanish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: es
-Source: "..\Patch\All Installs\Data\Wav\Speech\Hispanic\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: es_419
-Source: "..\Patch\All Installs\Data\Wav\Speech\Swedish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: sv
+Source: "..\Patch\Base\Data\Wav\Speech\BrazilPortugal\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt_br
+Source: "..\Patch\Base\Data\Wav\Speech\Russian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: ru
+Source: "..\Patch\Base\Data\Wav\Speech\Spanish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: es
+Source: "..\Patch\Base\Data\Wav\Speech\Hispanic\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: es_419
+Source: "..\Patch\Base\Data\Wav\Speech\Swedish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: sv
 ;wkBackflip, not enabled for Speedrun
 Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not en_speedrun
-;Schemes
-Source: "..\Patch\Schemes\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
-
 
 [InstallDelete]
 ;Delete unneeded/conflicting files that may be present from previous installs
@@ -126,8 +126,8 @@ Type: files; Name: "{app}\wkWndMode.dll";
 Type: files; Name: "{app}\fkMissions.dll"; Languages: en_speedrun
 Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
 ;Delete wkDLang for languages that do not require it
-Type: files; Name: "{app}\wkDLang.dll"; Languages: not pt and not ru
-Type: files; Name: "{app}\wkDLang.ini"; Languages: not pt and not ru
+Type: files; Name: "{app}\wkDLang.dll"; Languages: not cs and not pt and not ru
+Type: files; Name: "{app}\wkDLang.ini"; Languages: not cs and not pt and not ru
 ;Windows XP - Delete old FrontendKit Loader from previous installs to avoid conflict
 Type: files; Name: "{app}\wsock32.dll"; OnlyBelowVersion: 6.0; Check: CheckSha1Match('{app}\wsock32.dll', 'fd60ae836941e0f706b2245c32ce11a1d87a3aea');
 ;Delete Misc reg files from the root of the game folder 
@@ -193,6 +193,7 @@ Type: files; Name: "{app}\Data\Wav\Speech\US Sports\oof3.wav";
 Type: files; Name: "{app}\Data\Wav\Speech\US Sports\uhoh.wav";
 
 [Languages]
+Name: "cs"; MessagesFile: "compiler:Languages\Czech.isl"
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
 Name: "en"; MessagesFile: "compiler:Default.isl"
 Name: "en_us"; MessagesFile: "Languages\EnglishUS.isl"
@@ -367,6 +368,47 @@ begin
     end;
   end;
 end;
+
+function nonUnicodeCzech(const legacy:integer): boolean;
+var msgNonUnicode : string;
+begin
+  if nonUnicode('0405') then
+  begin
+    {msgNonUnicode := 'In order for text to display correctly in the game menu, you need to change a system setting. \
+    "Language for non-Unicode programs" must be set to "Czech (Czech Republic)". \
+    This setting will apply to all non-Unicode programs.';}
+    msgNonUnicode := 'Aby se text zobrazoval v herním menu správně, bude potřeba změnit systémové nastavení. \
+"Jazyk pro programy nepodporující kód Unicode" musí být nastaven na "Čeština (Česko)". \
+Toto nastavení se projeví u všech programů nepodporujících Unicode.';
+    if legacy = 0 then
+    begin
+      {if MsgBox(msgNonUnicode + ' Should the installer make the changes automatically?', \}
+      if MsgBox(msgNonUnicode + ' Má instalátor provést tyto změny automaticky?', \
+        mbConfirmation, MB_YESNO) = IDYES then
+      begin
+        Result := True;
+      end;
+    end
+    else if legacy = 1 then
+    begin
+      MsgBox(msgNonUnicode, mbConfirmation, MB_OK);
+      {MsgBox('When the settings window appears: \
+      click the "Administrative" tab, \
+      find the "Language for non-Unicode programs" section \
+      and change the setting to "Czech (Czech Republic)". \
+      A restart of your computer will be required.', \
+      mbConfirmation, MB_OK);}
+      MsgBox('Až se objeví okno nastavení: \
+      klikněte na záložku "Správa", \
+      vyhledejte sekci "Jazyk pro programy nepodporující kód Unicode" \
+      a změňte nastavení na "Čeština (Česko)". \
+      Bude vyžadován restart počítače.', \
+      mbConfirmation, MB_OK);
+      Result := True;
+    end;
+  end;
+end;
+
 function nonUnicodePolish(const legacy:integer): boolean;
 var msgNonUnicode : string;
 begin
@@ -380,6 +422,7 @@ begin
     To ustawienie będzie miało zastosowanie do wszystkich programów nieobsługujących Unicode.';
     if legacy = 0 then
     begin
+      {if MsgBox(msgNonUnicode + ' Should the installer make the changes automatically?', \}
       if MsgBox(msgNonUnicode + ' Czy instalator ma nanieść zmiany automatycznie?', \
         mbConfirmation, MB_YESNO) = IDYES then
       begin
@@ -482,6 +525,7 @@ en_speedrun.SelectLanguageLabel=Select the language for {#AppName}
 en_speedrun.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
 en_speedrun.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
 en_speedrun.FinishedHeadingLabel=Patch Complete
+cs.SetupAppRunningError=Instalátor detekoval, že hra {#Game} je momentálně spuštěna. Prosím ukončete hru před instalací patche.
 nl.SetupAppRunningError=Setup heeft vastgesteld dat {#Game} op dit moment actief is. Sluit alle vensters hiervan.
 en.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
 en_us.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
@@ -498,6 +542,7 @@ es_419.SetupAppRunningError=El programa de instalación ha detectado que {#Game}
 sv.SetupAppRunningError=Installationsprogrammet har upptäckt att {#Game} är igång. Avsluta det angivna programmet nu.
 
 [CustomMessages]
+cs.AddonHostProgramNotFound=Hru {#Game} se nepodařilo nalézt ve složce, kterou jste vybral. Pokud je to správná složka, prosím zkuste přeinstalovat hru.
 nl.AddonHostProgramNotFound={#Game} kon niet worden gevonden in de geselecteerde map.
 en.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
 en_us.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
@@ -513,6 +558,7 @@ es.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta selecci
 es_419.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta seleccionada.
 sv.AddonHostProgramNotFound={#Game} kunde inte hittas i katalogen du valde.
 
+cs.Installing=Instaluji %1
 nl.Installing=Installeren van %1
 en.Installing=Installing %1
 en_us.Installing=Installing %1
@@ -538,6 +584,9 @@ Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; MinVersion: 6.2; OnlyBel
 ;Discord link
 Filename: "https://discord.gg/Tvs83972UD"; Description: "Worms 2 Discord"; MinVersion: 10.0; Flags: shellexec runasoriginaluser postinstall nowait unchecked
 
+;Set non-Unicode Language to Czech
+Filename: powershell; Parameters: "-command Set-WinSystemLocale -SystemLocale cs-CZ"; MinVersion: 6.2; Languages: cs; Check: nonUnicodeCzech(0); StatusMsg: "Setting language for non-Unicode applications..."
+Filename: control; Parameters: "intl.cpl"; OnlyBelowVersion: 6.2; Languages: cs; Check: nonUnicodeCzech(1); StatusMsg: "Setting language for non-Unicode applications..."
 ;Set non-Unicode Language to Polish
 Filename: powershell; Parameters: "-command Set-WinSystemLocale -SystemLocale pl-PL"; MinVersion: 6.2; Languages: pl; Check: nonUnicodePolish(0); StatusMsg: "Setting language for non-Unicode applications..."
 Filename: control; Parameters: "intl.cpl"; OnlyBelowVersion: 6.2; Languages: pl; Check: nonUnicodePolish(1); StatusMsg: "Setting language for non-Unicode applications..."
