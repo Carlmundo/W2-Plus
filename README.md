@@ -19,7 +19,7 @@ There is no need to set any Windows compatibility settings.
 ## Features
 - Compatible with modern versions of Windows and Wine ([WineHQ](https://gitlab.winehq.org/wine/wine/-/wikis/Download#wine-binary-packages) binary packages are recommended)
 - No CD required
-- Multi-language support: English, Dutch, French, German, Italian, Polish, Portuguese, Portuguese (Brazil), Russian, Spanish, Spanish (Latin America), Swedish.
+- Multi-language support: English, Czech, Dutch, French, German, Italian, Polish, Portuguese, Portuguese (Brazil), Russian, Spanish, Spanish (Latin America), Swedish.
 - Re-enabled online multiplayer, play with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) [FkNetcode](https://worms2d.info/FkNetcode))
 - LAN play restored with support for virtual private networks (via [IPXWrapper](https://github.com/solemnwarning/ipxwrapper) & [wkDNet](https://github.com/Dawid8plc/wkDNet))
 - Backflip is now permanently enabled in-game and works online (double tap the Backspace key)
@@ -27,6 +27,8 @@ There is no need to set any Windows compatibility settings.
 - Settings app for configuring advanced video options (found in game options)
 	- You can press Ctrl+G in-game to unlock the cursor from the window
 - New launcher to play the intro videos, upscaled and in higher quality
+- Increased limits of options and weapons schemes
+- Infinite rope swings (set repeat swings to -1 in Options)
 - Improved soundtrack quality (vs GOG version) with FLAC audio in-game
 - Mission select for single player to resume progress and play previously completed missions (via [fkMissions](https://github.com/Dawid8plc/fkMissions))
 - In-game music volume can be set via the restored audio mixer button in Audio options
@@ -34,10 +36,10 @@ There is no need to set any Windows compatibility settings.
 	- Worms: The Directors Cut, named as "Classic - Director's Cut" (conversion by Squirminator2k, voiced by Andy Davidson)
 	- Worms 2: Regional exclusives - Polish-2 (also from WWP Poland CD), Russian (also from W:A)
 	- Online Worms: Japanese, Korean
-	- Worms Armageddon: Brummie, Cad, Cyberworms, Drill Sergeant, Finnish, Formula One, Geezer, Irish, Jock, Kidz, Polish, Rasta, Redneck, Rushki, Russian, Stooges, Team 17 Test, The Raj, Thespian, US Sports, Whoopsie
-	- Worms World Party: Danish-2, Dutch-2, French-2, Italian-2, Spanish-2, Swedish-2, Korean-2 (from South Korea CD)
+	- Worms Armageddon: Brummie, Cad, Cyberworms, Czech (Czech Republic CD), Drill Sergeant, Finnish, Formula One, Geezer, Irish, Jock, Kidz, Polish, Rasta, Redneck, Rushki, Russian, Stooges, Team 17 Test, The Raj, Thespian, US Sports, Whoopsie
+	- Worms World Party: Danish-2, Dutch-2, French-2, Italian-2, Spanish-2, Swedish-2, Korean-2 (South Korea CD)
 	- Worms World Party Aqua - 6 Korean Soundbanks
-- Ported over enhancements from [Des patch](https://worms2d.info/Des_patch)
+- Ported over enhancements from [Des/S*natch patch](https://worms2d.info/Des_patch)
 	- Frontend
 		- Minimize or exit from anywhere
 		- See your game password as you type it
@@ -46,9 +48,6 @@ There is no need to set any Windows compatibility settings.
 		- Stop repositioning the window when going back to the main menu
 		- Additional flags for online - Pirate & Team 17
 		- Unlock classic Worms terrain options without using the "OSSETT" cheat
-		- Enable ability to kick teams
-		- Flexible weapon editor
-		- Flexible option editor
 	- In-Game	
 		- Ninja Rope Glitch Fixes 1-4
 		- Remove Replay screen corners (to be compatible with borderless windowed mode)
@@ -56,6 +55,7 @@ There is no need to set any Windows compatibility settings.
 - Mutes the clicking sound when you type
 - Changed the all weapons team name cheat back to "TEAM17MicroProse"
 - Improved Frontend clarity and DPI scaling
+- Support for more characters from other languages 
 - Fixed the water selection in the frontend (via [fkWaterFix](https://github.com/Dawid8plc/fkWaterFix))
 - Updated the Soundbank Editor with a working version
 - Portuguese soundbank
@@ -74,11 +74,12 @@ Join the [Worms 2 Discord](https://discord.gg/Tvs83972UD) to find players.
 
 ## Project Contributors
 Carlmundo is the project lead but development was also actively worked on with the following people:
- - Dawid8 - Author of modules: fkMissions, fkSettings, fkWaterFix, wkBackflip, wkDLang, wkDNet. Implemented mod loader improvements, old weapon cheat code and real-time volume changing. Author of DW2SMT (allows custom languages).
+ - Dawid8 - Author of modules: fkMissions, fkSettings, fkWaterFix, wkBackflip, wkDLang, wkDNet. Implemented mod loader improvements, old weapon cheat code and real-time volume changing. Author of tools: DW2SMT, W2TerrainConvert.
  - FunkyFr3sh - Updates and implementation for cnc-ddraw that improved game rendering and online stability
  - 333networks / Darkelarious, Dark1, Dr.Flay - Server hosting
  - Frag-Net / eukara - Server hosting
- - Rúben Fernandes (rubinho146) - Portuguese translations, Portuguese soundbank director
+ - Rúben Fernandes (rubinho146) - Portuguese translation, Portuguese soundbank director
  - Ana Martins (GoRobotnikGo) - Portuguese soundbank voice actor
+ - JPEXS - Czech translation
 
 Open source software used is credited under "Features".
