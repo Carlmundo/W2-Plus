@@ -583,6 +583,8 @@ Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "
 Filename: {tmp}\dotnetfx3.exe; Parameters: "/quiet /norestart"; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled; StatusMsg: "{cm:Installing,.NET Framework 3}..."
 ;Install .NET Framework 4.6.2 (Windows 8 to before Windows 10 Anniversary update)
 Filename: {tmp}\ndp462-kb3151800-x86-x64-allos-enu.exe; MinVersion: 6.2; OnlyBelowVersion: 10.0.14393; StatusMsg: "{cm:Installing,.NET Framework 4.6.2}..."; Check: NETFramework46NotInstalled;
+;Set recommended resolution
+Filename: {app}\settings.exe; Parameters: "/setrec";
 ;Discord link
 Filename: "https://discord.gg/Tvs83972UD"; Description: "Worms 2 Discord"; MinVersion: 10.0; Flags: shellexec runasoriginaluser postinstall nowait unchecked
 
