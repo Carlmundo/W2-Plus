@@ -38,10 +38,12 @@ MinVersion=0,5.1sp3
 
 [Files]
 ;Redistributables
-;C++ 2015 (and up to 2022) used by modules (Windows 7+)
+;C++ 2015-2022 used by modules (Windows 7+)
 Source: "..\Redist\vc_redist.x86.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; MinVersion: 6.1;
-;C++ 2015 last supported version for XP/Vista
-Source: "..\Redist\vc_redist.x86_legacy.exe"; DestDir: "{tmp}\"; DestName: "vc_redist.x86.exe"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 6.1;
+;C++ 2015-2022 last(?) supported version for Vista - 14.31.30818
+Source: "..\Redist\vc_redist.x86_vista.exe"; DestDir: "{tmp}\"; DestName: "vc_redist.x86.exe"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 6.1; MinVersion: 6.0;
+;C++ 2015-2019 last supported version for XP - 14.28.29213 
+Source: "..\Redist\vc_redist.x86_xp.exe"; DestDir: "{tmp}\"; DestName: "vc_redist.x86.exe"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 6.0;
 ;.NET Framework 3.0 for Windows XP only (already included in Vista and later) - used by start.exe launcher 
 Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled
 ;.NET Framework 4.6.2 for VLC Launcher & Settings app (Windows 8 to before Windows 10 Anniversary update)
