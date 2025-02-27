@@ -193,6 +193,8 @@ Type: files; Name: "{app}\Data\Wav\Speech\US Sports\oof1.wav";
 Type: files; Name: "{app}\Data\Wav\Speech\US Sports\oof2.wav";
 Type: files; Name: "{app}\Data\Wav\Speech\US Sports\oof3.wav";
 Type: files; Name: "{app}\Data\Wav\Speech\US Sports\uhoh.wav";
+;Remove old IPX Address Book
+Type: files; Name: "{app}\ipxaddress.exe";
 
 [Languages]
 Name: "cs"; MessagesFile: "compiler:Languages\Czech.isl"
