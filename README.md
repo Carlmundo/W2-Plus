@@ -10,11 +10,9 @@ There is no need to set any Windows compatibility settings.
 - Launch the game by running either:
 	- start.exe or frontend.exe (to skip intro videos) from the game's installed folder
 	- Desktop shortcuts if checked on install
-- Online Play:
-	- IPX - works without port forwarding. By default, this uses servers but you can also use your own LAN or VPN.
-	- TCP - all players need to set up [Port Forwarding](https://portforward.com/router.htm) on their router with the following ports:
-		- 47624 (TCP)
-		- 2300-2400 (TCP and UDP)
+- Network Play:
+	- TCP - Play online without port forwarding
+	- IPX - Play over LAN or VPN
 
 ## Features
 - Compatible with modern versions of Windows and Wine ([WineHQ](https://gitlab.winehq.org/wine/wine/-/wikis/Download#wine-binary-packages) binary packages are recommended)
@@ -74,7 +72,7 @@ Join the [Worms 2 Discord](https://discord.gg/Tvs83972UD) to find players.
 
 ## Project Contributors
 Carlmundo is the project lead but development was also actively worked on with the following people:
- - Dawid8 - Author of modules: fkMissions, fkSettings, fkWaterFix, wkBackflip, wkDLang, wkDNet. Implemented mod loader improvements, old weapon cheat code and real-time volume changing. Author of tools: DW2SMT, W2TerrainConvert.
+ - Dawid8 - Author of modules: fkMissions, fkSettings, fkWaterFix, fkWorm2NAT, wkBackflip, wkDLang, wkDNet. Implemented mod loader improvements, old weapon cheat code and real-time volume changing. Author of tools: DW2SMT, W2TerrainConvert, Worm2NAT Relay Server.
  - FunkyFr3sh - Updates and implementation for cnc-ddraw that improved game rendering and online stability
  - 333networks / Darkelarious, Dark1, Dr.Flay - Server hosting
  - Frag-Net / eukara - Server hosting
