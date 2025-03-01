@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.6.3"
+#define AppVersion "1.7"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -38,7 +38,7 @@ MinVersion=0,5.1sp3
 
 [Files]
 ;Redistributables
-;C++ 2015-2022 used by modules (Windows 7+)
+;C++ 2015-2022 used by modules (Windows 7+) - 14.42.34438
 Source: "..\Redist\vc_redist.x86.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; MinVersion: 6.1;
 ;C++ 2015-2022 last(?) supported version for Vista - 14.31.30818
 Source: "..\Redist\vc_redist.x86_vista.exe"; DestDir: "{tmp}\"; DestName: "vc_redist.x86.exe"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 6.1; MinVersion: 6.0;
