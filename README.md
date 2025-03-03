@@ -37,7 +37,10 @@ There is no need to set any Windows compatibility settings.
 	- Worms Armageddon: Brummie, Cad, Cyberworms, Czech (Czech Republic CD), Drill Sergeant, Finnish, Formula One, Geezer, Irish, Jock, Kidz, Polish, Rasta, Redneck, Rushki, Russian, Stooges, Team 17 Test, The Raj, Thespian, US Sports, Whoopsie
 	- Worms World Party: Danish-2, Dutch-2, French-2, Italian-2, Spanish-2, Swedish-2, Korean-2 (South Korea CD)
 	- Worms World Party Aqua - 6 Korean Soundbanks
-- Added all terrains from Worms Armageddon and Worms World Party
+- Added terrains from other classic Worms releases:
+	- Worms (& Reinforcements/United) (Ported to W:A by CarmineLynx)
+	- Worms Armageddon
+	- Worms Armageddon & Worms World Party (PlayStation & Dreamcast)
 - New Water colour: Oil Black
 - Ported over enhancements from [Des/S*natch patch](https://worms2d.info/Des_patch)
 	- Frontend
