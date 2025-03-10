@@ -38,7 +38,7 @@ There is no need to set any Windows compatibility settings.
 	- Worms World Party: Danish-2, Dutch-2, French-2, Italian-2, Spanish-2, Swedish-2, Korean-2 (South Korea CD)
 	- Worms World Party Aqua - 6 Korean Soundbanks
 - Added terrains from other classic Worms releases:
-	- Worms (& Reinforcements/United) (Ported to W:A by CarmineLynx)
+	- Worms (& Reinforcements/United) (originally ported to W:A by CarmineLynx)
 	- Worms Armageddon
 	- Worms Armageddon & Worms World Party (PlayStation & Dreamcast)
 - New Water colour: Oil Black
