@@ -74,6 +74,8 @@ Join the [Worms 2 Discord](https://discord.gg/Tvs83972UD) to find players.
  - Make sure only one copy of the game is installed to avoid it launching the wrong application
  - If using an old version of Windows, make sure to install updates before the patch.
  - Wine users: make sure win-mono is installed. WineHQ binaries should prompt you for this when needed.
+ - Modified Windows users: try enabling DirectPlay manually by running the following command as administrator.  
+```dism /online /Enable-Feature /FeatureName:DirectPlay```
 
 ## Project Contributors
 Carlmundo is the project lead but development was also actively worked on with the following people:
