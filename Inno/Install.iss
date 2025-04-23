@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.7"
+#define AppVersion "1.7.0.1"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -195,6 +195,7 @@ Type: files; Name: "{app}\Data\Wav\Speech\US Sports\oof3.wav";
 Type: files; Name: "{app}\Data\Wav\Speech\US Sports\uhoh.wav";
 ;Remove old IPX Address Book
 Type: files; Name: "{app}\ipxaddress.exe";
+Type: files; Name: "{app}\Teams\IPX.dat";
 
 [Languages]
 Name: "cs"; MessagesFile: "compiler:Languages\Czech.isl"
