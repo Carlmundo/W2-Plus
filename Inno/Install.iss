@@ -65,8 +65,8 @@ Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recurse
 Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkWaterFix
 Source: "..\Patch\fkWaterFix\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
-;Require Windows 7 or newer: Upscaled videos and VLC launcher. Also overwrite the GOGLauncher if it exists.
-Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1; Check: not IsWine();
+;Require Windows 8 or newer: Upscaled videos and VLC launcher. Also overwrite the GOGLauncher if it exists.
+Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.2; Check: not IsWine();
 Source: "..\Patch\Videos\Upscaled\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1; Check: not IsWine();
 ;or for lower than Windows 7, use the original videos (with improved quality). Also overwrite the GOGLauncher if it exists.
 Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1; Check: not IsWine();
