@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=    ..\Patch\Languages\English\frontend.exe
+SaveAs= "..\Patch\Languages\Chinese (Simplified)\frontend.exe"
+Log=	Logs\zh-Hans.log	
+[COMMANDS]
+-delete  STRINGTABLE,,2048
+-add     zh-Hans.res, STRINGTABLE

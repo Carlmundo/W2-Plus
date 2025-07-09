@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.7.0.1"
+#define AppVersion "1.7.0.2"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -68,8 +68,8 @@ Source: "..\Patch\fkWaterFix\*"; DestDir: "{app}\"; Flags: ignoreversion recurse
 ;Require Windows 8 or newer: Upscaled videos and VLC launcher. Also overwrite the GOGLauncher if it exists.
 Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.2; Check: not IsWine();
 Source: "..\Patch\Videos\Upscaled\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.1; Check: not IsWine();
-;or for lower than Windows 7, use the original videos (with improved quality). Also overwrite the GOGLauncher if it exists.
-Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1; Check: not IsWine();
+;or for lower than Windows 8, use the original videos (with improved quality). Also overwrite the GOGLauncher if it exists.
+Source: "..\Patch\Videos\Original\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.2; Check: not IsWine();
 Source: "..\Patch\Videos\Original\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.1; Check: not IsWine();
 ;Wine: just copy over the simple redirecting launchers
 Source: "..\Patch\Launcher-Simple\start.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Check: IsWine();
@@ -82,6 +82,7 @@ Source: "..\Patch\WineSystem\*"; DestDir: "{sys}\"; Flags: ignoreversion recurse
 
 ;Languages
 ;Generate all frontends using FrontendGen\Generate.bat and Resource Hacker
+Source: "..\Patch\Languages\Chinese (Simplified)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: zh_Hans
 Source: "..\Patch\Languages\Czech\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs
 Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
 ; English is the frontend which all other languages have their frontend based on
@@ -96,18 +97,19 @@ Source: "..\Patch\Languages\Russian\*"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
 Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_419
 Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
-; Languages powered by wkDLang uses the English version of worms2.exe
+
 Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
-Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
+; Languages powered by wkDLang (and S-Chinese) use the English version of worms2.exe
+Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
 ; Use the English "About" and Sound Bank translations (names.wdb) for custom languages
-Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
-Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
+Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
+Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
 ;Install the default GFX.dir file for languages that are not Czech, Polish or Russian (in case they were previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not cs and not pl and not ru
-;Install "Default" soundbank that is native to the language
+;Install "Default" soundbank that is (usually) native to the language
 Source: "..\Patch\ExtraContent\Data\Wav\Speech\Czech\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: cs
 Source: "..\Patch\Base\Data\Wav\Speech\Dutch\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: nl
-Source: "..\Patch\Base\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en en_speedrun
+Source: "..\Patch\Base\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en en_speedrun zh_Hans
 Source: "..\Patch\Base\Data\Wav\Speech\American\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en_us
 Source: "..\Patch\Base\Data\Wav\Speech\French\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: fr
 Source: "..\Patch\Base\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: de
@@ -198,6 +200,7 @@ Type: files; Name: "{app}\ipxaddress.exe";
 Type: files; Name: "{app}\Teams\IPX.dat";
 
 [Languages]
+Name: "zh_Hans"; MessagesFile: "Languages\ChineseSimplified.isl"
 Name: "cs"; MessagesFile: "compiler:Languages\Czech.isl"
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
 Name: "en"; MessagesFile: "compiler:Default.isl"
@@ -521,6 +524,12 @@ en_speedrun.SelectLanguageLabel=Select the language for {#AppName}
 en_speedrun.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
 en_speedrun.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
 en_speedrun.FinishedHeadingLabel=Patch Complete
+zh_Hans.SelectLanguageTitle=选择语言
+zh_Hans.SelectLanguageLabel=为{#AppName}选择语言
+zh_Hans.SelectDirLabel3=安装程序将尝试检测{#Game}的安装位置。
+zh_Hans.SelectDirBrowseLabel=如果未检测到安装位置，请点击"浏览"指定文件夹。
+zh_Hans.FinishedHeadingLabel=补丁完成
+
 cs.SetupAppRunningError=Instalátor detekoval, že hra {#Game} je momentálně spuštěna. Prosím ukončete hru před instalací patche.
 nl.SetupAppRunningError=Setup heeft vastgesteld dat {#Game} op dit moment actief is. Sluit alle vensters hiervan.
 en.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
@@ -553,6 +562,7 @@ ru.AddonHostProgramNotFound={#Game} не найден в указанной ва
 es.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta seleccionada.
 es_419.AddonHostProgramNotFound={#Game} no pudo ser localizado en la carpeta seleccionada.
 sv.AddonHostProgramNotFound={#Game} kunde inte hittas i katalogen du valde.
+zh_Hans.AddonHostProgramNotFound=在您选择的文件夹中未找到{#Game}。如果这是正确的文件夹，请尝试重新安装游戏。
 
 cs.Installing=Instaluji %1
 nl.Installing=Installeren van %1
@@ -569,6 +579,7 @@ ru.Installing=Установка %1
 es.Installing=Instalando %1
 es_419.Installing=Instalando %1
 sv.Installing=Installerar %1
+zh_Hans.Installing=正在安装%1
  
 [Run] 
 ;Install C++ 2015 Redist

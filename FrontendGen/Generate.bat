@@ -23,14 +23,16 @@ set lang[10,code]=pt
 set lang[10,name]=Portuguese
 set lang[11,code]=cs
 set lang[11,name]=Czech
+set lang[12,code]=zh-Hans
+set lang[12,name]=Chinese (Simplified)
 
 echo Deleting existing translated frontends...
 echo.
-for /L %%i in (0,1,11) do call del "..\Patch\Languages\%%lang[%%i,name]%%\frontend.exe" /s
+for /L %%i in (0,1,12) do call del "..\Patch\Languages\%%lang[%%i,name]%%\frontend.exe" /s
 
 echo.
 echo Writing new frontends...
 set rh="D:\Apps\Resource Hacker\ResourceHacker.exe"
-for /L %%i in (0,1,11) do call %rh% -script "%%lang[%%i,code]%%.txt"
-for /L %%i in (0,1,11) do call find "Success!" "Logs\%%lang[%%i,code]%%.log" /c
+for /L %%i in (0,1,12) do call %rh% -script "%%lang[%%i,code]%%.txt"
+for /L %%i in (0,1,12) do call find "Success!" "Logs\%%lang[%%i,code]%%.log" /c
 pause
