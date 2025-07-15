@@ -545,6 +545,7 @@ ru.SetupAppRunningError=Обнаружен запущенный экземпля
 es.SetupAppRunningError=El programa de instalación ha detectado que {#Game} está ejecutándose. Por favor, ciérrelo ahora.
 es_419.SetupAppRunningError=El programa de instalación ha detectado que {#Game} está ejecutándose. Por favor, ciérrelo ahora. 
 sv.SetupAppRunningError=Installationsprogrammet har upptäckt att {#Game} är igång. Avsluta det angivna programmet nu.
+zh_Hans.SetupAppRunningError=安装程序检测到游戏正在运行。 请先关闭游戏再安装补丁。
 
 [CustomMessages]
 cs.AddonHostProgramNotFound=Hru {#Game} se nepodařilo nalézt ve složce, kterou jste vybral. Pokud je to správná složka, prosím zkuste přeinstalovat hru.
@@ -581,7 +582,9 @@ es_419.Installing=Instalando %1
 sv.Installing=Installerar %1
 zh_Hans.Installing=正在安装%1
  
-[Run] 
+[Run]
+;Enable DirectPlay (Windows 8+)
+Filename: dism; Parameters: "/online /Enable-Feature /FeatureName:DirectPlay /Quiet /NoRestart"; MinVersion: 6.2; StatusMsg: "Enabling DirectPlay..."; Flags: runhidden
 ;Install C++ 2015 Redist
 Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "{cm:Installing,C++ 2015 Redist}..."
 ;Install .NET Framework 3.0 (Windows XP only)
