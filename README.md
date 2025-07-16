@@ -17,7 +17,7 @@ There is no need to set any Windows compatibility settings.
 ## Features
 - Compatible with modern versions of Windows and Wine ([WineHQ](https://gitlab.winehq.org/wine/wine/-/wikis/Download#wine-binary-packages) binary packages are recommended)
 - No CD required
-- Multi-language support: English, Czech, Dutch, French, German, Italian, Polish, Portuguese, Portuguese (Brazil), Russian, Spanish, Spanish (Latin America), Swedish.
+- Multi-language support: English, Czech, Dutch, French, German, Italian, Polish, Portuguese, Portuguese (Brazil), Russian, Spanish, Spanish (Latin America), Swedish. Chinese (Simplified) is also supported for the frontend only.
 - Re-enabled online multiplayer, play with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) [FkNetcode](https://worms2d.info/FkNetcode))
 - LAN play restored with support for virtual private networks (via [IPXWrapper](https://github.com/solemnwarning/ipxwrapper) & [wkDNet](https://github.com/Dawid8plc/wkDNet))
 - Backflip is now permanently enabled in-game and works online (double tap the Backspace key)
@@ -39,6 +39,7 @@ There is no need to set any Windows compatibility settings.
 	- Worms World Party Aqua - 6 Korean Soundbanks
 - Added terrains from other classic Worms releases:
 	- Worms (& Reinforcements/United) (originally ported to W:A by CarmineLynx)
+	- Worms Online
 	- Worms Armageddon
 	- Worms Armageddon & Worms World Party (PlayStation & Dreamcast)
 - New Water colour: Oil Black
@@ -74,8 +75,6 @@ Join the [Worms 2 Discord](https://discord.gg/Tvs83972UD) to find players.
  - Make sure only one copy of the game is installed to avoid it launching the wrong application
  - If using an old version of Windows, make sure to install updates before the patch.
  - Wine users: make sure win-mono is installed. WineHQ binaries should prompt you for this when needed.
- - Modified Windows users: try enabling DirectPlay manually by running the following command as administrator.  
-```dism /online /Enable-Feature /FeatureName:DirectPlay```
 
 ## Project Contributors
 Carlmundo is the project lead but development was also actively worked on with the following people:
@@ -86,5 +85,11 @@ Carlmundo is the project lead but development was also actively worked on with t
  - Rúben Fernandes (rubinho146) - Portuguese translation, Portuguese soundbank director
  - Ana Martins (GoRobotnikGo) - Portuguese soundbank voice actor
  - JPEXS - Czech translation
+ - 萌の少年@Bilibili - Chinese (Simplified) translation
 
 Open source software used is credited under "Features".
+
+## Related Projects
+[CTerrain](https://github.com/Carlmundo/CTerrain) - Play colour maps from other Worms releases or import your own from W2ColormapGen
+[W2ColormapGen](https://github.com/Dawid8plc/W2ColormapGen) - Generate colour maps
+[DW2SMT](https://github.com/Dawid8plc/DW2SMT) - Create your own translation (get in touch if you do!)
