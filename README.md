@@ -90,6 +90,6 @@ Carlmundo is the project lead but development was also actively worked on with t
 Open source software used is credited under "Features".
 
 ## Related Projects
-[CTerrain](https://github.com/Carlmundo/CTerrain) - Play colour maps from other Worms releases or import your own from W2ColormapGen
-[W2ColormapGen](https://github.com/Dawid8plc/W2ColormapGen) - Generate colour maps
-[DW2SMT](https://github.com/Dawid8plc/DW2SMT) - Create your own translation (get in touch if you do!)
+- [CTerrain](https://github.com/Carlmundo/CTerrain) - Play colour maps from other Worms releases or import your own from W2ColormapGen
+- [W2ColormapGen](https://github.com/Dawid8plc/W2ColormapGen) - Generate colour maps
+- [DW2SMT](https://github.com/Dawid8plc/DW2SMT) - Create your own translation (get in touch if you do!)
