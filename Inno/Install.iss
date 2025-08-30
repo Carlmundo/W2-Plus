@@ -498,7 +498,7 @@ function NextButtonClick(PageId: Integer): Boolean;
 begin
     Result := True;
     if (PageId = wpSelectDir) then begin
-      if (not FileExists(ExpandConstant('{app}\{#AppProcess2}'))) then begin
+      if (not FileExists(ExpandConstant('{app}\{#AppProcess1}'))) then begin
         MsgBox(ExpandConstant('{cm:AddonHostProgramNotFound}'), mbError, MB_OK);
         Result := False;
       end
