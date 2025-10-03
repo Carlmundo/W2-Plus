@@ -29,7 +29,7 @@ There is no need to set any Windows compatibility settings.
 - Infinite rope swings (set repeat swings to -1 in Options)
 - Improved soundtrack quality (vs GOG version) with FLAC audio in-game
 - Mission select for single player to resume progress and play previously completed missions (via [fkMissions](https://github.com/Dawid8plc/fkMissions))
-- In-game music volume can be set via the restored audio mixer button in Audio options
+- In-game music and sound effect volume can be set via the restored audio mixer button in Audio options (via [W2-DSound](https://github.com/Dawid8plc/W2-DSound), [ZPlayMM-FLAC](https://github.com/Carlmundo/ZPlayMM-FLAC) & [Worms2-Volume](https://github.com/Carlmundo/Worms2-Volume))
 - Added soundbanks from other classic Worms releases:
 	- Worms: The Directors Cut, named as "Classic - Director's Cut" (conversion by Squirminator2k, voiced by Andy Davidson)
 	- Worms 2: Regional exclusives - Polish-2 (also from WWP Poland CD), Russian (also from W:A)
