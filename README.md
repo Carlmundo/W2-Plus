@@ -55,11 +55,12 @@ There is no need to set any Windows compatibility settings.
 	- In-Game	
 		- Ninja Rope Glitch Fixes 1-4
 		- Remove Replay screen corners (to be compatible with borderless windowed mode)
+- Game can now handle intense explosions caused by extended weapon options (via wkHighMem)
 - Discord Rich Presence to show whether you're in the menus or in-game
 - Mutes the clicking sound when you type
 - Changed the all weapons team name cheat back to "TEAM17MicroProse"
 - Improved Frontend clarity and DPI scaling
-- Support for more characters from other languages 
+- Supports more text characters from other languages
 - Fixed the water selection in the frontend (via [fkWaterFix](https://github.com/Dawid8plc/fkWaterFix))
 - Updated the Soundbank Editor with a working version
 - Portuguese soundbank
@@ -78,10 +79,11 @@ Join the [Worms 2 Discord](https://discord.gg/Tvs83972UD) to find players.
 
 ## Project Contributors
 Carlmundo is the project lead but development was also actively worked on with the following people:
- - Dawid8 - Author of modules: fkMissions, fkSettings, fkWaterFix, fkWorm2NAT, wkBackflip, wkDLang, wkDNet. Implemented mod loader improvements, old weapon cheat code and real-time volume changing. Author of tools: DW2SMT, W2TerrainConvert, Worm2NAT Relay Server.
+ - Dawid8 - Author of modules: fkMissions, fkSettings, fkWaterFix, fkWorm2NAT, wkBackflip, wkDLang, wkDNet, wkHighMem. Implemented mod loader improvements, old weapon cheat code and real-time volume changing. Author of tools: DW2SMT, W2TerrainConvert, Worm2NAT Relay Server.
  - FunkyFr3sh - Updates and implementation for cnc-ddraw that improved game rendering and online stability
  - 333networks / Darkelarious, Dark1, Dr.Flay - Server hosting
  - Frag-Net / eukara - Server hosting
+ - Toby Ellis - Consultant, Discord Community Manager
  - Rúben Fernandes (rubinho146) - Portuguese translation, Portuguese soundbank director
  - Ana Martins (GoRobotnikGo) - Portuguese soundbank voice actor
  - JPEXS - Czech translation
