@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.7.0.4"
+#define AppVersion "1.7.0.5"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -7,8 +7,6 @@
 #define RegPathCU2 "Software\Team17SoftwareLTD\frontend\Worms2"
 #define RegPathLM1 "Software\GOG.com\GOGWORMS2"
 #define RegPathLM2 "Software\Microsoft\DirectPlay\Applications\worms2"
-#define RegPathIPX1 "SOFTWARE\Microsoft\DirectPlay\Service Providers\IPX Connection For DirectPlay"
-#define RegPathIPX2 "SOFTWARE\Microsoft\DirectPlay\Services\{{5146ab8cb6b1ce11920c00aa006c4972}"
 #define RegPathWine "SOFTWARE\Wine"
 
 [Setup]
@@ -198,6 +196,8 @@ Type: files; Name: "{app}\Data\Wav\Speech\US Sports\uhoh.wav";
 ;Remove old IPX Address Book
 Type: files; Name: "{app}\ipxaddress.exe";
 Type: files; Name: "{app}\Teams\IPX.dat";
+;Remove IPXWrapper ini override
+Type: files; Name: "{app}\ipxwrapper.ini";
 
 [Languages]
 Name: "zh_Hans"; MessagesFile: "Languages\ChineseSimplified.isl"
@@ -234,12 +234,14 @@ Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; Val
 Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "VideoSetting"; ValueData: 5
 ;Set default connection to TCP
 Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "Connection"; ValueData: 1
-;Functionality
+;DirectPlay
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: none; ValueName: "CommandLine"
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "CurrentDirectory"; ValueData: "{app}"
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "File"; ValueData: "worms2.exe"
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Guid"; ValueData: "{{DF394860-E19E-11D0-805F-444553540000}"
 Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Path"; ValueData: "{app}"
+;Force IPXWrapper to disable logging
+Root: HKCU; Subkey: "SOFTWARE\IPXWrapper"; ValueType: dword; ValueName: "log_level"; ValueData: 7
 ;Force Game DPI Scaling to be performed by Application, not Windows
 Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0
 Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0; Check: IsWin64
@@ -250,18 +252,6 @@ Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFla
 Root: HKLM32; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "HIGHDPIAWARE DisableNXShowUI "; MinVersion: 6.0; Check: not IsWin64
 Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "DisableNXShowUI "; OnlyBelowVersion: 6.0; Check: IsWin64
 Root: HKLM32; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "DisableNXShowUI "; OnlyBelowVersion: 6.0; Check: not IsWin64
-
-;IPX
-Root: HKLM32; Subkey: "{#RegPathIPX1}"; ValueType: dword; ValueName: "dwReserved1"; ValueData: 32;
-Root: HKLM32; Subkey: "{#RegPathIPX1}"; ValueType: dword; ValueName: "dwReserved2"; ValueData: 0;
-Root: HKLM32; Subkey: "{#RegPathIPX1}"; ValueType: string; ValueName: "Guid"; ValueData: "{{685BC400-9D2C-11cf-A9CD-00AA006886E3}";
-Root: HKLM32; Subkey: "{#RegPathIPX1}"; ValueType: string; ValueName: "Path"; ValueData: "dpwsockx.dll";
-Root: HKLM32; Subkey: "{#RegPathIPX1}"; ValueType: string; ValueName: "DescriptionA"; ValueData: "IPX Connection For DirectPlay";
-Root: HKLM32; Subkey: "{#RegPathIPX1}"; ValueType: string; ValueName: "DescriptionW"; ValueData: "IPX Connection For DirectPlay";
-Root: HKLM32; Subkey: "{#RegPathIPX2}"; ValueType: string; ValueName: "Description"; ValueData: "WinSock IPX Connection For DirectPlay";
-Root: HKLM32; Subkey: "{#RegPathIPX2}"; ValueType: expandsz; ValueName: "Path"; ValueData: "dpwsockx.dll";
-Root: HKLM32; Subkey: "{#RegPathIPX2}\Players";
-Root: HKLM32; Subkey: "{#RegPathIPX2}\Sessions";
 
 ;Wine
 ;DLL Overrides - DirectPlay
@@ -584,7 +574,9 @@ zh_Hans.Installing=正在安装%1
  
 [Run]
 ;Enable DirectPlay (Windows 8+)
-Filename: dism; Parameters: "/online /Enable-Feature /FeatureName:DirectPlay /Quiet /NoRestart"; MinVersion: 6.2; StatusMsg: "Enabling DirectPlay..."; Flags: runhidden
+Filename: dism; Parameters: "/online /Enable-Feature /all /FeatureName:DirectPlay /Quiet /NoRestart"; MinVersion: 6.2; StatusMsg: "{cm:Installing,DirectPlay}..."; Flags: runhidden
+;Add IPX registry entries
+Filename: {tmp}\dplay-setup.exe; Parameters: "/q"; StatusMsg: "{cm:Installing,IPXWrapper}..."
 ;Install C++ 2015 Redist
 Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "{cm:Installing,C++ 2015 Redist}..."
 ;Install .NET Framework 3.0 (Windows XP only)

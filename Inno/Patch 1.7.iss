@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.7.0.4"
+#define AppVersion "1.7.0.5"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2 Plus 1.7"
@@ -7,8 +7,6 @@
 #define RegPathCU2 "Software\Team17SoftwareLTD\frontend\Worms2"
 #define RegPathLM1 "Software\GOG.com\GOGWORMS2"
 #define RegPathLM2 "Software\Microsoft\DirectPlay\Applications\worms2"
-#define RegPathIPX1 "SOFTWARE\Microsoft\DirectPlay\Service Providers\IPX Connection For DirectPlay"
-#define RegPathIPX2 "SOFTWARE\Microsoft\DirectPlay\Services\{{5146ab8cb6b1ce11920c00aa006c4972}"
 #define RegPathWine "SOFTWARE\Wine"
 
 [Setup]
@@ -46,6 +44,8 @@ Source: "..\Patch\Base\fkWorm2NAT.dll"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\Base\volume.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch\Base\Teams\Internet.dat"; DestDir: "{app}\Teams\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch\ExtraContent\Data\LEVEL\KOREA\Level.Dir"; DestDir: "{app}\Data\LEVEL\KOREA\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+
+Source: "..\Redist\dplay-setup.exe"; DestDir: "{tmp}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 
 ;For Windows - Settings app
 ;.NETF 4.6.2 for Windows 8+
@@ -94,6 +94,8 @@ Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
 ;Delete wkDLang for languages that do not require it
 Type: files; Name: "{app}\wkDLang.dll"; Languages: not cs and not pt and not ru
 Type: files; Name: "{app}\wkDLang.ini"; Languages: not cs and not pt and not ru
+;Remove IPXWrapper ini override
+Type: files; Name: "{app}\ipxwrapper.ini";
 
 [Languages]
 Name: "zh_Hans"; MessagesFile: "Languages\ChineseSimplified.isl"
@@ -113,6 +115,46 @@ Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "es_419"; MessagesFile: "Languages\SpanishLA.isl"
 Name: "sv"; MessagesFile: "Languages\Swedish.isl"
 
+[Registry]
+;Functionality
+Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "CD"; ValueData:  "."
+Root: HKCU; Subkey: "{#RegPathCU1}"; ValueType: string; ValueName: "W2PATH"; ValueData: "."
+;Set graphics to maximum settings
+Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "VideoSetting"; ValueData: 5
+;Set default connection to TCP
+Root: HKCU; Subkey: "{#RegPathCU2}"; ValueType: dword; ValueName: "Connection"; ValueData: 1
+;DirectPlay
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: none; ValueName: "CommandLine"
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "CurrentDirectory"; ValueData: "{app}"
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "File"; ValueData: "worms2.exe"
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Guid"; ValueData: "{{DF394860-E19E-11D0-805F-444553540000}"
+Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Path"; ValueData: "{app}"
+;Force IPXWrapper to disable logging
+Root: HKCU; Subkey: "SOFTWARE\IPXWrapper"; ValueType: dword; ValueName: "log_level"; ValueData: 7
+;Force Game DPI Scaling to be performed by Application, not Windows
+Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0
+Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0; Check: IsWin64
+Root: HKLM32; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0; Check: not IsWin64
+Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0
+;Add DEP Exception
+Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "HIGHDPIAWARE DisableNXShowUI "; MinVersion: 6.0; Check: IsWin64
+Root: HKLM32; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "HIGHDPIAWARE DisableNXShowUI "; MinVersion: 6.0; Check: not IsWin64
+Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "DisableNXShowUI "; OnlyBelowVersion: 6.0; Check: IsWin64
+Root: HKLM32; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "DisableNXShowUI "; OnlyBelowVersion: 6.0; Check: not IsWin64
+
+;Wine
+;DLL Overrides - DirectPlay
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "dplayx"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "dpnet"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "dpnhpast"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\DllOverrides"; ValueType: string; ValueName: "dpwsockx"; ValueData: "native,builtin"; Check: IsWine();
+;DLL Overrides - Worms2
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\frontend.exe\DllOverrides"; ValueType: string; ValueName: "winmm"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\frontend.exe\DllOverrides"; ValueType: string; ValueName: "wsock32"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueType: string; ValueName: "dsound"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueType: string; ValueName: "wsock32"; ValueData: "native,builtin"; Check: IsWine();
+Root: HKCU; Subkey: "{#RegPathWine}\AppDefaults\worms2.exe\DllOverrides"; ValueType: string; ValueName: "ddraw"; ValueData: "native,builtin"; Check: IsWine();
+
 [Code]
 var InstalledDir : string;
 function IsAppRunning(const FileName: string): Boolean;
@@ -129,6 +171,19 @@ begin
   FWbemObjectSet := Unassigned;
   FWMIService := Unassigned;
   FSWbemLocator := Unassigned;
+end;
+
+//Detect Wine
+function LoadLibraryA(lpLibFileName: PAnsiChar): THandle;
+external 'LoadLibraryA@kernel32.dll stdcall';
+function GetProcAddress(Module: THandle; ProcName: PAnsiChar): Longword;
+external 'GetProcAddress@kernel32.dll stdcall';
+
+function IsWine: boolean;
+var  LibHandle : THandle;
+begin
+  LibHandle := LoadLibraryA('ntdll.dll');
+  Result:= GetProcAddress(LibHandle, 'wine_get_version')<> 0;
 end;
 
 function InitializeSetup: boolean;
@@ -266,6 +321,9 @@ sv.Installing=Installerar %1
 zh_Hans.Installing=正在安装%1
  
 [Run]
-;Filename: dism; Parameters: "/online /Enable-Feature /FeatureName:DirectPlay /Quiet /NoRestart"; MinVersion: 6.2; StatusMsg: "Enabling DirectPlay..."; Flags: runhidden 
+;Enable DirectPlay (Windows 8+)
+Filename: dism; Parameters: "/online /Enable-Feature /all /FeatureName:DirectPlay /Quiet /NoRestart"; MinVersion: 6.2; StatusMsg: "{cm:Installing,DirectPlay}..."; Flags: runhidden
+;Add IPX registry entries
+Filename: {tmp}\dplay-setup.exe; Parameters: "/q"; StatusMsg: "{cm:Installing,IPXWrapper}..."
 ;Discord link
 Filename: "https://discord.gg/Tvs83972UD"; Description: "Worms 2 Discord"; MinVersion: 10.0; Flags: shellexec runasoriginaluser postinstall nowait unchecked
