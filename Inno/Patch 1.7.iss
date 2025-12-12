@@ -96,6 +96,10 @@ Type: files; Name: "{app}\wkDLang.dll"; Languages: not cs and not pt and not ru
 Type: files; Name: "{app}\wkDLang.ini"; Languages: not cs and not pt and not ru
 ;Remove IPXWrapper ini override
 Type: files; Name: "{app}\ipxwrapper.ini";
+;libogg/libvorbis from GOG, no longer used since forking ogg-winmm
+Type: files; Name: "{app}\libogg-0.dll";
+Type: files; Name: "{app}\libvorbis-0.dll";
+Type: files; Name: "{app}\libvorbisfile-3.dll";
 
 [Languages]
 Name: "zh_Hans"; MessagesFile: "Languages\ChineseSimplified.isl"
