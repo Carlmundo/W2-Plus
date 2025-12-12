@@ -44,7 +44,7 @@ Source: "..\Patch\Base\fkWorm2NAT.dll"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\Base\volume.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch\Base\Teams\Internet.dat"; DestDir: "{app}\Teams\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch\ExtraContent\Data\LEVEL\KOREA\Level.Dir"; DestDir: "{app}\Data\LEVEL\KOREA\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
-
+;IPXWrapper DirectPlay setup
 Source: "..\Redist\dplay-setup.exe"; DestDir: "{tmp}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 
 ;For Windows - Settings app
