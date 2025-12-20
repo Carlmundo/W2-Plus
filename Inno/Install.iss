@@ -46,8 +46,6 @@ Source: "..\Redist\vc_redist.x86_xp.exe"; DestDir: "{tmp}\"; DestName: "vc_redis
 Source: "..\Redist\dotnetfx3.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; OnlyBelowVersion: 5.2; Check: NETFramework3NotInstalled
 ;.NET Framework 4.6.2 for VLC Launcher & Settings app (Windows 8 to before Windows 10 Anniversary update)
 Source: "..\Redist\ndp462-kb3151800-x86-x64-allos-enu.exe"; DestDir: "{tmp}\"; Flags: ignoreversion overwritereadonly deleteafterinstall; MinVersion: 6.2; OnlyBelowVersion: 10.0.14393; Check: NETFramework46NotInstalled
-;IPXWrapper DirectPlay setup
-Source: "..\Redist\dplay-setup.exe"; DestDir: "{tmp}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 
 ;Patch files for All Installs - Place LEVEL and MISSION folders in the \Patch\Base\Data folder
 Source: "..\Patch\Base\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
@@ -581,8 +579,8 @@ zh_Hans.Installing=正在安装%1
 [Run]
 ;Enable DirectPlay (Windows 8+)
 Filename: dism; Parameters: "/online /Enable-Feature /all /FeatureName:DirectPlay /Quiet /NoRestart"; MinVersion: 6.2; StatusMsg: "{cm:Installing,DirectPlay}..."; Flags: runhidden
-;Add IPX registry entries
-Filename: {tmp}\dplay-setup.exe; Parameters: "/q"; StatusMsg: "{cm:Installing,IPXWrapper}..."
+;Add TCP & IPX registry entries
+Filename: {app}\dplay-regsetup.exe; Parameters: "/q"; StatusMsg: "{cm:Installing,DirectPlay}..."
 ;Install C++ 2015 Redist
 Filename: {tmp}\vc_redist.x86.exe; Parameters: "/quiet /norestart"; StatusMsg: "{cm:Installing,C++ 2015 Redist}..."
 ;Install .NET Framework 3.0 (Windows XP only)

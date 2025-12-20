@@ -44,8 +44,7 @@ Source: "..\Patch\Base\fkWorm2NAT.dll"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\Base\volume.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch\Base\Teams\Internet.dat"; DestDir: "{app}\Teams\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch\ExtraContent\Data\LEVEL\KOREA\Level.Dir"; DestDir: "{app}\Data\LEVEL\KOREA\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
-;IPXWrapper DirectPlay setup
-Source: "..\Redist\dplay-setup.exe"; DestDir: "{tmp}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\dplay-regsetup.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 
 ;For Windows - Settings app
 ;.NETF 4.6.2 for Windows 8+
@@ -327,7 +326,7 @@ zh_Hans.Installing=正在安装%1
 [Run]
 ;Enable DirectPlay (Windows 8+)
 Filename: dism; Parameters: "/online /Enable-Feature /all /FeatureName:DirectPlay /Quiet /NoRestart"; MinVersion: 6.2; StatusMsg: "{cm:Installing,DirectPlay}..."; Flags: runhidden
-;Add IPX registry entries
-Filename: {tmp}\dplay-setup.exe; Parameters: "/q"; StatusMsg: "{cm:Installing,IPXWrapper}..."
+;Add TCP & IPX registry entries
+Filename: {app}\dplay-regsetup.exe; Parameters: "/q"; StatusMsg: "{cm:Installing,DirectPlay}..."
 ;Discord link
 Filename: "https://discord.gg/Tvs83972UD"; Description: "Worms 2 Discord"; MinVersion: 10.0; Flags: shellexec runasoriginaluser postinstall nowait unchecked
