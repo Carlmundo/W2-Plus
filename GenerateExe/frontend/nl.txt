@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=    "..\..\Patch\Languages\English\frontend.exe"
+SaveAs= "..\..\Patch\Languages\Dutch\frontend.exe"
+Log=    Logs\nl.log	
+[COMMANDS]
+-delete  STRINGTABLE,,2048
+-add     nl.res, STRINGTABLE

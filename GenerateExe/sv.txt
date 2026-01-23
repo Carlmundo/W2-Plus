@@ -1,7 +1,0 @@
-[FILENAMES]
-Exe=    ..\Patch\Languages\English\frontend.exe
-SaveAs= ..\Patch\Languages\Swedish\frontend.exe
-Log=    Logs\sv.log	
-[COMMANDS]
--delete  STRINGTABLE,,2048
--add     sv.res, STRINGTABLE

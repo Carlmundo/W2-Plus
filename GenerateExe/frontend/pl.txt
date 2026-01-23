@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=    "..\..\Patch\Languages\English\frontend.exe"
+SaveAs= "..\..\Patch\Languages\Polish\frontend.exe"
+Log=    Logs\pl.log	
+[COMMANDS]
+-delete  STRINGTABLE,,2048
+-add     pl.res, STRINGTABLE

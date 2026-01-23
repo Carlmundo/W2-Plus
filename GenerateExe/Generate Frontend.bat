@@ -33,6 +33,6 @@ for /L %%i in (0,1,12) do call del "..\Patch\Languages\%%lang[%%i,name]%%\fronte
 echo.
 echo Writing new frontends...
 set rh="D:\Apps\Resource Hacker\ResourceHacker.exe"
-for /L %%i in (0,1,12) do call %rh% -script "%%lang[%%i,code]%%.txt"
-for /L %%i in (0,1,12) do call find "Success!" "Logs\%%lang[%%i,code]%%.log" /c
+for /L %%i in (0,1,12) do call %rh% -script "frontend\%%lang[%%i,code]%%.txt"
+for /L %%i in (0,1,12) do call find "Success!" "frontend\Logs\%%lang[%%i,code]%%.log" /c
 pause

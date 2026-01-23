@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=    "..\..\Patch\Languages\English\frontend.exe"
+SaveAs= "..\..\Patch\Languages\Spanish (Latin America)\frontend.exe"
+Log=    Logs\es-419.log	
+[COMMANDS]
+-delete  STRINGTABLE,,2048
+-add     es-419.res, STRINGTABLE
