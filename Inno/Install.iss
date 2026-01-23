@@ -103,7 +103,7 @@ Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignor
 Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
 Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
 ; Use English for languages without a translated BankEditor.exe
-Source: "..\Patch\Languages\English\Data\Wav\BankEditor.exe"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
+Source: "..\Patch\Languages\English\Data\Wav\BankEditor.exe"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru zh_Hans
 ;Install the default GFX.dir file for languages that are not Czech, Polish or Russian (in case they were previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not cs and not pl and not ru
 ;Install "Default" soundbank that is (usually) native to the language
