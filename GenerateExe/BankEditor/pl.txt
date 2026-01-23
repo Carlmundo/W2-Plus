@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=    "..\..\Patch\Languages\English\Data\Wav\BankEditor.exe"
+SaveAs= "..\..\Patch\Languages\Polish\Data\Wav\BankEditor.exe"
+Log=    Logs\pl.log	
+[COMMANDS]
+-delete  STRINGTABLE,,2057
+-add     pl.res, STRINGTABLE

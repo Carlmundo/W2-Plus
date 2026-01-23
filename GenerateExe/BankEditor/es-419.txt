@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=    "..\..\Patch\Languages\English\Data\Wav\BankEditor.exe"
+SaveAs= "..\..\Patch\Languages\Spanish (Latin America)\Data\Wav\BankEditor.exe"
+Log=    Logs\es-419.log	
+[COMMANDS]
+-delete  STRINGTABLE,,2057
+-add     es-419.res, STRINGTABLE
