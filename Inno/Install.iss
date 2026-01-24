@@ -99,9 +99,10 @@ Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
 ; Languages powered by wkDLang (and S-Chinese) use the English version of worms2.exe
 Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
-; Use the English "About" and Sound Bank translations (names.wdb) for custom languages
+; Use English "About.rtf" for custom languages
 Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
-Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
+;Use English "names.wdb" for languages without it
+Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru zh_Hans
 ; Use English for languages without a translated BankEditor.exe
 Source: "..\Patch\Languages\English\Data\Wav\BankEditor.exe"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru zh_Hans
 ;Install the default GFX.dir file for languages that are not Czech, Polish or Russian (in case they were previously installed)
