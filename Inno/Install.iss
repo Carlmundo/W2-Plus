@@ -9,6 +9,13 @@
 #define RegPathLM2 "Software\Microsoft\DirectPlay\Applications\worms2"
 #define RegPathWine "SOFTWARE\Wine"
 
+#ifnexist "..\Patch\Languages\German\frontend.exe"
+  #error "Check all frontend files are present."
+#endif
+#ifnexist "..\Patch\Languages\German\Data\Wav\BankEditor.exe"
+  #error "Check all BankEditor files are present."
+#endif
+
 [Setup]
 AppId={{B90927CD-E317-466C-8B6B-BC9042E2F1D2}
 AppName={#AppName}
