@@ -9,6 +9,12 @@
 #define RegPathLM2 "Software\Microsoft\DirectPlay\Applications\worms2"
 #define RegPathWine "SOFTWARE\Wine"
 
+#ifnexist "..\Patch\Base\Data\LEVEL\Art\LEVEL.dir"
+  #error "Check all LEVELS files are present."
+#endif
+#ifnexist "..\Patch\Base\Data\MISSION\45\MISSION.dat"
+  #error "Check all MISSION files are present."
+#endif
 #ifnexist "..\Patch\Languages\German\frontend.exe"
   #error "Check all frontend files are present."
 #endif
