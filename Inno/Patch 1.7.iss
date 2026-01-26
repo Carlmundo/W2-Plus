@@ -37,14 +37,25 @@ MinVersion=0,5.1sp3
 [Files]
 ;Patch files
 Source: "..\Patch\Base\devoptions.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
-Source: "..\Patch\Base\dpwsockx.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
-Source: "..\Patch\Base\dsound.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch\Base\fkUpdate.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
-Source: "..\Patch\Base\fkWorm2NAT.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
-Source: "..\Patch\Base\volume.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\winmm.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\wkHighMem.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+
 Source: "..\Patch\Base\Teams\Internet.dat"; DestDir: "{app}\Teams\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
-Source: "..\Patch\ExtraContent\Data\LEVEL\KOREA\Level.Dir"; DestDir: "{app}\Data\LEVEL\KOREA\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\fkWorm2NAT.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\Worm2NAT.ini"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\dpwsockx.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+
+Source: "..\Patch\Base\dpwsockx_ipx.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\ipxconfig.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\ipxwrapper.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\wsock32.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch\Base\dplay-regsetup.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+
+Source: "..\Patch\Base\dsound.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\Base\volume.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+
+Source: "..\Patch\ExtraContent\Data\LEVEL\KOREA\Level.Dir"; DestDir: "{app}\Data\LEVEL\KOREA\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 
 ;For Windows - Settings app
 ;.NETF 4.6.2 for Windows 8+
@@ -57,7 +68,7 @@ Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recurse
 Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0; Languages: not en_speedrun
 
 ;Languages
-;Generate all frontends using FrontendGen\Generate.bat and Resource Hacker
+;Generate all frontends using exeGenerate and Resource Hacker
 Source: "..\Patch\Languages\Chinese (Simplified)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: zh_Hans
 Source: "..\Patch\Languages\Czech\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs
 Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
@@ -73,12 +84,16 @@ Source: "..\Patch\Languages\Russian\*"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es
 Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_419
 Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
+
 Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
 ; Languages powered by wkDLang (and S-Chinese) use the English version of worms2.exe
 Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
-; Use the English "About" and Sound Bank translations (names.wdb) for custom languages
+; Use English "About.rtf" for custom languages
 Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
-Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
+;Use English "names.wdb" for languages without it
+Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru zh_Hans
+; Use English for languages without a translated BankEditor.exe
+Source: "..\Patch\Languages\English\Data\Wav\BankEditor.exe"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt ru zh_Hans
 ;Install the default GFX.dir file for languages that are not Czech, Polish or Russian (in case they were previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not cs and not pl and not ru
 ;wkBackflip, not enabled for Speedrun
