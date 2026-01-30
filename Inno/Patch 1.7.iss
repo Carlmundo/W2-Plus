@@ -55,7 +55,7 @@ Source: "..\Patch\Base\dplay-regsetup.exe"; DestDir: "{app}\"; Flags: ignorevers
 Source: "..\Patch\Base\dsound.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 Source: "..\Patch\Base\volume.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 
-Source: "..\Patch\ExtraContent\Data\LEVEL\KOREA\Level.Dir"; DestDir: "{app}\Data\LEVEL\KOREA\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
+Source: "..\Patch\ExtraContent\Data\LEVEL\*"; DestDir: "{app}\Data\LEVEL\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 
 ;For Windows - Settings app
 ;.NETF 4.6.2 for Windows 8+
