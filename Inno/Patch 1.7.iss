@@ -66,6 +66,9 @@ Source: "..\Patch\Settings\settings_netf3.exe"; DestDir: "{app}\"; DestName: "se
 Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkMissions, not enabled for Speedrun
 Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0; Languages: not en_speedrun
+;Copy over GOGLauncher replacement that may have not been done correctly on Windows in <1.7.0.5
+Source: "..\Patch\Videos\Upscaled\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.2; Check: not IsWine();
+Source: "..\Patch\Videos\Original\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.2; Check: not IsWine();
 
 ;Languages
 ;Generate all frontends using exeGenerate and Resource Hacker
