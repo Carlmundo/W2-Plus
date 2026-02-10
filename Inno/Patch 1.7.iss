@@ -94,8 +94,7 @@ Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignor
 ; Use English "About.rtf" for custom languages
 Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
 ;Use English for languages without a translated Soundbank Editor
-Source: "..\Patch\Languages\English\Data\Wav\BankEditor.exe"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru zh_Hans
-Source: "..\Patch\Languages\English\Data\Wav\names.wdb"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru zh_Hans
+Source: "..\Patch\Languages\English\Data\Wav\*"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru zh_Hans
 ;Install the default GFX.dir file for languages that are not Czech, Polish or Russian (in case they were previously installed)
 Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not cs and not pl and not ru
 ;wkBackflip, not enabled for Speedrun
