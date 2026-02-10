@@ -18,18 +18,18 @@ There is no need to set any Windows compatibility settings.
 - Compatible with modern versions of Windows and Wine ([WineHQ](https://gitlab.winehq.org/wine/wine/-/wikis/Download#wine-binary-packages) binary packages are recommended)
 - No CD required
 - Multi-language support: English, Czech, Dutch, French, German, Italian, Polish, Portuguese, Portuguese (Brazil), Russian, Spanish, Spanish (Latin America), Swedish. Chinese (Simplified) is also supported for the frontend only.
-- Re-enabled online multiplayer, play with modern networks (via [modified](https://github.com/Carlmundo/fkNetcode) [FkNetcode](https://worms2d.info/FkNetcode))
+- Re-enabled online multiplayer, play on modern networks without port forwarding (via Worm2NAT & [modified](https://github.com/Carlmundo/fkNetcode) [FkNetcode](https://worms2d.info/FkNetcode))
 - LAN play restored with support for virtual private networks (via [IPXWrapper](https://github.com/solemnwarning/ipxwrapper) & [wkDNet](https://github.com/Dawid8plc/wkDNet))
-- Backflip is now permanently enabled in-game and works online (double tap the Backspace key)
+- Backflip is now permanently enabled in-game and works online, just double tap the Backspace key (via wkBackflip)
 - Windowed mode and Borderless options (via [modified ReSolution](https://github.com/Carlmundo/wkReSolution) with [cnc-ddraw](https://github.com/FunkyFr3sh/cnc-ddraw) or wndmode) 
-- Settings app for configuring advanced video options (found in game options)
+- Settings app for configuring advanced video options (found in game options or settings.exe)
 	- You can press Ctrl+G in-game to unlock the cursor from the window
 - New launcher to play the intro videos, upscaled and in higher quality
 - Increased limits of options and weapons schemes
 - Infinite rope swings (set repeat swings to -1 in Options)
-- Improved soundtrack quality (vs GOG version) with FLAC audio in-game
+- Improved soundtrack quality (vs GOG version) with FLAC audio in-game (via [W2-DSound](https://github.com/Dawid8plc/W2-DSound), [ZPlayMM-FLAC](https://github.com/Carlmundo/ZPlayMM-FLAC) & [ogg-winmm-w2](https://github.com/Carlmundo/ogg-winmm-w2))
 - Mission select for single player to resume progress and play previously completed missions (via [fkMissions](https://github.com/Dawid8plc/fkMissions))
-- In-game music and sound effect volume can be set via the restored audio mixer button in Audio options (via [W2-DSound](https://github.com/Dawid8plc/W2-DSound), [ZPlayMM-FLAC](https://github.com/Carlmundo/ZPlayMM-FLAC) & [Worms2-Volume](https://github.com/Carlmundo/Worms2-Volume))
+- In-game music and sound effect volume can be set via the restored audio mixer button in Audio options (via [Worms2-Volume](https://github.com/Carlmundo/Worms2-Volume))
 - Added soundbanks from other classic Worms releases:
 	- Worms: The Directors Cut, named as "Classic - Director's Cut" (conversion by Squirminator2k, voiced by Andy Davidson)
 	- Worms 2: Regional exclusives - Polish-2 (also from WWP Poland CD), Russian (also from W:A)
@@ -62,10 +62,12 @@ There is no need to set any Windows compatibility settings.
 - Improved Frontend clarity and DPI scaling
 - Supports more text characters from other languages
 - Fixed the water selection in the frontend (via [fkWaterFix](https://github.com/Dawid8plc/fkWaterFix))
-- Updated the Soundbank Editor with a working version
+- Updated the Soundbank Editor with a working version, new translations and added the missing sound (Hurry.wav)
 - Portuguese soundbank
 - Automatically sets the graphics to their maximum level
 - Includes changes from the last official patch (v1.05)
+- Detects and fixes issues with DirectPlay (via [DirectPlayRegSetup](https://github.com/Carlmundo/DirectPlayRegSetup))
+- Additional menu options and frontend fixes (via [fkSettings](https://github.com/Dawid8plc/fkSettings))
 - Checks for updates when the game starts
 
 ## Join the Community
