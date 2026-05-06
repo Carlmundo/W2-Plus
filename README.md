@@ -65,7 +65,7 @@ There is no need to set any Windows compatibility settings.
 - Updated the Soundbank Editor with a working version, new translations and added the missing sound (Hurry.wav)
 - Portuguese soundbank
 - Automatically sets the graphics to their maximum level
-- Includes changes from the last official patch (v1.05)
+- Includes changes from the last official patches (v1.05 & v1.07)
 - Detects and fixes issues with DirectPlay (via [DirectPlayRegSetup](https://github.com/Carlmundo/DirectPlayRegSetup))
 - Additional menu options and frontend fixes (via [fkSettings](https://github.com/Dawid8plc/fkSettings))
 - Checks for updates when the game starts
