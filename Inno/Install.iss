@@ -15,10 +15,19 @@
 #ifnexist "..\Patch\Base\Data\MISSION\45\MISSION.dat"
   #error "Check all MISSION files are present."
 #endif
-#ifnexist "..\Patch\Languages\German\frontend.exe"
+#ifnexist "..\Patch\Base\Music\Track05.flac"
+  #error "Check all .flac files are present."
+#endif
+#ifnexist "..\Patch\Base\Music\Track05.ogg"
+  #error "Check all .ogg files are present."
+#endif
+#ifnexist "..\Patch\Languages\Spanish (Latin America)\frontend.exe"
   #error "Check all frontend files are present."
 #endif
-#ifnexist "..\Patch\Languages\German\Data\Wav\BankEditor.exe"
+#ifnexist "..\Patch\Languages\Spanish (Latin America)\worms2.exe"
+  #error "Check all worms2 files are present."
+#endif
+#ifnexist "..\Patch\Languages\Spanish (Latin America)\Data\Wav\BankEditor.exe"
   #error "Check all BankEditor files are present."
 #endif
 
