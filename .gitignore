@@ -2,6 +2,7 @@
 # Copy LEVEL and MISSION folders from the game CD
 Patch/Base/Data/LEVEL/*
 Patch/Base/Data/MISSION/*
+# Patch executables from vcdiff and GenerateExe
 Patch/Languages/*/frontend.exe
 Patch/Languages/*/worms2.exe
 Patch/Languages/*/Data/Wav/BankEditor.exe
