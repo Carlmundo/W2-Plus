@@ -3,7 +3,7 @@
 Patch/Base/Data/LEVEL/*
 Patch/Base/Data/MISSION/*
 Patch/Languages/*/frontend.exe
-!Patch/Languages/English/frontend.exe
+Patch/Languages/*/worms2.exe
 Patch/Languages/*/Data/Wav/BankEditor.exe
 !Patch/Languages/English/Data/Wav/BankEditor.exe
 GenerateExe/*/Logs/*
