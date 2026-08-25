@@ -301,7 +301,7 @@ var
   FSWbemLocator: Variant;
   FWbemObjectSet: Variant;
 begin
-  Result := false;
+  Result := False;
   FSWbemLocator := CreateOleObject('WBEMScripting.SWBEMLocator');
   FWMIService := FSWbemLocator.ConnectServer('', 'root\CIMV2', '', '');
   FWbemObjectSet := FWMIService.ExecQuery(Format('SELECT Name FROM Win32_Process Where Name="%s"',[FileName]));
@@ -491,20 +491,20 @@ begin
     begin
       //Vista requires Service Pack 2
       msgRequiredSP := SetupMessage(msgWindowsServicePackRequired);
-      StringChangeEx(msgRequiredSP, '%1', 'Windows Vista', true);
-      StringChangeEx(msgRequiredSP, '%2', '2', true);
+      StringChangeEx(msgRequiredSP, '%1', 'Windows Vista', True);
+      StringChangeEx(msgRequiredSP, '%2', '2', True);
       MsgBox(msgRequiredSP, mbError, MB_OK);
-      Result := false;
+      Result := False;
     end
     else
     if (Version.Minor = 1) and (Version.Build < 7601) then
     begin
       //Windows 7 requires Service Pack 1
       msgRequiredSP := SetupMessage(msgWindowsServicePackRequired);
-      StringChangeEx(msgRequiredSP, '%1', 'Windows 7', true);
-      StringChangeEx(msgRequiredSP, '%2', '1', true);
+      StringChangeEx(msgRequiredSP, '%1', 'Windows 7', True);
+      StringChangeEx(msgRequiredSP, '%2', '1', True);
       MsgBox(msgRequiredSP, mbError, MB_OK);
-      Result := false;
+      Result := False;
     end;
   end;
 end;
