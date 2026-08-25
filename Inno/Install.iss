@@ -465,39 +465,46 @@ begin
   end;
 end;
 
-function InitializeSetup: boolean;
-var Version: TWindowsVersion;
-var msgRequiredSP: string;
+function InitializeSetup: Boolean;
+var
+  Version: TWindowsVersion;
+  msgRequiredSP: String;
 begin
-  Result := not IsAppRunning('{#AppProcess1}');
-  if Result then begin
-    Result := not IsAppRunning('{#AppProcess2}');
+  //Keep checking until both processes are closed
+  while IsAppRunning('{#AppProcess1}') or
+        IsAppRunning('{#AppProcess2}') do
+  begin
+    if MsgBox(SetupMessage(msgSetupAppRunningError), mbError, MB_RETRYCANCEL) = IDCANCEL then
+    begin
+      Result := False;
+      Exit;
+    end;
   end;
-  if not Result then
+  //Both processes are closed if we reach here
+  Result := True;
+
+  //Check other Windows versions that don't work without Service Packs
+  GetWindowsVersionEx(Version);
+  if Version.Major = 6 then
   begin
-    MsgBox(SetupMessage(msgSetupAppRunningError), mbError, MB_OK);
-  end
-  else
-  begin
-    //Check other Windows version that don't work without Service Packs
-    GetWindowsVersionEx(Version);
-    if Version.Major = 6 then begin
-      if (Version.Minor = 0) and (Version.Build < 6002) then begin
-        //Vista requires Service Pack 2
-        msgRequiredSP := SetupMessage(msgWindowsServicePackRequired);
-        StringChangeEx(msgRequiredSP, '%1', 'Windows Vista', true);
-        StringChangeEx(msgRequiredSP, '%2', '2', true);
-        MsgBox(msgRequiredSP, mbError, MB_OK);
-        Result := false;
-      end
-      else if (Version.Minor = 1) and (Version.Build < 7601) then begin
-        //7 requires Service Pack 1
-        msgRequiredSP := SetupMessage(msgWindowsServicePackRequired);
-        StringChangeEx(msgRequiredSP, '%1', 'Windows 7', true);
-        StringChangeEx(msgRequiredSP, '%2', '1', true);
-        MsgBox(msgRequiredSP, mbError, MB_OK);
-        Result := false;
-      end;
+    if (Version.Minor = 0) and (Version.Build < 6002) then
+    begin
+      //Vista requires Service Pack 2
+      msgRequiredSP := SetupMessage(msgWindowsServicePackRequired);
+      StringChangeEx(msgRequiredSP, '%1', 'Windows Vista', true);
+      StringChangeEx(msgRequiredSP, '%2', '2', true);
+      MsgBox(msgRequiredSP, mbError, MB_OK);
+      Result := false;
+    end
+    else
+    if (Version.Minor = 1) and (Version.Build < 7601) then
+    begin
+      //Windows 7 requires Service Pack 1
+      msgRequiredSP := SetupMessage(msgWindowsServicePackRequired);
+      StringChangeEx(msgRequiredSP, '%1', 'Windows 7', true);
+      StringChangeEx(msgRequiredSP, '%2', '1', true);
+      MsgBox(msgRequiredSP, mbError, MB_OK);
+      Result := false;
     end;
   end;
 end;
