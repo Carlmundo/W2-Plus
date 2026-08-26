@@ -5,6 +5,9 @@ Patch/Base/Data/MISSION/*
 # Convert CD audio to .flac and .ogg 
 Patch/Base/Music/*
 # Patch executables from vcdiff and GenerateExe
+Diff/*/frontend.exe
+Diff/*/worms2.exe
+Diff/xdelta3.exe
 Patch/Languages/*/frontend.exe
 Patch/Languages/*/worms2.exe
 Patch/Languages/*/Data/Wav/BankEditor.exe
