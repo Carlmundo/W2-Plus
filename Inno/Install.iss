@@ -130,18 +130,18 @@ Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion 
 ;Install "Default" soundbank that is (usually) native to the language
 Source: "..\Patch\ExtraContent\Data\Wav\Speech\Czech\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: cs
 Source: "..\Patch\Base\Data\Wav\Speech\Dutch\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: nl
-Source: "..\Patch\Base\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en en_speedrun zh_Hans
-Source: "..\Patch\Base\Data\Wav\Speech\American\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: en_us
+Source: "..\Patch\Base\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: en en_speedrun zh_Hans
+Source: "..\Patch\Base\Data\Wav\Speech\American\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: en_us
 Source: "..\Patch\Base\Data\Wav\Speech\French\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: fr
-Source: "..\Patch\Base\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: de
-Source: "..\Patch\Base\Data\Wav\Speech\Italian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: it
-Source: "..\Patch\Base\Data\Wav\Speech\Polish-2\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pl
-Source: "..\Patch\ExtraContent\Data\Wav\Speech\Portuguese\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt
-Source: "..\Patch\Base\Data\Wav\Speech\BrazilPortugal\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: pt_br
-Source: "..\Patch\Base\Data\Wav\Speech\Russian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: ru
-Source: "..\Patch\Base\Data\Wav\Speech\Spanish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: es
-Source: "..\Patch\Base\Data\Wav\Speech\Hispanic\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: es_419
-Source: "..\Patch\Base\Data\Wav\Speech\Swedish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion  overwritereadonly; Languages: sv
+Source: "..\Patch\Base\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: de
+Source: "..\Patch\Base\Data\Wav\Speech\Italian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: it
+Source: "..\Patch\Base\Data\Wav\Speech\Polish-2\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: pl
+Source: "..\Patch\ExtraContent\Data\Wav\Speech\Portuguese\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: pt
+Source: "..\Patch\Base\Data\Wav\Speech\BrazilPortugal\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: pt_br
+Source: "..\Patch\Base\Data\Wav\Speech\Russian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: ru
+Source: "..\Patch\Base\Data\Wav\Speech\Spanish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: es
+Source: "..\Patch\Base\Data\Wav\Speech\Hispanic\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: es_419
+Source: "..\Patch\Base\Data\Wav\Speech\Swedish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: sv
 ;wkBackflip, not enabled for Speedrun
 Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not en_speedrun
 
@@ -163,7 +163,7 @@ Type: files; Name: "{app}\wkDLang.ini"; Languages: not cs and not pt and not ru
 Type: files; Name: "{app}\Enable IPX Logging.reg";
 Type: files; Name: "{app}\Reset IPX Config.reg";
 ;Remove old Misc files
-Type: files; Name: "{app}\Misc\Enable IPX Logging.reg";                                                     
+Type: files; Name: "{app}\Misc\Enable IPX Logging.reg";
 Type: files; Name: "{app}\Misc\Hotfix - FWP.exe";
 Type: files; Name: "{app}\Misc\Readme.txt";
 Type: files; Name: "{app}\Misc\Remove Hotfix - FWP.reg";
@@ -327,7 +327,7 @@ function GetProcAddress(Module: THandle; ProcName: PAnsiChar): Longword;
 external 'GetProcAddress@kernel32.dll stdcall';
 
 function IsWine: boolean;
-var  LibHandle : THandle;
+var LibHandle : THandle;
 begin
   LibHandle := LoadLibraryA('ntdll.dll');
   Result:= GetProcAddress(LibHandle, 'wine_get_version')<> 0;
@@ -341,7 +341,7 @@ function GetResolution(Value: string): string;
 begin
     Result := IntToStr(GetSystemMetrics(0)) + 'x' + IntToStr(GetSystemMetrics(1));
 end;
-                          
+
 function NETFramework3NotInstalled: Boolean;
 begin
   Result :=
@@ -523,8 +523,8 @@ begin
   if RegQueryStringValue(HKLM32, '{#RegPathLM1}', 'PATH', InstalledDir) then begin
   end 
   else if RegQueryStringValue(HKLM32, '{#RegPathLM2}', 'Path', InstalledDir) then begin
-  end;    
-  Result := InstalledDir;    
+  end;
+  Result := InstalledDir;
 end;
 
 function NextButtonClick(PageId: Integer): Boolean;
