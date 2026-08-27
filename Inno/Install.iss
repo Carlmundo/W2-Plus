@@ -147,8 +147,12 @@ Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreve
 
 [InstallDelete]
 ;Delete unneeded/conflicting files that may be present from previous installs
-;Delete wndmode (if present) so that it is no longer the default/active renderer
+;Delete wndmode (if present) as it is no longer supported (and the backup of cnc-ddraw)
 Type: files; Name: "{app}\wkWndMode.dll";
+Type: files; Name: "{app}\_wkWndMode.dll";
+Type: files; Name: "{app}\wndmode.dll";
+Type: files; Name: "{app}\wndmode.ini";
+Type: files; Name: "{app}\ _ddraw.dll";
 ;Delete files (if present) not used by speedrun
 Type: files; Name: "{app}\fkMissions.dll"; Languages: en_speedrun
 Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
@@ -309,6 +313,11 @@ begin
   FWbemObjectSet := Unassigned;
   FWMIService := Unassigned;
   FSWbemLocator := Unassigned;
+end;
+
+procedure InitializeWizard;
+begin
+    WizardForm.FilenameLabel.Visible := False;
 end;
 
 //Detect Wine
