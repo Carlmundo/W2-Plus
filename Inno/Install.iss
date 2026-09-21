@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.7.0.6"
+#define AppVersion "1.7.1"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -142,8 +142,6 @@ Source: "..\Patch\Base\Data\Wav\Speech\Russian\*"; DestDir: "{app}\Data\Wav\Spee
 Source: "..\Patch\Base\Data\Wav\Speech\Spanish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: es
 Source: "..\Patch\Base\Data\Wav\Speech\Hispanic\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: es_419
 Source: "..\Patch\Base\Data\Wav\Speech\Swedish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: sv
-;wkBackflip, not enabled for Speedrun
-Source: "..\Patch\wkBackflip\wkBackflip.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: not en_speedrun
 
 [InstallDelete]
 ;Delete unneeded/conflicting files that may be present from previous installs
@@ -153,9 +151,10 @@ Type: files; Name: "{app}\_wkWndMode.dll";
 Type: files; Name: "{app}\wndmode.dll";
 Type: files; Name: "{app}\wndmode.ini";
 Type: files; Name: "{app}\ _ddraw.dll";
+;Delete old modules
+Type: files; Name: "{app}\wkBackflip.dll";
 ;Delete files (if present) not used by speedrun
 Type: files; Name: "{app}\fkMissions.dll"; Languages: en_speedrun
-Type: files; Name: "{app}\wkBackflip.dll"; Languages: en_speedrun
 ;Delete wkDLang for languages that do not require it
 Type: files; Name: "{app}\wkDLang.dll"; Languages: not cs and not pt and not ru
 Type: files; Name: "{app}\wkDLang.ini"; Languages: not cs and not pt and not ru
