@@ -79,8 +79,8 @@ Source: "..\Patch\Settings\settings.exe"; DestDir: "{app}\"; Flags: ignoreversio
 ;.NETF 3.0 for XP, Vista & 7
 Source: "..\Patch\Settings\settings_netf3.exe"; DestDir: "{app}\"; DestName: "settings.exe"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; OnlyBelowVersion: 6.2;
 
-;Require Windows Vista or newer: fkMissions, not enabled for Speedrun
-Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0; Languages: not en_speedrun
+;Require Windows Vista or newer: fkMissions
+Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkSettings
 Source: "..\Patch\fkSettings\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows Vista or newer: fkWaterFix
@@ -106,7 +106,7 @@ Source: "..\Patch\Languages\Chinese (Simplified)\*"; DestDir: "{app}\"; Flags: i
 Source: "..\Patch\Languages\Czech\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs
 Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: nl
 ; English is the frontend which all other languages have their frontend based on
-Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en en_us en_speedrun
+Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en en_us
 Source: "..\Patch\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
 Source: "..\Patch\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
 Source: "..\Patch\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
@@ -130,7 +130,7 @@ Source: "..\Patch\Languages\Default\*"; DestDir: "{app}\"; Flags: ignoreversion 
 ;Install "Default" soundbank that is (usually) native to the language
 Source: "..\Patch\ExtraContent\Data\Wav\Speech\Czech\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: cs
 Source: "..\Patch\Base\Data\Wav\Speech\Dutch\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: nl
-Source: "..\Patch\Base\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: en en_speedrun zh_Hans
+Source: "..\Patch\Base\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: en zh_Hans
 Source: "..\Patch\Base\Data\Wav\Speech\American\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: en_us
 Source: "..\Patch\Base\Data\Wav\Speech\French\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: fr
 Source: "..\Patch\Base\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: de
@@ -153,8 +153,6 @@ Type: files; Name: "{app}\wndmode.ini";
 Type: files; Name: "{app}\ _ddraw.dll";
 ;Delete old modules
 Type: files; Name: "{app}\wkBackflip.dll";
-;Delete files (if present) not used by speedrun
-Type: files; Name: "{app}\fkMissions.dll"; Languages: en_speedrun
 ;Delete wkDLang for languages that do not require it
 Type: files; Name: "{app}\wkDLang.dll"; Languages: not cs and not pt and not ru
 Type: files; Name: "{app}\wkDLang.ini"; Languages: not cs and not pt and not ru
@@ -235,7 +233,6 @@ Name: "cs"; MessagesFile: "compiler:Languages\Czech.isl"
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
 Name: "en"; MessagesFile: "compiler:Default.isl"
 Name: "en_us"; MessagesFile: "Languages\EnglishUS.isl"
-Name: "en_speedrun"; MessagesFile: "Languages\EnglishSpeedrun.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
@@ -551,11 +548,6 @@ en_us.SelectLanguageLabel=Select the language for {#AppName}
 en_us.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
 en_us.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
 en_us.FinishedHeadingLabel=Patch Complete
-en_speedrun.SelectLanguageTitle=Select Language
-en_speedrun.SelectLanguageLabel=Select the language for {#AppName}
-en_speedrun.SelectDirLabel3=Setup will try to detect where {#Game} is installed.
-en_speedrun.SelectDirBrowseLabel=If it has not been detected, click Browse to specify the folder.
-en_speedrun.FinishedHeadingLabel=Patch Complete
 zh_Hans.SelectLanguageTitle=选择语言
 zh_Hans.SelectLanguageLabel=为{#AppName}选择语言
 zh_Hans.SelectDirLabel3=安装程序将尝试检测{#Game}的安装位置。
@@ -566,7 +558,6 @@ cs.SetupAppRunningError=Instalátor detekoval, že hra {#Game} je momentálně s
 nl.SetupAppRunningError=Setup heeft vastgesteld dat {#Game} op dit moment actief is. Sluit alle vensters hiervan.
 en.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
 en_us.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
-en_speedrun.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
 fr.SetupAppRunningError=L'assistant d'installation a détecté que {#Game} est actuellement en cours d'exécution. Veuillez fermer toutes les instances de cette application.
 de.SetupAppRunningError=Das Setup hat entdeckt, dass {#Game} zur Zeit ausgeführt wird. Bitte schließen Sie jetzt alle laufenden Instanzen.
 it.SetupAppRunningError={#Game} è attualmente in esecuzione. Chiudi adesso tutte le istanze del programma.
@@ -584,7 +575,6 @@ cs.AddonHostProgramNotFound=Hru {#Game} se nepodařilo nalézt ve složce, ktero
 nl.AddonHostProgramNotFound={#Game} kon niet worden gevonden in de geselecteerde map.
 en.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
 en_us.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
-en_speedrun.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
 fr.AddonHostProgramNotFound={#Game} n'a pas été trouvé dans le dossier que vous avez choisi.
 de.AddonHostProgramNotFound={#Game} konnte im ausgewählten Ordner nicht gefunden werden.
 it.AddonHostProgramNotFound=Impossibile individuare {#Game} nella cartella selezionata.
@@ -601,7 +591,6 @@ cs.Installing=Instaluji %1
 nl.Installing=Installeren van %1
 en.Installing=Installing %1
 en_us.Installing=Installing %1
-en_speedrun.Installing=Installing %1
 fr.Installing=Installe %1
 de.Installing=Installation von %1
 it.Installing=Installazione di %1
