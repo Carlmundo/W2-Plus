@@ -109,6 +109,7 @@ Source: "..\Patch\Languages\Dutch\*"; DestDir: "{app}\"; Flags: ignoreversion re
 Source: "..\Patch\Languages\English\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: en en_us
 Source: "..\Patch\Languages\French\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: fr
 Source: "..\Patch\Languages\German\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: de
+Source: "..\Patch\Languages\Icelandic\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: is
 Source: "..\Patch\Languages\Italian\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: it
 Source: "..\Patch\Languages\Polish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pl
 Source: "..\Patch\Languages\Portuguese\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: pt
@@ -118,11 +119,11 @@ Source: "..\Patch\Languages\Spanish\*"; DestDir: "{app}\"; Flags: ignoreversion 
 Source: "..\Patch\Languages\Spanish (Latin America)\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: es_419
 Source: "..\Patch\Languages\Swedish\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: sv
 
-Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru
+Source: "..\Patch\Languages\wkDLang\wkDLang.dll"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs is pt ru
 ; Languages powered by wkDLang (and S-Chinese) use the English version of worms2.exe
-Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
+Source: "..\Patch\Languages\English\worms2.exe"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs is pt ru zh_Hans
 ; Use English "About.rtf" for custom languages
-Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs pt ru zh_Hans
+Source: "..\Patch\Languages\English\Data\About.rtf"; DestDir: "{app}\Data\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: cs is pt ru zh_Hans
 ;Use English for languages without a translated Soundbank Editor
 Source: "..\Patch\Languages\English\Data\Wav\*"; DestDir: "{app}\Data\Wav\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; Languages: ru zh_Hans
 ;Install the default GFX.dir file for languages that are not Czech, Polish or Russian (in case they were previously installed)
@@ -134,6 +135,7 @@ Source: "..\Patch\Base\Data\Wav\Speech\English\*"; DestDir: "{app}\Data\Wav\Spee
 Source: "..\Patch\Base\Data\Wav\Speech\American\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: en_us
 Source: "..\Patch\Base\Data\Wav\Speech\French\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: fr
 Source: "..\Patch\Base\Data\Wav\Speech\German\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: de
+Source: "..\Patch\ExtraContent\Data\Wav\Speech\Icelandic\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: is
 Source: "..\Patch\Base\Data\Wav\Speech\Italian\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: it
 Source: "..\Patch\Base\Data\Wav\Speech\Polish-2\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: pl
 Source: "..\Patch\ExtraContent\Data\Wav\Speech\Portuguese\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: pt
@@ -154,8 +156,8 @@ Type: files; Name: "{app}\ _ddraw.dll";
 ;Delete old modules
 Type: files; Name: "{app}\wkBackflip.dll";
 ;Delete wkDLang for languages that do not require it
-Type: files; Name: "{app}\wkDLang.dll"; Languages: not cs and not pt and not ru
-Type: files; Name: "{app}\wkDLang.ini"; Languages: not cs and not pt and not ru
+Type: files; Name: "{app}\wkDLang.dll"; Languages: not cs and not is and not pt and not ru
+Type: files; Name: "{app}\wkDLang.ini"; Languages: not cs and not is and not pt and not ru
 ;Delete Misc reg files from the root of the game folder 
 Type: files; Name: "{app}\Enable IPX Logging.reg";
 Type: files; Name: "{app}\Reset IPX Config.reg";
@@ -235,6 +237,7 @@ Name: "en"; MessagesFile: "compiler:Default.isl"
 Name: "en_us"; MessagesFile: "Languages\EnglishUS.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
+Name: "is"; MessagesFile: "Languages\Icelandic.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "pl"; MessagesFile: "compiler:Languages\Polish.isl"
 Name: "pt"; MessagesFile: "Languages\Portuguese.isl"
@@ -560,6 +563,7 @@ en.SetupAppRunningError=Setup has detected that {#Game} is currently running. Pl
 en_us.SetupAppRunningError=Setup has detected that {#Game} is currently running. Please close the game before installing the patch.
 fr.SetupAppRunningError=L'assistant d'installation a détecté que {#Game} est actuellement en cours d'exécution. Veuillez fermer toutes les instances de cette application.
 de.SetupAppRunningError=Das Setup hat entdeckt, dass {#Game} zur Zeit ausgeführt wird. Bitte schließen Sie jetzt alle laufenden Instanzen.
+is.SetupAppRunningError=Uppsetningarforritið hefur greint að {#Game} er í gangi. Vinsamlegast lokaðu leiknum áður en þú setur upp uppfærsluna.
 it.SetupAppRunningError={#Game} è attualmente in esecuzione. Chiudi adesso tutte le istanze del programma.
 pl.SetupAppRunningError=Instalator wykrył, że aplikacja {#Game} jest aktualnie uruchomiona. Zamknij wszystkie procesy aplikacji.
 pt.SetupAppRunningError=O instalador detectou que {#Game} já está em execução. Fecha o jogo antes de instalar este patch.
@@ -577,6 +581,7 @@ en.AddonHostProgramNotFound={#Game} could not be located in the folder you selec
 en_us.AddonHostProgramNotFound={#Game} could not be located in the folder you selected. If it is the correct folder, please try reinstalling the game.
 fr.AddonHostProgramNotFound={#Game} n'a pas été trouvé dans le dossier que vous avez choisi.
 de.AddonHostProgramNotFound={#Game} konnte im ausgewählten Ordner nicht gefunden werden.
+is.AddonHostProgramNotFound={#Game} fannst ekki í möppunni sem þú valdir. Ef þetta er rétt mappa, prófaðu þá að endursetja leikinn upp.
 it.AddonHostProgramNotFound=Impossibile individuare {#Game} nella cartella selezionata.
 pl.AddonHostProgramNotFound=Aplikacja {#Game} nie została znaleziona we wskazanym przez Ciebie folderze. Jeżeli jest to właściwy folder, spróbuj ponownie zainstalować grę.
 pt.AddonHostProgramNotFound={#Game} não foi encontrado na pasta que selecionaste. Se é a pasta correta, experimenta reinstalar o jogo.
@@ -593,6 +598,7 @@ en.Installing=Installing %1
 en_us.Installing=Installing %1
 fr.Installing=Installe %1
 de.Installing=Installation von %1
+is.Installing=Set upp %1
 it.Installing=Installazione di %1
 pl.Installing=Instalacja aplikacji %1
 pt.Installing=A instalar %1
