@@ -272,7 +272,7 @@ Root: HKLM32; Subkey: "{#RegPathLM2}"; ValueType: string; ValueName: "Path"; Val
 Root: HKCU; Subkey: "SOFTWARE\IPXWrapper"; ValueType: dword; ValueName: "log_level"; ValueData: 7
 ;Force Game DPI Scaling to be performed by Application, not Windows
 Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0
-Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0; Check: IsWin64
+Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0; Check: IsWin64; Languages: not cs
 Root: HKLM32; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\frontend.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0; Check: not IsWin64
 Root: HKCU; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\worms2.exe"; ValueData: "HIGHDPIAWARE "; MinVersion: 6.0
 ;Add DEP Exception
