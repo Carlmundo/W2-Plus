@@ -226,6 +226,10 @@ Type: files; Name: "{app}\ipxwrapper.ini";
 Type: files; Name: "{app}\libogg-0.dll";
 Type: files; Name: "{app}\libvorbis-0.dll";
 Type: files; Name: "{app}\libvorbisfile-3.dll";
+;Delete old shortcuts
+Type: files; Name: "{group}\Worms 2 Plus.lnk";
+Type: files; Name: "{group}\Worms 2 Plus Beta.lnk";
+Type: dirifempty; Name: "{group}\";
 
 [Languages]
 Name: "zh_Hans"; MessagesFile: "Languages\ChineseSimplified.isl"
@@ -252,7 +256,7 @@ Name: "shortcut_frontend"; Description: "{cm:CreateDesktopIcon}: Worms 2 Plus Fr
 [Icons]
 Name: "{userdesktop}\{#AppName}"; Filename: "{app}\start.exe"; Tasks: shortcut_start
 Name: "{userdesktop}\{#AppName} Frontend"; Filename: "{app}\frontend.exe"; Tasks: shortcut_frontend
-Name: "{group}\{#AppName}"; Filename: "{app}\frontend.exe";
+Name: "{commonprograms}\{#AppName}"; Filename: "{app}\frontend.exe";
 
 [Registry]
 ;Functionality
