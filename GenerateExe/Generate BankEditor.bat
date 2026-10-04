@@ -23,8 +23,6 @@ set lang[10,code]=pt
 set lang[10,name]=Portuguese
 set lang[11,code]=cs
 set lang[11,name]=Czech
-set lang[12,code]=zh-Hans
-set lang[12,name]=Chinese (Simplified)
 
 echo Deleting existing translated BankEditor files...
 echo.
@@ -33,6 +31,6 @@ for /L %%i in (0,1,12) do call del "..\Patch\Languages\%%lang[%%i,name]%%\Data\W
 echo.
 echo Writing new BankEditor files...
 set rh="D:\Apps\Resource Hacker\ResourceHacker.exe"
-for /L %%i in (0,1,12) do call %rh% -script "BankEditor\%%lang[%%i,code]%%.txt"
-for /L %%i in (0,1,12) do call find "Success!" "BankEditor\Logs\%%lang[%%i,code]%%.log" /c
+for /L %%i in (0,1,11) do call %rh% -script "BankEditor\%%lang[%%i,code]%%.txt"
+for /L %%i in (0,1,11) do call find "Success!" "BankEditor\Logs\%%lang[%%i,code]%%.log" /c
 pause
