@@ -81,8 +81,6 @@ Source: "..\Patch\Settings\settings_netf3.exe"; DestDir: "{app}\"; DestName: "se
 
 ;Require Windows Vista or newer: fkMissions
 Source: "..\Patch\fkMissions\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
-;Require Windows Vista or newer: fkWaterFix
-Source: "..\Patch\fkWaterFix\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.0
 ;Require Windows 8 or newer: Upscaled videos and VLC launcher. Also overwrite the GOGLauncher if it exists.
 Source: "..\Patch\Videos\Upscaled\*"; DestDir: "{app}\"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.2; Check: not IsWine();
 Source: "..\Patch\Videos\Upscaled\start.exe"; DestDir: "{app}\"; DestName: "GOGLauncher.exe"; Flags: onlyifdestfileexists ignoreversion recursesubdirs createallsubdirs overwritereadonly; MinVersion: 6.2; Check: not IsWine();
