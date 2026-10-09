@@ -30,6 +30,9 @@
 #ifnexist "..\Patch\Languages\Spanish (Latin America)\Data\Wav\BankEditor.exe"
   #error "Check all BankEditor files are present."
 #endif
+#ifnexist "..\..\Worms2-Maps\Levels\Import\Worms 2 Demo.dat"
+  #error "Check all colour map files are present."
+#endif
 
 [Setup]
 AppId={{B90927CD-E317-466C-8B6B-BC9042E2F1D2}
@@ -48,7 +51,8 @@ SetupIconFile=image-icon.ico
 WizardImageFile=image-large.bmp
 WizardImageStretch=no
 WizardSmallImageFile=image-small.bmp
-Compression=none
+Compression=zip/7
+SolidCompression=no
 Uninstallable=no
 PrivilegesRequired=admin
 ShowLanguageDialog=yes
@@ -140,6 +144,8 @@ Source: "..\Patch\Base\Data\Wav\Speech\Russian\*"; DestDir: "{app}\Data\Wav\Spee
 Source: "..\Patch\Base\Data\Wav\Speech\Spanish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: es
 Source: "..\Patch\Base\Data\Wav\Speech\Hispanic\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: es_419
 Source: "..\Patch\Base\Data\Wav\Speech\Swedish\*"; DestDir: "{app}\Data\Wav\Speech\"; Flags: ignoreversion overwritereadonly; Languages: sv
+;Colour maps from other games - https://github.com/Carlmundo/Worms2-Maps
+Source: "..\..\Worms2-Maps\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly;
 
 [InstallDelete]
 ;Delete unneeded/conflicting files that may be present from previous installs
