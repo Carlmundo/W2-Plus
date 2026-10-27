@@ -1,5 +1,5 @@
 ﻿#define AppName "Worms 2 Plus"
-#define AppVersion "1.7.1"
+#define AppVersion "1.7.1.1"
 #define AppProcess1 "frontend.exe"
 #define AppProcess2 "worms2.exe"
 #define Game "Worms 2"
@@ -17,9 +17,6 @@
 #endif
 #ifnexist "..\Patch\Base\Music\Track05.flac"
   #error "Check all .flac files are present."
-#endif
-#ifnexist "..\Patch\Base\Music\Track05.ogg"
-  #error "Check all .ogg files are present."
 #endif
 #ifnexist "..\Patch\Languages\Spanish (Latin America)\frontend.exe"
   #error "Check all frontend files are present."
@@ -226,10 +223,24 @@ Type: files; Name: "{app}\ipxaddress.exe";
 Type: files; Name: "{app}\Teams\IPX.dat";
 ;Remove IPXWrapper ini override
 Type: files; Name: "{app}\ipxwrapper.ini";
-;libogg/libvorbis from GOG, no longer used since forking ogg-winmm
+;Unused audio and libraries from GOG and previous releases
 Type: files; Name: "{app}\libogg-0.dll";
 Type: files; Name: "{app}\libvorbis-0.dll";
 Type: files; Name: "{app}\libvorbisfile-3.dll";
+Type: files; Name: "{app}\winmm.dll";
+Type: files; Name: "{app}\Music\Track01.ogg";
+Type: files; Name: "{app}\Music\Track02.ogg";
+Type: files; Name: "{app}\Music\Track03.ogg";
+Type: files; Name: "{app}\Music\Track04.ogg";
+Type: files; Name: "{app}\Music\Track05.ogg";
+Type: files; Name: "{app}\Music\Track06.ogg";
+Type: files; Name: "{app}\Music\Track07.ogg";
+Type: files; Name: "{app}\Music\Track08.ogg";
+Type: files; Name: "{app}\Music\Track09.ogg";
+Type: files; Name: "{app}\Music\Track10.ogg";
+Type: files; Name: "{app}\Music\Track11.ogg";
+Type: files; Name: "{app}\Music\Track12.ogg";
+Type: files; Name: "{app}\Music\Track13.ogg";
 ;Delete old shortcuts
 Type: files; Name: "{group}\Worms 2 Plus.lnk";
 Type: files; Name: "{group}\Worms 2 Plus Beta.lnk";
